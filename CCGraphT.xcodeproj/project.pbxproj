@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E6F160D164C8125003DC491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F160C164C8125003DC491 /* Foundation.framework */; };
+		8E6F161C164C8125003DC491 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161B164C8125003DC491 /* SenTestingKit.framework */; };
+		8E6F161E164C8125003DC491 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161D164C8125003DC491 /* UIKit.framework */; };
+		8E6F161F164C8125003DC491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F160C164C8125003DC491 /* Foundation.framework */; };
+		8E6F1622164C8125003DC491 /* libCCGraphT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F1609164C8125003DC491 /* libCCGraphT.a */; };
+		8E6F1628164C8125003DC491 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F1626164C8125003DC491 /* InfoPlist.strings */; };
+		8E6F162B164C8125003DC491 /* CCGraphTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F162A164C8125003DC491 /* CCGraphTTests.m */; };
+		8E6F1662164D2978003DC491 /* CCAbstractGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1661164D2978003DC491 /* CCAbstractGraph.m */; };
+		8E6F1665164DD22C003DC491 /* CCAbstractBaseGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */; };
+		8E6F1668164DE2DA003DC491 /* CCGraphs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1667164DE2D9003DC491 /* CCGraphs.m */; };
+		8E6F1671164DEA7F003DC491 /* CCDefaultEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1670164DEA7F003DC491 /* CCDefaultEdge.m */; };
+		8E6F1674164DEA9C003DC491 /* CCDefaultWeightedEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1673164DEA9B003DC491 /* CCDefaultWeightedEdge.m */; };
+		8E6F1678164E1315003DC491 /* CCIntrusiveEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1677164E1315003DC491 /* CCIntrusiveEdge.m */; };
+		8E6F167B164E1E31003DC491 /* CCClassBasedEdgeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F167A164E1E31003DC491 /* CCClassBasedEdgeFactory.m */; };
+		8E6F167E164E20A3003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */; };
+		8E6F1681164E2665003DC491 /* CCDirectedMultigraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */; };
+		8E6F1684164E27CA003DC491 /* CCDirectedWeightedMultigraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */; };
+		8E6F1687164E2931003DC491 /* CCSubgraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1686164E2931003DC491 /* CCSubgraph.m */; };
+		8E6F168B164E99DC003DC491 /* CCDijkstraShortestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F168A164E99DC003DC491 /* CCDijkstraShortestPath.m */; };
+		8E6F168E164E9B40003DC491 /* CCGraphPathImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F168D164E9B3F003DC491 /* CCGraphPathImpl.m */; };
+		8E6F1693164EA288003DC491 /* CCAbstractGraphIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F1692164EA288003DC491 /* CCAbstractGraphIterator.m */; };
+		8E6F169C164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F169B164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m */; };
+		8E6F169F164EA91B003DC491 /* CCEdgeTraversalEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F169E164EA91B003DC491 /* CCEdgeTraversalEvent.m */; };
+		8E6F16A2164EAA5F003DC491 /* CCVertexTraversalEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16A1164EAA5F003DC491 /* CCVertexTraversalEvent.m */; };
+		8E6F16A5164EAFCF003DC491 /* CCCrossComponentIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16A4164EAFCF003DC491 /* CCCrossComponentIterator.m */; };
+		8E6F16A8164EC832003DC491 /* CCClosestFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16A7164EC832003DC491 /* CCClosestFirstIterator.m */; };
+		8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */; };
+		8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */; };
+		8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */; };
+		8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E6F1620164C8125003DC491 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E6F1600164C8125003DC491 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E6F1608164C8125003DC491;
+			remoteInfo = CCGraphT;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E6F1607164C8125003DC491 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8E6F1609164C8125003DC491 /* libCCGraphT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCCGraphT.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6F160C164C8125003DC491 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8E6F1610164C8125003DC491 /* CCGraphT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCGraphT-Prefix.pch"; sourceTree = "<group>"; };
+		8E6F161A164C8125003DC491 /* CCGraphTTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCGraphTTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6F161B164C8125003DC491 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8E6F161D164C8125003DC491 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		8E6F1625164C8125003DC491 /* CCGraphTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCGraphTTests-Info.plist"; sourceTree = "<group>"; };
+		8E6F1627164C8125003DC491 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8E6F1629164C8125003DC491 /* CCGraphTTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphTTests.h; sourceTree = "<group>"; };
+		8E6F162A164C8125003DC491 /* CCGraphTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCGraphTTests.m; sourceTree = "<group>"; };
+		8E6F1654164D260A003DC491 /* CCDirectedGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDirectedGraph.h; sourceTree = "<group>"; };
+		8E6F1655164D2629003DC491 /* CCEdgeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCEdgeFactory.h; sourceTree = "<group>"; };
+		8E6F1656164D265E003DC491 /* CCGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraph.h; sourceTree = "<group>"; };
+		8E6F1657164D2676003DC491 /* CCGraphMapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphMapping.h; sourceTree = "<group>"; };
+		8E6F1658164D2687003DC491 /* CCGraphPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphPath.h; sourceTree = "<group>"; };
+		8E6F165B164D26D3003DC491 /* CCListenableGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCListenableGraph.h; sourceTree = "<group>"; };
+		8E6F165C164D26E6003DC491 /* CCUndirectedGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCUndirectedGraph.h; sourceTree = "<group>"; };
+		8E6F165D164D2707003DC491 /* CCVertextFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCVertextFactory.h; sourceTree = "<group>"; };
+		8E6F165E164D2741003DC491 /* CCWeightedGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWeightedGraph.h; sourceTree = "<group>"; };
+		8E6F165F164D2843003DC491 /* CCGraphT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphT.h; sourceTree = "<group>"; };
+		8E6F1660164D2978003DC491 /* CCAbstractGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAbstractGraph.h; path = Graphs/CCAbstractGraph.h; sourceTree = "<group>"; };
+		8E6F1661164D2978003DC491 /* CCAbstractGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAbstractGraph.m; path = Graphs/CCAbstractGraph.m; sourceTree = "<group>"; };
+		8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAbstractBaseGraph.h; path = Graphs/CCAbstractBaseGraph.h; sourceTree = "<group>"; };
+		8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAbstractBaseGraph.m; path = Graphs/CCAbstractBaseGraph.m; sourceTree = "<group>"; };
+		8E6F1666164DE2D9003DC491 /* CCGraphs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGraphs.h; sourceTree = "<group>"; };
+		8E6F1667164DE2D9003DC491 /* CCGraphs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCGraphs.m; sourceTree = "<group>"; };
+		8E6F166F164DEA7F003DC491 /* CCDefaultEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultEdge.h; path = Graphs/CCDefaultEdge.h; sourceTree = "<group>"; };
+		8E6F1670164DEA7F003DC491 /* CCDefaultEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultEdge.m; path = Graphs/CCDefaultEdge.m; sourceTree = "<group>"; };
+		8E6F1672164DEA9B003DC491 /* CCDefaultWeightedEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultWeightedEdge.h; path = Graphs/CCDefaultWeightedEdge.h; sourceTree = "<group>"; };
+		8E6F1673164DEA9B003DC491 /* CCDefaultWeightedEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultWeightedEdge.m; path = Graphs/CCDefaultWeightedEdge.m; sourceTree = "<group>"; };
+		8E6F1675164DEFD0003DC491 /* CCEdgeSetFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCEdgeSetFactory.h; path = Graphs/CCEdgeSetFactory.h; sourceTree = "<group>"; };
+		8E6F1676164E1315003DC491 /* CCIntrusiveEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCIntrusiveEdge.h; path = Graphs/CCIntrusiveEdge.h; sourceTree = "<group>"; };
+		8E6F1677164E1315003DC491 /* CCIntrusiveEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCIntrusiveEdge.m; path = Graphs/CCIntrusiveEdge.m; sourceTree = "<group>"; };
+		8E6F1679164E1E31003DC491 /* CCClassBasedEdgeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCClassBasedEdgeFactory.h; path = Graphs/CCClassBasedEdgeFactory.h; sourceTree = "<group>"; };
+		8E6F167A164E1E31003DC491 /* CCClassBasedEdgeFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCClassBasedEdgeFactory.m; path = Graphs/CCClassBasedEdgeFactory.m; sourceTree = "<group>"; };
+		8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDefaultDirectedGraph.h; sourceTree = "<group>"; };
+		8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDefaultDirectedGraph.m; sourceTree = "<group>"; };
+		8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDirectedMultigraph.h; path = Graphs/CCDirectedMultigraph.h; sourceTree = "<group>"; };
+		8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDirectedMultigraph.m; path = Graphs/CCDirectedMultigraph.m; sourceTree = "<group>"; };
+		8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDirectedWeightedMultigraph.h; path = Graphs/CCDirectedWeightedMultigraph.h; sourceTree = "<group>"; };
+		8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDirectedWeightedMultigraph.m; path = Graphs/CCDirectedWeightedMultigraph.m; sourceTree = "<group>"; };
+		8E6F1685164E2931003DC491 /* CCSubgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSubgraph.h; path = Graphs/CCSubgraph.h; sourceTree = "<group>"; };
+		8E6F1686164E2931003DC491 /* CCSubgraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSubgraph.m; path = Graphs/CCSubgraph.m; sourceTree = "<group>"; };
+		8E6F1689164E99DC003DC491 /* CCDijkstraShortestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDijkstraShortestPath.h; path = Algorithms/CCDijkstraShortestPath.h; sourceTree = "<group>"; };
+		8E6F168A164E99DC003DC491 /* CCDijkstraShortestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDijkstraShortestPath.m; path = Algorithms/CCDijkstraShortestPath.m; sourceTree = "<group>"; };
+		8E6F168C164E9B3F003DC491 /* CCGraphPathImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCGraphPathImpl.h; path = Graphs/CCGraphPathImpl.h; sourceTree = "<group>"; };
+		8E6F168D164E9B3F003DC491 /* CCGraphPathImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCGraphPathImpl.m; path = Graphs/CCGraphPathImpl.m; sourceTree = "<group>"; };
+		8E6F1690164EA18B003DC491 /* CCGraphIterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCGraphIterator.h; path = Traversal/CCGraphIterator.h; sourceTree = "<group>"; };
+		8E6F1691164EA288003DC491 /* CCAbstractGraphIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAbstractGraphIterator.h; path = Traversal/CCAbstractGraphIterator.h; sourceTree = "<group>"; };
+		8E6F1692164EA288003DC491 /* CCAbstractGraphIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAbstractGraphIterator.m; path = Traversal/CCAbstractGraphIterator.m; sourceTree = "<group>"; };
+		8E6F1698164EA4F6003DC491 /* CCTraversalListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCTraversalListener.h; path = Event/CCTraversalListener.h; sourceTree = "<group>"; };
+		8E6F169A164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCConnectedComponentTraversalEvent.h; path = Event/CCConnectedComponentTraversalEvent.h; sourceTree = "<group>"; };
+		8E6F169B164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCConnectedComponentTraversalEvent.m; path = Event/CCConnectedComponentTraversalEvent.m; sourceTree = "<group>"; };
+		8E6F169D164EA91B003DC491 /* CCEdgeTraversalEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCEdgeTraversalEvent.h; path = Event/CCEdgeTraversalEvent.h; sourceTree = "<group>"; };
+		8E6F169E164EA91B003DC491 /* CCEdgeTraversalEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCEdgeTraversalEvent.m; path = Event/CCEdgeTraversalEvent.m; sourceTree = "<group>"; };
+		8E6F16A0164EAA5F003DC491 /* CCVertexTraversalEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCVertexTraversalEvent.h; path = Event/CCVertexTraversalEvent.h; sourceTree = "<group>"; };
+		8E6F16A1164EAA5F003DC491 /* CCVertexTraversalEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCVertexTraversalEvent.m; path = Event/CCVertexTraversalEvent.m; sourceTree = "<group>"; };
+		8E6F16A3164EAFCF003DC491 /* CCCrossComponentIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCrossComponentIterator.h; sourceTree = "<group>"; };
+		8E6F16A4164EAFCF003DC491 /* CCCrossComponentIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCrossComponentIterator.m; sourceTree = "<group>"; };
+		8E6F16A6164EC832003DC491 /* CCClosestFirstIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCClosestFirstIterator.h; path = Traversal/CCClosestFirstIterator.h; sourceTree = "<group>"; };
+		8E6F16A7164EC832003DC491 /* CCClosestFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCClosestFirstIterator.m; path = Traversal/CCClosestFirstIterator.m; sourceTree = "<group>"; };
+		8E6F16AA164EC8BF003DC491 /* CCFibonacciHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCFibonacciHeap.h; path = Utility/CCFibonacciHeap.h; sourceTree = "<group>"; };
+		8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCFibonacciHeap.m; path = Utility/CCFibonacciHeap.m; sourceTree = "<group>"; };
+		8E6F16AD164EC8F2003DC491 /* CCFibonacciHeapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCFibonacciHeapNode.h; path = Utility/CCFibonacciHeapNode.h; sourceTree = "<group>"; };
+		8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCFibonacciHeapNode.m; path = Utility/CCFibonacciHeapNode.m; sourceTree = "<group>"; };
+		8E6F16B1164EF44F003DC491 /* DefaultDirectedGraphTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultDirectedGraphTest.h; path = Graphs/DefaultDirectedGraphTest.h; sourceTree = "<group>"; };
+		8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultDirectedGraphTest.m; path = Graphs/DefaultDirectedGraphTest.m; sourceTree = "<group>"; };
+		8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultDirectedGraph.h; path = Graphs/CCDefaultDirectedGraph.h; sourceTree = "<group>"; };
+		8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultDirectedGraph.m; path = Graphs/CCDefaultDirectedGraph.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E6F1606164C8125003DC491 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E6F160D164C8125003DC491 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E6F1616164C8125003DC491 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E6F161C164C8125003DC491 /* SenTestingKit.framework in Frameworks */,
+				8E6F161E164C8125003DC491 /* UIKit.framework in Frameworks */,
+				8E6F161F164C8125003DC491 /* Foundation.framework in Frameworks */,
+				8E6F1622164C8125003DC491 /* libCCGraphT.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E6F15FE164C8125003DC491 = {
+			isa = PBXGroup;
+			children = (
+				8E6F160E164C8125003DC491 /* CCGraphT */,
+				8E6F1623164C8125003DC491 /* CCGraphTTests */,
+				8E6F160B164C8125003DC491 /* Frameworks */,
+				8E6F160A164C8125003DC491 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E6F160A164C8125003DC491 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1609164C8125003DC491 /* libCCGraphT.a */,
+				8E6F161A164C8125003DC491 /* CCGraphTTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E6F160B164C8125003DC491 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F160C164C8125003DC491 /* Foundation.framework */,
+				8E6F161B164C8125003DC491 /* SenTestingKit.framework */,
+				8E6F161D164C8125003DC491 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E6F160E164C8125003DC491 /* CCGraphT */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F16A9164EC882003DC491 /* Utility */,
+				8E6F1694164EA497003DC491 /* Event */,
+				8E6F168F164EA0F5003DC491 /* Traversal */,
+				8E6F1688164E9989003DC491 /* Algorithms */,
+				8E6F1659164D268C003DC491 /* Graphs */,
+				8E6F160F164C8125003DC491 /* Supporting Files */,
+				8E6F1654164D260A003DC491 /* CCDirectedGraph.h */,
+				8E6F1655164D2629003DC491 /* CCEdgeFactory.h */,
+				8E6F1656164D265E003DC491 /* CCGraph.h */,
+				8E6F1657164D2676003DC491 /* CCGraphMapping.h */,
+				8E6F1658164D2687003DC491 /* CCGraphPath.h */,
+				8E6F165B164D26D3003DC491 /* CCListenableGraph.h */,
+				8E6F165C164D26E6003DC491 /* CCUndirectedGraph.h */,
+				8E6F165D164D2707003DC491 /* CCVertextFactory.h */,
+				8E6F165E164D2741003DC491 /* CCWeightedGraph.h */,
+				8E6F165F164D2843003DC491 /* CCGraphT.h */,
+				8E6F1666164DE2D9003DC491 /* CCGraphs.h */,
+				8E6F1667164DE2D9003DC491 /* CCGraphs.m */,
+			);
+			path = CCGraphT;
+			sourceTree = "<group>";
+		};
+		8E6F160F164C8125003DC491 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1610164C8125003DC491 /* CCGraphT-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E6F1623164C8125003DC491 /* CCGraphTTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F16B0164EF3FA003DC491 /* Graphs */,
+				8E6F1629164C8125003DC491 /* CCGraphTTests.h */,
+				8E6F162A164C8125003DC491 /* CCGraphTTests.m */,
+				8E6F1624164C8125003DC491 /* Supporting Files */,
+			);
+			path = CCGraphTTests;
+			sourceTree = "<group>";
+		};
+		8E6F1624164C8125003DC491 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1625164C8125003DC491 /* CCGraphTTests-Info.plist */,
+				8E6F1626164C8125003DC491 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E6F1659164D268C003DC491 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1660164D2978003DC491 /* CCAbstractGraph.h */,
+				8E6F1661164D2978003DC491 /* CCAbstractGraph.m */,
+				8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */,
+				8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */,
+				8E6F166F164DEA7F003DC491 /* CCDefaultEdge.h */,
+				8E6F1670164DEA7F003DC491 /* CCDefaultEdge.m */,
+				8E6F1672164DEA9B003DC491 /* CCDefaultWeightedEdge.h */,
+				8E6F1673164DEA9B003DC491 /* CCDefaultWeightedEdge.m */,
+				8E6F1675164DEFD0003DC491 /* CCEdgeSetFactory.h */,
+				8E6F1676164E1315003DC491 /* CCIntrusiveEdge.h */,
+				8E6F1677164E1315003DC491 /* CCIntrusiveEdge.m */,
+				8E6F1679164E1E31003DC491 /* CCClassBasedEdgeFactory.h */,
+				8E6F167A164E1E31003DC491 /* CCClassBasedEdgeFactory.m */,
+				8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */,
+				8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */,
+				8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */,
+				8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */,
+				8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */,
+				8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */,
+				8E6F1685164E2931003DC491 /* CCSubgraph.h */,
+				8E6F1686164E2931003DC491 /* CCSubgraph.m */,
+				8E6F168C164E9B3F003DC491 /* CCGraphPathImpl.h */,
+				8E6F168D164E9B3F003DC491 /* CCGraphPathImpl.m */,
+				8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */,
+				8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */,
+			);
+			name = Graphs;
+			sourceTree = "<group>";
+		};
+		8E6F1688164E9989003DC491 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1689164E99DC003DC491 /* CCDijkstraShortestPath.h */,
+				8E6F168A164E99DC003DC491 /* CCDijkstraShortestPath.m */,
+			);
+			name = Algorithms;
+			sourceTree = "<group>";
+		};
+		8E6F168F164EA0F5003DC491 /* Traversal */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1690164EA18B003DC491 /* CCGraphIterator.h */,
+				8E6F1691164EA288003DC491 /* CCAbstractGraphIterator.h */,
+				8E6F1692164EA288003DC491 /* CCAbstractGraphIterator.m */,
+				8E6F16A3164EAFCF003DC491 /* CCCrossComponentIterator.h */,
+				8E6F16A4164EAFCF003DC491 /* CCCrossComponentIterator.m */,
+				8E6F16A6164EC832003DC491 /* CCClosestFirstIterator.h */,
+				8E6F16A7164EC832003DC491 /* CCClosestFirstIterator.m */,
+			);
+			name = Traversal;
+			sourceTree = "<group>";
+		};
+		8E6F1694164EA497003DC491 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1698164EA4F6003DC491 /* CCTraversalListener.h */,
+				8E6F169A164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.h */,
+				8E6F169B164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m */,
+				8E6F169D164EA91B003DC491 /* CCEdgeTraversalEvent.h */,
+				8E6F169E164EA91B003DC491 /* CCEdgeTraversalEvent.m */,
+				8E6F16A0164EAA5F003DC491 /* CCVertexTraversalEvent.h */,
+				8E6F16A1164EAA5F003DC491 /* CCVertexTraversalEvent.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		8E6F16A9164EC882003DC491 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F16AA164EC8BF003DC491 /* CCFibonacciHeap.h */,
+				8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */,
+				8E6F16AD164EC8F2003DC491 /* CCFibonacciHeapNode.h */,
+				8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		8E6F16B0164EF3FA003DC491 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F16B1164EF44F003DC491 /* DefaultDirectedGraphTest.h */,
+				8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */,
+			);
+			name = Graphs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E6F1608164C8125003DC491 /* CCGraphT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E6F162E164C8125003DC491 /* Build configuration list for PBXNativeTarget "CCGraphT" */;
+			buildPhases = (
+				8E6F1605164C8125003DC491 /* Sources */,
+				8E6F1606164C8125003DC491 /* Frameworks */,
+				8E6F1607164C8125003DC491 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCGraphT;
+			productName = CCGraphT;
+			productReference = 8E6F1609164C8125003DC491 /* libCCGraphT.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8E6F1619164C8125003DC491 /* CCGraphTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E6F1631164C8125003DC491 /* Build configuration list for PBXNativeTarget "CCGraphTTests" */;
+			buildPhases = (
+				8E6F1615164C8125003DC491 /* Sources */,
+				8E6F1616164C8125003DC491 /* Frameworks */,
+				8E6F1617164C8125003DC491 /* Resources */,
+				8E6F1618164C8125003DC491 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E6F1621164C8125003DC491 /* PBXTargetDependency */,
+			);
+			name = CCGraphTTests;
+			productName = CCGraphTTests;
+			productReference = 8E6F161A164C8125003DC491 /* CCGraphTTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E6F1600164C8125003DC491 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "James Kane";
+			};
+			buildConfigurationList = 8E6F1603164C8125003DC491 /* Build configuration list for PBXProject "CCGraphT" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8E6F15FE164C8125003DC491;
+			productRefGroup = 8E6F160A164C8125003DC491 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E6F1608164C8125003DC491 /* CCGraphT */,
+				8E6F1619164C8125003DC491 /* CCGraphTTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E6F1617164C8125003DC491 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E6F1628164C8125003DC491 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E6F1618164C8125003DC491 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E6F1605164C8125003DC491 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E6F1662164D2978003DC491 /* CCAbstractGraph.m in Sources */,
+				8E6F1665164DD22C003DC491 /* CCAbstractBaseGraph.m in Sources */,
+				8E6F1668164DE2DA003DC491 /* CCGraphs.m in Sources */,
+				8E6F1671164DEA7F003DC491 /* CCDefaultEdge.m in Sources */,
+				8E6F1674164DEA9C003DC491 /* CCDefaultWeightedEdge.m in Sources */,
+				8E6F1678164E1315003DC491 /* CCIntrusiveEdge.m in Sources */,
+				8E6F167B164E1E31003DC491 /* CCClassBasedEdgeFactory.m in Sources */,
+				8E6F167E164E20A3003DC491 /* CCDefaultDirectedGraph.m in Sources */,
+				8E6F1681164E2665003DC491 /* CCDirectedMultigraph.m in Sources */,
+				8E6F1684164E27CA003DC491 /* CCDirectedWeightedMultigraph.m in Sources */,
+				8E6F1687164E2931003DC491 /* CCSubgraph.m in Sources */,
+				8E6F168B164E99DC003DC491 /* CCDijkstraShortestPath.m in Sources */,
+				8E6F168E164E9B40003DC491 /* CCGraphPathImpl.m in Sources */,
+				8E6F1693164EA288003DC491 /* CCAbstractGraphIterator.m in Sources */,
+				8E6F169C164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m in Sources */,
+				8E6F169F164EA91B003DC491 /* CCEdgeTraversalEvent.m in Sources */,
+				8E6F16A2164EAA5F003DC491 /* CCVertexTraversalEvent.m in Sources */,
+				8E6F16A5164EAFCF003DC491 /* CCCrossComponentIterator.m in Sources */,
+				8E6F16A8164EC832003DC491 /* CCClosestFirstIterator.m in Sources */,
+				8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */,
+				8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */,
+				8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E6F1615164C8125003DC491 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E6F162B164C8125003DC491 /* CCGraphTTests.m in Sources */,
+				8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E6F1621164C8125003DC491 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E6F1608164C8125003DC491 /* CCGraphT */;
+			targetProxy = 8E6F1620164C8125003DC491 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E6F1626164C8125003DC491 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E6F1627164C8125003DC491 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E6F162C164C8125003DC491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8E6F162D164C8125003DC491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E6F162F164C8125003DC491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CCGraphT.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCGraphT/CCGraphT-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8E6F1630164C8125003DC491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CCGraphT.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCGraphT/CCGraphT-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8E6F1632164C8125003DC491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCGraphT/CCGraphT-Prefix.pch";
+				INFOPLIST_FILE = "CCGraphTTests/CCGraphTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8E6F1633164C8125003DC491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCGraphT/CCGraphT-Prefix.pch";
+				INFOPLIST_FILE = "CCGraphTTests/CCGraphTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E6F1603164C8125003DC491 /* Build configuration list for PBXProject "CCGraphT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E6F162C164C8125003DC491 /* Debug */,
+				8E6F162D164C8125003DC491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E6F162E164C8125003DC491 /* Build configuration list for PBXNativeTarget "CCGraphT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E6F162F164C8125003DC491 /* Debug */,
+				8E6F1630164C8125003DC491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8E6F1631164C8125003DC491 /* Build configuration list for PBXNativeTarget "CCGraphTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E6F1632164C8125003DC491 /* Debug */,
+				8E6F1633164C8125003DC491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E6F1600164C8125003DC491 /* Project object */;
+}
