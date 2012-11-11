@@ -11,5 +11,5 @@
 #define WG_DEFAULT_EDGE_WEIGHT 1;
 
 @protocol CCWeightedGraph <NSObject>
-
+- (void)setEdge:(id)e withWeight:(double)weight;
 @end

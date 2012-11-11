@@ -601,6 +601,7 @@
 				8E6F1630164C8125003DC491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E6F1631164C8125003DC491 /* Build configuration list for PBXNativeTarget "CCGraphTTests" */ = {
 			isa = XCConfigurationList;
@@ -609,6 +610,7 @@
 				8E6F1633164C8125003DC491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

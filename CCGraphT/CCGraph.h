@@ -17,7 +17,7 @@
 
 - (id<CCEdgeFactory>)edgeFactory;
 
-- (id)addEdge:(id)sourceVertex to:(id)targetVertex;
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex;
 
 - (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge;
 

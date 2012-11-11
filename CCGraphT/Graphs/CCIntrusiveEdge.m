@@ -23,4 +23,16 @@
     
     return newEdge;
 }
+
+- (BOOL)isEqual:(id)object
+{
+    if (self == object)
+        return YES;
+    
+    if ([object isKindOfClass:[self class]]) {
+        return [self.source isEqual:((CCIntrusiveEdge *)object).source] && [self.target isEqual:((CCIntrusiveEdge *)object).target];
+    }
+    
+    return NO;
+}
 @end

@@ -86,7 +86,7 @@
     _edgeSetFactory = edgeSetFactory;
 }
 
-- (id)addEdge:(id)sourceVertex to:(id)targetVertex
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
     [self assertVertexExists:sourceVertex];
     [self assertVertexExists:targetVertex];
@@ -321,7 +321,7 @@
     
     newGraph.specifics = [newGraph createSpecifics];
     
-    [CCGraphs addGraph:newGraph from:self];
+    [CCGraphs addToGraph:newGraph fromGraph:self];
     
     return newGraph;
 }
@@ -450,16 +450,6 @@
 - (NSSet *)vertexSet
 {
     return [NSSet setWithArray:[self.vertexMapDirected allKeys]];
-}
-
-- (id)edgeSource:(id)edge
-{
-    return nil;
-}
-
-- (id)edgeTarget:(id)edge
-{
-    return nil;
 }
 
 - (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex
