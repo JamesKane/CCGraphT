@@ -37,6 +37,9 @@
 		8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */; };
 		8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */; };
 		8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */; };
+		8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */; };
+		8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4806164F44C10047566B /* CCSimpleGraph.m */; };
+		8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +134,12 @@
 		8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultDirectedGraphTest.m; path = Graphs/DefaultDirectedGraphTest.m; sourceTree = "<group>"; };
 		8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultDirectedGraph.h; path = Graphs/CCDefaultDirectedGraph.h; sourceTree = "<group>"; };
 		8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultDirectedGraph.m; path = Graphs/CCDefaultDirectedGraph.m; sourceTree = "<group>"; };
+		8EAA4802164F3D430047566B /* DijkstraShortestPathTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DijkstraShortestPathTest.h; path = Algorithms/DijkstraShortestPathTest.h; sourceTree = "<group>"; };
+		8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DijkstraShortestPathTest.m; path = Algorithms/DijkstraShortestPathTest.m; sourceTree = "<group>"; };
+		8EAA4805164F44C10047566B /* CCSimpleGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleGraph.h; path = Graphs/CCSimpleGraph.h; sourceTree = "<group>"; };
+		8EAA4806164F44C10047566B /* CCSimpleGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSimpleGraph.m; path = Graphs/CCSimpleGraph.m; sourceTree = "<group>"; };
+		8EAA4808164F45EA0047566B /* CCSimpleWeightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleWeightedGraph.h; path = Graphs/CCSimpleWeightedGraph.h; sourceTree = "<group>"; };
+		8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSimpleWeightedGraph.m; path = Graphs/CCSimpleWeightedGraph.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +230,7 @@
 		8E6F1623164C8125003DC491 /* CCGraphTTests */ = {
 			isa = PBXGroup;
 			children = (
+				8EAA4801164F3D080047566B /* Algorithms */,
 				8E6F16B0164EF3FA003DC491 /* Graphs */,
 				8E6F1629164C8125003DC491 /* CCGraphTTests.h */,
 				8E6F162A164C8125003DC491 /* CCGraphTTests.m */,
@@ -266,6 +276,10 @@
 				8E6F168D164E9B3F003DC491 /* CCGraphPathImpl.m */,
 				8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */,
 				8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */,
+				8EAA4805164F44C10047566B /* CCSimpleGraph.h */,
+				8EAA4806164F44C10047566B /* CCSimpleGraph.m */,
+				8EAA4808164F45EA0047566B /* CCSimpleWeightedGraph.h */,
+				8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -325,6 +339,15 @@
 				8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */,
 			);
 			name = Graphs;
+			sourceTree = "<group>";
+		};
+		8EAA4801164F3D080047566B /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				8EAA4802164F3D430047566B /* DijkstraShortestPathTest.h */,
+				8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */,
+			);
+			name = Algorithms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +470,8 @@
 				8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */,
 				8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */,
 				8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */,
+				8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */,
+				8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +481,7 @@
 			files = (
 				8E6F162B164C8125003DC491 /* CCGraphTTests.m in Sources */,
 				8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */,
+				8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

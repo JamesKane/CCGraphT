@@ -7,7 +7,9 @@
 //
 
 #import "CCAbstractBaseGraph.h"
+#import "CCUndirectedGraph.h"
 
-@interface CCSimpleGraph : CCAbstractBaseGraph
-
+@interface CCSimpleGraph : CCAbstractBaseGraph <CCUndirectedGraph>
+- (id)initWithEdgeClass:(Class)edgeClass;
+- (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef;
 @end

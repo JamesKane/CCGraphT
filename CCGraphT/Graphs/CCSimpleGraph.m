@@ -7,7 +7,17 @@
 //
 
 #import "CCSimpleGraph.h"
+#import "CCClassBasedEdgeFactory.h"
 
 @implementation CCSimpleGraph
+- (id)initWithEdgeClass:(Class)edgeClass
+{
+    return [self initWithEdgeFactory:[[CCClassBasedEdgeFactory alloc] initWithEdgeClass:edgeClass]];
+}
 
+- (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
+{
+    self = [super initWithEF:ef allowingMultipleEdges:NO andLoops:NO];
+    return self;
+}
 @end

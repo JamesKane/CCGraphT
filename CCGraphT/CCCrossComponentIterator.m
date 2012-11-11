@@ -15,7 +15,7 @@
 {
     if (self = [super init]) {
         self.graph = graph;
-        self.specifics = [self createGraphSpecifics:graph];
+        self.specifics = [graph createSpecifics];
         self.vertexIterator = [[graph vertexSet] objectEnumerator];
         self.crossComponentTraversal = (startVertex == nil);
         
@@ -115,10 +115,11 @@
     return [[self.seen allKeys] containsObject:vertex];
 }
 
-- (id)putSeen:(id)vertex data:(id)data
+- (id)putSeenData:(id)data withKey:(id)vertex
 {
-    [self.seen setObject:data forKey:vertex];  // TODO: Figure out what the hell the Java version is returning
-    return nil;
+    id prev = [self.seen objectForKey:vertex];
+    [self.seen setObject:data forKey:vertex];
+    return prev;
 }
 
 - (void)finishVertex:(id)vertex
@@ -164,4 +165,16 @@
         return [[CCVertexTraversalEvent alloc] initWithSource:self onVertex:vertex];
     }
 }
+
+- (void)encounterStartVertex
+{
+    [self encounterVertex:self.startVertex with:nil];
+    self.startVertex = nil;
+}
+@end
+
+@implementation CCFlyweightEdgeEvent
+@end
+
+@implementation CCFlyweightVertexEvent
 @end

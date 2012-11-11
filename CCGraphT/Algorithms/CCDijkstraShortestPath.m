@@ -20,6 +20,7 @@
 @end
 
 @implementation CCDijkstraShortestPath
+@synthesize path = _path;
 
 + (NSArray *)findPathBetween:(id<CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex
 {
@@ -70,7 +71,7 @@
 
 - (id<CCGraphPath>)path
 {
-    return self.path;
+    return _path;
 }
 
 - (double)pathLength

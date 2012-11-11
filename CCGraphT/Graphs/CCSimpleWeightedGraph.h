@@ -7,7 +7,7 @@
 //
 
 #import "CCSimpleGraph.h"
+#import "CCWeightedGraph.h"
 
-@interface CCSimpleWeightedGraph : CCSimpleGraph
-
+@interface CCSimpleWeightedGraph : CCSimpleGraph <CCWeightedGraph>
 @end

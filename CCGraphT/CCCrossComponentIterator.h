@@ -53,6 +53,7 @@ typedef enum CCI_VISIT_COLOR {
 - (void)encounterVertex:(id)vertex with:(id)edge;
 - (void)encounterVertexAgain:(id)vertex with:(id)edge;
 - (id)seenData:(id)vertex;
+- (id)putSeenData:(id)data withKey:(id)vertex;
 
 - (CCVertexTraversalEvent *)createVertexTraversalEvent:(id)vertex;
 - (CCEdgeTraversalEvent *)createEdgeTraversalEvent:(id)edge;

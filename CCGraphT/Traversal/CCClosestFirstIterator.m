@@ -151,3 +151,6 @@
 }
 
 @end
+
+@implementation CCQueueEntry
+@end

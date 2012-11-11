@@ -9,6 +9,8 @@
 #import "CCAbstractGraph.h"
 #import "CCEdgeSetFactory.h"
 
+@class CCSpecifics;
+
 @protocol CCSpecificsOwnerProtocol <NSObject>
 - (BOOL)allowingLoops;
 - (id <CCEdgeSetFactory>)edgeSetFactory;
@@ -24,6 +26,8 @@
 - (NSSet *)incomingEdgesOf:(id)vertex;
 - (NSInteger)outgoingDegreeOf:(id)vertex;
 - (NSSet *)outgoingEdgesOf:(id)vertex;
+
+- (CCSpecifics *)createSpecifics;
 @end
 
 #pragma mark --

@@ -9,6 +9,8 @@
 #import "CCAbstractGraphIterator.h"
 
 @implementation CCAbstractGraphIterator
+@synthesize crossComponentTraversal = _crossComponentTraversal;
+@synthesize reuseEvents = _reuseEvents;
 
 - (id)init
 {
@@ -24,7 +26,7 @@
 
 - (void)setCrossComponentTraversal:(BOOL)crossComponentTraversal
 {
-    self.crossComponentTraversal = crossComponentTraversal;
+    _crossComponentTraversal = crossComponentTraversal;
 }
 
 - (BOOL)isCrossComponentTraversal
@@ -34,7 +36,7 @@
 
 - (void)setReuseEvents:(BOOL)reuseEvents
 {
-    self.reuseEvents = reuseEvents;
+    _reuseEvents = reuseEvents;
 }
 
 - (void)addTraversalListener:(id<CCTraversalListener>)l

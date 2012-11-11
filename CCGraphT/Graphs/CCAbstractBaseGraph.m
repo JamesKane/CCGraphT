@@ -284,7 +284,7 @@
     return WG_DEFAULT_EDGE_WEIGHT;
 }
 
-- (void)setEdge:(id)edge weight:(double)weight
+- (void)setEdge:(id)edge withWeight:(double)weight
 {
     if ([edge isKindOfClass:[CCDefaultWeightedEdge class]]) {
         ((CCDefaultWeightedEdge *)edge).weight = weight;
@@ -373,6 +373,13 @@
     }
     return nil;
 }
+
+- (BOOL)containsVertex:(id)vertex
+{
+    return [self getEdgeContainer:vertex] != nil;
+}
+
+- (id)getEdgeContainer:(id)vertex { return nil; }
 
 @end
 
@@ -543,10 +550,10 @@
     return [self getEdgeContainer:vertex].unmbodifableOutgoing;
 }
 
-- (BOOL)containsVertex:(id)vertex
-{
-    return [self getEdgeContainer:vertex] != nil;
-}
+//- (BOOL)containsVertex:(id)vertex
+//{
+//    return [self getEdgeContainer:vertex] != nil;
+//}
 
 - (void)removeEdgeFromTouchingVertices:(id)edge
 {
@@ -623,7 +630,7 @@
 
 - (void)addVertex:(id)vertex
 {
-    [self.vertexMapUndirected setObject:nil forKey:vertex];
+    [self.vertexMapUndirected setObject:[NSNull null] forKey:vertex];
 }
 
 - (NSSet *)vertexSet
@@ -736,13 +743,16 @@
     }
 }
 
+//- (BOOL)containsVertex:(id)vertex
+//{
+//    return [self getEdgeContainer:vertex] != nil;
+//}
+
 - (CCUndirectedEdgeContainer *)getEdgeContainer:(id)vertex
 {
-    [self assertVertexExists:vertex];
-    
     CCUndirectedEdgeContainer *ec = [self.vertexMapUndirected objectForKey:vertex];
     
-    if (ec == nil) {
+    if ((NSNull *)ec == [NSNull null]) {
         ec = [[CCUndirectedEdgeContainer alloc] initWithFactory:[self.delegate edgeSetFactory] for:vertex];
         [self.vertexMapUndirected setObject:ec forKey:vertex];
     }
