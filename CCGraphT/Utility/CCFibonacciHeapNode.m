@@ -14,8 +14,15 @@
 {
     if (self = [super init]) {
         self.data = data;
+        self.right = self;
+        self.left = self;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    NSLog(@"Freeing %@ with key: %f", self.data, self.key);
 }
 
 - (NSString *)description

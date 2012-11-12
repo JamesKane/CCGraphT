@@ -10,10 +10,10 @@
 
 @interface CCFibonacciHeapNode : NSObject
 @property (weak, nonatomic) id data;
-@property (weak, nonatomic) CCFibonacciHeapNode *child;
-@property (weak, nonatomic) CCFibonacciHeapNode *left;
-@property (weak, nonatomic) CCFibonacciHeapNode *parent;
-@property (weak, nonatomic) CCFibonacciHeapNode *right;
+@property (strong, nonatomic) CCFibonacciHeapNode *child;
+@property (strong, nonatomic) CCFibonacciHeapNode *left;
+@property (strong, nonatomic) CCFibonacciHeapNode *parent;
+@property (strong, nonatomic) CCFibonacciHeapNode *right;
 @property (nonatomic) BOOL mark;
 @property (nonatomic) double key;
 @property (nonatomic) NSUInteger degree;

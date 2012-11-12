@@ -17,21 +17,24 @@
 @end
 
 @implementation CCFibonacciHeap
+@synthesize minNode = _minNode;
+@synthesize nNodes = _nNodes;
+
 - (BOOL)isEmpty
 {
-    return self.minNode == nil;
+    return _minNode == nil;
 }
 
 - (void)clear
 {
-    self.minNode = nil;
-    self.nNodes = 0;
+    _minNode = nil;
+    _nNodes = 0;
 }
 
 - (void)decreaseNode:(CCFibonacciHeapNode *)x keyTo:(double)k
 {
     if (k > x.key) {
-        @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:@"decreaseKey got larger key value" userInfo:nil];
+        @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:@"decreaseNode:keyTo: got larger key value" userInfo:nil];
     }
     
     x.key = k;
@@ -43,8 +46,8 @@
         [self cascadingCut:y];
     }
     
-    if (x.key < self.minNode.key) {
-        self.minNode = x;
+    if (x.key < _minNode.key) {
+        _minNode = x;
     }
 }
 
@@ -54,35 +57,35 @@
     [self removeMin];
 }
 
-- (void)insert:(CCFibonacciHeapNode *)x withKey:(double)k
+- (void)insert:(CCFibonacciHeapNode *)node withKey:(double)key
 {
-    x.key = k;
+    node.key = key;
     
     // concatenate node into min list
-    if (self.minNode != nil) {
-        x.left = self.minNode;
-        x.right = self.minNode.right;
-        self.minNode.right = x;
-        x.right.left = x;
+    if (_minNode != nil) {
+        node.left = _minNode;               //node.left = minNode;
+        node.right = _minNode.right;        //node.right = minNode.right;
+        _minNode.right = node;              //minNode.right = node;
+        node.right.left = node;             //node.right.left = node;
         
-        if (k < self.minNode.key) {
-            self.minNode = x;
+        if (key < _minNode.key) {
+            _minNode = node;
         }
     } else {
-        self.minNode = x;
+        _minNode = node;
     }
     
-    self.nNodes++;
+    _nNodes++;
 }
 
 - (CCFibonacciHeapNode *)min
 {
-    return self.minNode;
+    return _minNode;
 }
 
 - (CCFibonacciHeapNode *)removeMin
 {
-    CCFibonacciHeapNode *z = self.minNode;
+    CCFibonacciHeapNode *z = _minNode;
     
     if (z != nil) {
         NSUInteger numKids = z.degree;
@@ -97,9 +100,9 @@
             x.right.left = x.left;
             
             // add x to the root list of heap
-            x.left = self.minNode;
-            x.right = self.minNode.right;
-            self.minNode.right = x;
+            x.left = _minNode;
+            x.right = _minNode.right;
+            _minNode.right = x;
             x.right.left = x;
             
             // set parent[x] to nil
@@ -113,9 +116,9 @@
         z.right.left = z.left;
         
         if (z == z.right) {
-            self.minNode = nil;
+            _minNode = nil;
         } else {
-            self.minNode = z.right;
+            _minNode = z.right;
             [self consolidate];
         }
 
@@ -126,7 +129,7 @@
 
 - (NSUInteger)size
 {
-    return self.nNodes;
+    return _nNodes;
 }
 
 + (CCFibonacciHeap *)unionOf:(CCFibonacciHeap *)h1 with:(CCFibonacciHeap *)h2
@@ -158,12 +161,12 @@
 
 - (NSString *)description
 {
-    if (!self.minNode) {
+    if (!_minNode) {
         return @"FibonacciHeap=[]";
     }
     
-    NSMutableArray *stack = [NSMutableArray arrayWithCapacity:self.nNodes];
-    [stack addObject:self.minNode];
+    NSMutableArray *stack = [NSMutableArray arrayWithCapacity:_nNodes];
+    [stack addObject:_minNode];
     
     NSMutableString *buf = [NSMutableString stringWithString:@"FibonacciHeap=["];
     
@@ -208,31 +211,34 @@
 
 - (void)consolidate
 {
-    NSUInteger arraySize = floor(log(self.nNodes) * OneOverLogPhi) + 1;
+    NSUInteger arraySize = floor(log(_nNodes) * OneOverLogPhi) + 1;
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:arraySize];
     
     for (int i = 0; i < arraySize; i++) {
-        [array insertObject:[NSValue valueWithPointer:nil] atIndex:i];   // iOS doesn't handle pointer arrays so work around using NSValue
+        [array insertObject:[NSNull null] atIndex:i];   // iOS doesn't handle pointer arrays so work around using NSNull
     }
     
     int numRoots = 0;
-    CCFibonacciHeapNode *x = self.minNode;
+    CCFibonacciHeapNode *x = _minNode;  
     
-    if (x) {
+    if (x != nil) {
         numRoots++;
         x = x.right;
-        while(x != self.minNode) {
+        if (x == nil) {
+            NSLog(@"Graph root has no right child");
+        }
+        while(x != _minNode) {                  // _minNode has no right children but has a left?
             numRoots++;
             x = x.right;
         }
     }
     
-    while (numRoots) {
+    while (numRoots > 0) {
         NSUInteger d = x.degree;
         CCFibonacciHeapNode *next = x.right;
         while (YES) {
             CCFibonacciHeapNode *y = [array objectAtIndex:d];
-            if (!y) {
+            if ([(NSNull *)y isEqual:[NSNull null]]) {
                 break;
             }
             
@@ -243,7 +249,7 @@
             }
             
             [self link:y to:x];
-            [array replaceObjectAtIndex:d withObject:[NSValue valueWithPointer:nil]];
+            [array replaceObjectAtIndex:d withObject:[NSNull null]];
             d++;
         }
         [array replaceObjectAtIndex:d withObject:x];
@@ -251,28 +257,28 @@
         numRoots--;
     }
     
-    self.minNode = nil;
+    _minNode = nil;
     for (int i = 0; i < arraySize; i++) {
         id val = [array objectAtIndex:i];
-        if (![val isKindOfClass:[CCFibonacciHeapNode class]]) {
+        if ([val isEqual:[NSNull null]]) {
             continue;
         }
         CCFibonacciHeapNode *y = val;
         
-        if (self.minNode) {
+        if (_minNode) {
             y.left.right = y.right;
             y.right.left = y.left;
             
-            y.left = self.minNode;
-            y.right = self.minNode.right;
-            self.minNode.right = y;
+            y.left = _minNode;
+            y.right = _minNode.right;
+            _minNode.right = y;
             y.right.left = y;
             
-            if (y.key < self.minNode.key) {
-                self.minNode = y;
+            if (y.key < _minNode.key) {
+                _minNode = y;
             }
         } else {
-            self.minNode = y;
+            _minNode = y;
         }
     }
 }
@@ -291,9 +297,9 @@
         y.child = nil;
     }
     
-    x.left = self.minNode;
-    x.right = self.minNode.right;
-    self.minNode.right = x;
+    x.left = _minNode;
+    x.right = _minNode.right;
+    _minNode.right = x;
     x.right.left = x;
     
     x.parent = nil;

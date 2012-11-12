@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2197A5164F565C00482051 /* FibonacciHeapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2197A4164F565C00482051 /* FibonacciHeapTest.m */; };
 		8E6F160D164C8125003DC491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F160C164C8125003DC491 /* Foundation.framework */; };
 		8E6F161C164C8125003DC491 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161B164C8125003DC491 /* SenTestingKit.framework */; };
 		8E6F161E164C8125003DC491 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161D164C8125003DC491 /* UIKit.framework */; };
@@ -65,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E2197A3164F565C00482051 /* FibonacciHeapTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FibonacciHeapTest.h; path = Utility/FibonacciHeapTest.h; sourceTree = "<group>"; };
+		8E2197A4164F565C00482051 /* FibonacciHeapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FibonacciHeapTest.m; path = Utility/FibonacciHeapTest.m; sourceTree = "<group>"; };
 		8E6F1609164C8125003DC491 /* libCCGraphT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCCGraphT.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6F160C164C8125003DC491 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E6F1610164C8125003DC491 /* CCGraphT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCGraphT-Prefix.pch"; sourceTree = "<group>"; };
@@ -165,6 +168,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E2197A1164F563100482051 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8E2197A3164F565C00482051 /* FibonacciHeapTest.h */,
+				8E2197A4164F565C00482051 /* FibonacciHeapTest.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		8E6F15FE164C8125003DC491 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +242,7 @@
 		8E6F1623164C8125003DC491 /* CCGraphTTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E2197A1164F563100482051 /* Utility */,
 				8EAA4801164F3D080047566B /* Algorithms */,
 				8E6F16B0164EF3FA003DC491 /* Graphs */,
 				8E6F1629164C8125003DC491 /* CCGraphTTests.h */,
@@ -482,6 +495,7 @@
 				8E6F162B164C8125003DC491 /* CCGraphTTests.m in Sources */,
 				8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */,
 				8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */,
+				8E2197A5164F565C00482051 /* FibonacciHeapTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

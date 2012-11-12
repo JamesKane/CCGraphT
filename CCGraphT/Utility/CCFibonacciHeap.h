@@ -16,7 +16,7 @@
 - (void)clear;
 - (void)decreaseNode:(CCFibonacciHeapNode *)x keyTo:(double)k;
 - (void)remove:(CCFibonacciHeapNode *)x;
-- (void)insert:(CCFibonacciHeapNode *)x withKey:(double)k;
+- (void)insert:(CCFibonacciHeapNode *)node withKey:(double)key;
 - (NSUInteger)size;
 - (CCFibonacciHeapNode *)min;
 
