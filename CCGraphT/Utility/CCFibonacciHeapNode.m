@@ -20,11 +20,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    NSLog(@"Freeing %@ with key: %f", self.data, self.key);
-}
-
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%f", self.key];

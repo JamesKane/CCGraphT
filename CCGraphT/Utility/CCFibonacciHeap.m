@@ -224,9 +224,6 @@
     if (x != nil) {
         numRoots++;
         x = x.right;
-        if (x == nil) {
-            NSLog(@"Graph root has no right child");
-        }
         while(x != _minNode) {                  // _minNode has no right children but has a left?
             numRoots++;
             x = x.right;
@@ -306,7 +303,7 @@
     x.mark = NO;
 }
 
-- (void)link:(CCFibonacciHeapNode *)x to:(CCFibonacciHeapNode *)y
+- (void)link:(CCFibonacciHeapNode *)y to:(CCFibonacciHeapNode *)x
 {
     y.left.right = y.right;
     y.right.left = y.left;
@@ -315,7 +312,7 @@
     
     if (!x.child) {
         x.child = y;
-        x.right = y;
+        y.right = y;
         y.left = y;
     } else {
         y.left = x.child;
@@ -326,6 +323,6 @@
     
     x.degree++;
     
-    y.mark = false;
+    y.mark = NO;
 }
 @end

@@ -79,28 +79,26 @@
     STAssertEqualObjects(n4.child, n1, @"");
 }
 
-//- (void)testGrowReplaceShrink
-//{
-//    int k = 10000;
-//    NSString *s = @"A";
-//    double t = 0;
-//    CCFibonacciHeap *h = [[CCFibonacciHeap alloc] init];
-//    for (int i = 0; i < (k * 3); ++i) {
-//        if (i < (k * 2)) {
-//            double d = rand() % 10000;
-//            t += d;
-//            CCFibonacciHeapNode *n = [[CCFibonacciHeapNode alloc] initWithData:s];
-//            [h insert:n withKey:d];
-//            NSLog(@"Added %@ with key: %f", n, d);
-//        }
-//        
-//        if (i >= k) {
-//            CCFibonacciHeapNode *n2 = [h removeMin];
-//            NSLog(@"Removed %@ with key: %f", n2, n2.key);
-//            t -= n2.key;
-//        }
-//    }
-//    STAssertTrue([h isEmpty], @"heap should have been exhausted");
-//    STAssertEqualsWithAccuracy(0.0, t, 0.00001, @"tally should be zero(ish)");
-//}
+- (void)testGrowReplaceShrink
+{
+    int k = 10000;
+    NSString *s = @"A";
+    double t = 0;
+    CCFibonacciHeap *h = [[CCFibonacciHeap alloc] init];
+    for (int i = 0; i < (k * 3); ++i) {
+        if (i < (k * 2)) {
+            double d = rand() % 10000;
+            t += d;
+            CCFibonacciHeapNode *n = [[CCFibonacciHeapNode alloc] initWithData:s];
+            [h insert:n withKey:d];
+        }
+        
+        if (i >= k) {
+            CCFibonacciHeapNode *n2 = [h removeMin];
+            t -= n2.key;
+        }
+    }
+    STAssertTrue([h isEmpty], @"heap should have been exhausted");
+    STAssertEqualsWithAccuracy(0.0, t, 0.00001, @"tally should be zero(ish)");
+}
 @end
