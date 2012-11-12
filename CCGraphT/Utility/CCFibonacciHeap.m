@@ -63,11 +63,7 @@
     
     // concatenate node into min list
     if (_minNode != nil) {
-        node.left = _minNode;               //node.left = minNode;
-        node.right = _minNode.right;        //node.right = minNode.right;
-        _minNode.right = node;              //minNode.right = node;
-        node.right.left = node;             //node.right.left = node;
-        
+        [self addNode:node toHeap:_minNode];
         if (key < _minNode.key) {
             _minNode = node;
         }
@@ -94,27 +90,14 @@
         
         while (numKids) {
             tempRight = x.right;
-            
-            // remove x from child list
-            x.left.right = x.right;
-            x.right.left = x.left;
-            
-            // add x to the root list of heap
-            x.left = _minNode;
-            x.right = _minNode.right;
-            _minNode.right = x;
-            x.right.left = x;
-            
-            // set parent[x] to nil
+            [self unlinkNode:x];
+            [self addNode:x toHeap:_minNode];
             x.parent = nil;
             x = tempRight;
             numKids--;
         }
         
-        // remove z from root list of heap
-        z.left.right = z.right;
-        z.right.left = z.left;
-        
+        [self unlinkNode:z];
         if (z == z.right) {
             _minNode = nil;
         } else {
@@ -195,6 +178,20 @@
     return buf;
 }
 
+- (void)addNode:(CCFibonacciHeapNode *)node toHeap:(CCFibonacciHeapNode *)heap
+{
+    node.left = heap;               
+    node.right = heap.right;       
+    heap.right = node;           
+    node.right.left = node;       
+}
+
+- (void)unlinkNode:(CCFibonacciHeapNode *)node
+{
+    node.left.right = node.right;
+    node.right.left = node.left;
+}
+
 - (void)cascadingCut:(CCFibonacciHeapNode *)y
 {
     CCFibonacciHeapNode *z = y.parent;
@@ -224,7 +221,7 @@
     if (x != nil) {
         numRoots++;
         x = x.right;
-        while(x != _minNode) {                  // _minNode has no right children but has a left?
+        while(x != _minNode) {
             numRoots++;
             x = x.right;
         }
@@ -263,14 +260,8 @@
         CCFibonacciHeapNode *y = val;
         
         if (_minNode) {
-            y.left.right = y.right;
-            y.right.left = y.left;
-            
-            y.left = _minNode;
-            y.right = _minNode.right;
-            _minNode.right = y;
-            y.right.left = y;
-            
+            [self unlinkNode:y];
+            [self addNode:y toHeap:_minNode];
             if (y.key < _minNode.key) {
                 _minNode = y;
             }
@@ -282,8 +273,7 @@
 
 - (void)cut:(CCFibonacciHeapNode *)x from:(CCFibonacciHeapNode *)y
 {
-    x.left.right = x.right;
-    x.right.left = x.left;
+    [self unlinkNode:x];
     y.degree--;
     
     if (y.child == x) {
@@ -294,19 +284,15 @@
         y.child = nil;
     }
     
-    x.left = _minNode;
-    x.right = _minNode.right;
-    _minNode.right = x;
-    x.right.left = x;
-    
+    [self addNode:x toHeap:_minNode];
+       
     x.parent = nil;
     x.mark = NO;
 }
 
 - (void)link:(CCFibonacciHeapNode *)y to:(CCFibonacciHeapNode *)x
 {
-    y.left.right = y.right;
-    y.right.left = y.left;
+    [self unlinkNode:y];
     
     y.parent = x;
     
