@@ -594,7 +594,7 @@
 - (NSSet *)unmodifiableVertexEdges
 {
     if (_unmodifiableVertexEdges == nil) {
-        _unmodifiableVertexEdges = [NSSet setWithSet:self.vertexEdges];
+        _unmodifiableVertexEdges = [NSSet setWithArray:self.vertexEdges];
     }
     return _unmodifiableVertexEdges;
 }

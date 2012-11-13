@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CCFibonacciHeapNode : NSObject
-@property (weak, nonatomic) id data;
+@property (strong, nonatomic) id data;
 @property (strong, nonatomic) CCFibonacciHeapNode *child;
 @property (strong, nonatomic) CCFibonacciHeapNode *left;
 @property (strong, nonatomic) CCFibonacciHeapNode *parent;

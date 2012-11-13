@@ -32,6 +32,7 @@
 - (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex withRadius:(double)radius
 {
     if (self = [super initWithGraph:graph startFrom:startVertex]) {
+        self.heap = [[CCFibonacciHeap alloc] init];
         self.radius = radius;
         [self checkRadiusTraversal:[self isCrossComponentTraversal]];
         self.initialized = YES;
@@ -65,7 +66,7 @@
         return nil;
     }
     
-    return nil;//[node.data spanningTreeEdge];
+    return [node.data spanningTreeEdge];
 }
 
 - (BOOL)isConnectedComponentExhausted

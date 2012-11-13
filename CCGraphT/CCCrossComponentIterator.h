@@ -26,6 +26,19 @@ typedef enum CCI_VISIT_COLOR {
     BLACK
 } VisitColor;
 
+@protocol CCGraphIteratorEdgeProvider <NSObject>
+- (id)initWith:(id<CCGraph>)graph;
+- (NSSet *)edgesOf:(id)vertex;
+@end
+
+@interface CCDirectedGraphEdgeProvider : NSObject <CCGraphIteratorEdgeProvider>
+@property (strong, nonatomic) CCAbstractBaseGraph *graph;
+@end
+
+@interface CCUndirectedGraphEdgeProvider : NSObject <CCGraphIteratorEdgeProvider>
+@property (strong, nonatomic) CCAbstractBaseGraph *graph;
+@end
+
 @interface CCCrossComponentIterator : CCAbstractGraphIterator
 @property (strong, nonatomic) CCConnectedComponentTraversalEvent *ccFinishedEvent;
 @property (strong, nonatomic) CCConnectedComponentTraversalEvent *ccStartedEvent;
@@ -34,8 +47,8 @@ typedef enum CCI_VISIT_COLOR {
 @property (strong, nonatomic) NSEnumerator *vertexIterator;
 
 @property (strong, nonatomic) NSMutableDictionary *seen;
-@property (weak, nonatomic) id startVertex;
-@property (weak, nonatomic) CCSpecifics *specifics;     // This is a local class in the Java version
+@property (strong, nonatomic) id startVertex;
+@property (strong, nonatomic) id<CCGraphIteratorEdgeProvider> specifics;
 
 @property (weak, nonatomic) CCAbstractBaseGraph *graph;
 
@@ -60,9 +73,9 @@ typedef enum CCI_VISIT_COLOR {
 @end
 
 @interface CCFlyweightEdgeEvent : CCEdgeTraversalEvent
-@property (weak, nonatomic) id edge;
+@property (strong, nonatomic) id edge;
 @end
 
 @interface CCFlyweightVertexEvent : CCVertexTraversalEvent
-@property (weak, nonatomic) id vertex;
+@property (strong, nonatomic) id vertex;
 @end

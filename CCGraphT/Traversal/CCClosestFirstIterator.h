@@ -25,7 +25,7 @@
 @end
 
 @interface CCQueueEntry : NSObject
-@property (weak, nonatomic) id spanningTreeEdge;
-@property (weak, nonatomic) id vertex;
+@property (strong, nonatomic) id spanningTreeEdge;
+@property (strong, nonatomic) id vertex;
 @property (nonatomic) BOOL frozen;
 @end

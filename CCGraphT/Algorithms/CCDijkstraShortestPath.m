@@ -12,9 +12,9 @@
 #import "CCGraphs.h"
 
 @interface CCDijkstraShortestPath ()
-@property (weak, nonatomic) id<CCGraph> graph;
-@property (weak, nonatomic) id startVertex;
-@property (weak, nonatomic) id endVertex;
+@property (strong, nonatomic) id<CCGraph> graph;
+@property (strong, nonatomic) id startVertex;
+@property (strong, nonatomic) id endVertex;
 @property (nonatomic) double radius;
 @property (strong, nonatomic) CCGraphPathImpl *path;
 @end

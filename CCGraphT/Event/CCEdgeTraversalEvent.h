@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface CCEdgeTraversalEvent : NSObject
-@property (weak, readonly, nonatomic) id source;
-@property (weak, readonly, nonatomic) id edge;
+@property (strong, readonly, nonatomic) id source;
+@property (strong, readonly, nonatomic) id edge;
 
 - (id)initWithSource:(id)eventSource onEdge:(id)edge;
 @end

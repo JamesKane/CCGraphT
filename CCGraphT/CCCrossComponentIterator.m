@@ -8,6 +8,7 @@
 
 #import "CCCrossComponentIterator.h"
 #import "CCGraphs.h"
+#import "CCDirectedGraph.h"
 
 @implementation CCCrossComponentIterator
 
@@ -15,7 +16,7 @@
 {
     if (self = [super init]) {
         self.graph = graph;
-        self.specifics = [graph createSpecifics];
+        self.specifics = [self createEdgeProvider];
         self.vertexIterator = [[graph vertexSet] objectEnumerator];
         self.crossComponentTraversal = (startVertex == nil);
         
@@ -24,7 +25,7 @@
         
         self.seen = [NSMutableDictionary dictionary];
         
-        if (self.startVertex == nil) {
+        if (startVertex == nil) {
             self.startVertex = [self.vertexIterator nextObject];
         } else if ([graph containsVertex:startVertex]) {
             self.startVertex = startVertex;
@@ -33,6 +34,15 @@
         }
     }
     return self;
+}
+
+- (id<CCGraphIteratorEdgeProvider>)createEdgeProvider
+{
+    if ([self.graph conformsToProtocol:@protocol(CCDirectedGraph)]) {
+        return [[CCDirectedGraphEdgeProvider alloc] initWith:self.graph];
+    } else {
+        return [[CCUndirectedGraphEdgeProvider alloc] initWith:self.graph];
+    }
 }
 
 // Using Java's iterator pattern here since the algorithm has some events applied where I'm not sure how to refactor as yet
@@ -131,7 +141,8 @@
 
 - (void)addUnseenChildrenOf:(id)vertex
 {
-    for (id edge in [self.specifics edgesOf:vertex]) {
+    NSSet *nodeEdges = [self.specifics edgesOf:vertex];
+    for (id edge in nodeEdges) {
         if (self.nListeners) {
             [self fireEdgeTraversed:[self createEdgeTraversalEvent:edge]];
         }
@@ -177,4 +188,38 @@
 @end
 
 @implementation CCFlyweightVertexEvent
+@end
+
+@implementation CCDirectedGraphEdgeProvider
+
+- (id)initWith:(id<CCGraph>)graph
+{
+    if (self = [super init]) {
+        self.graph = (CCAbstractBaseGraph *)graph;
+    }
+    return self;
+}
+
+- (NSSet *)edgesOf:(id)vertex
+{
+    return [self.graph outgoingEdgesOf:vertex];
+}
+
+@end
+
+@implementation CCUndirectedGraphEdgeProvider
+
+- (id)initWith:(id<CCGraph>)graph
+{
+    if (self = [super init]) {
+        self.graph = (CCAbstractBaseGraph *)graph;
+    }
+    return self;
+}
+
+- (NSSet *)edgesOf:(id)vertex
+{
+    return [self.graph edgesOf:vertex];
+}
+
 @end

@@ -57,12 +57,11 @@
 
 - (void)testConstructor
 {
-//    CCDijkstraShortestPath *path = [[CCDijkstraShortestPath alloc] initWith:g withOrigin:v3 andDesitination:v4 withRadius:DBL_MAX];
-//    [path execute];
-//    NSArray *result = [NSArray arrayWithObjects:e13, e12, e24, nil];
-//    STAssertEqualObjects(result, [path pathEdgeList], @"paths do not match");
-//    STAssertEquals(10.0, [path pathLength], @"length does not match");
-    
+    CCDijkstraShortestPath *path = [[CCDijkstraShortestPath alloc] initWith:g withOrigin:v3 andDesitination:v4 withRadius:DBL_MAX];
+    [path execute];
+    NSArray *result = [NSArray arrayWithObjects:e13, e12, e24, nil];
+    STAssertEqualObjects(result, [path pathEdgeList], @"paths do not match");
+    STAssertEquals(10.0, [path pathLength], @"length does not match");
 }
 
 @end
