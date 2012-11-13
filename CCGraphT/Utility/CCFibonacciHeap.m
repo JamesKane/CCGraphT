@@ -9,8 +9,6 @@
 #import "CCFibonacciHeap.h"
 #import "CCFibonacciHeapNode.h"
 
-#define OneOverLogPhi (1.0 / log((1.0 + sqrt(5.0)) / 2.0))
-
 @interface CCFibonacciHeap ()
 @property (strong, nonatomic) CCFibonacciHeapNode *minNode;
 @property (nonatomic) NSUInteger nNodes;
@@ -40,7 +38,6 @@
     x.key = k;
     
     CCFibonacciHeapNode* y = x.parent;
-    
     if ((y != nil) && (x.key < y.key)) {
         [self cut:x from:y];
         [self cascadingCut:y];
@@ -61,7 +58,6 @@
 {
     node.key = key;
     
-    // concatenate node into min list
     if (_minNode != nil) {
         [self addNode:node toHeap:_minNode];
         if (key < _minNode.key) {
@@ -206,26 +202,37 @@
     }
 }
 
+#define OneOverLogPhi (1.0 / log((1.0 + sqrt(5.0)) / 2.0))
 - (void)consolidate
 {
     NSUInteger arraySize = floor(log(_nNodes) * OneOverLogPhi) + 1;
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:arraySize];
+    NSMutableArray *array = [self createPointerArrayWith:arraySize];
     
     for (int i = 0; i < arraySize; i++) {
         [array insertObject:[NSNull null] atIndex:i];   // iOS doesn't handle pointer arrays so work around using NSNull
     }
     
-    int numRoots = 0;
-    CCFibonacciHeapNode *x = _minNode;  
+    [self buildTrees:_minNode usingPointerArray:array withSize:arraySize];
     
-    if (x != nil) {
-        numRoots++;
-        x = x.right;
-        while(x != _minNode) {
-            numRoots++;
-            x = x.right;
-        }
+    _minNode = nil;
+    
+    [self rebuildHeapTreesFromArray:array withSize:arraySize];
+}
+
+- (NSMutableArray *)createPointerArrayWith:(NSUInteger)arraySize
+{
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:arraySize];
+    
+    for (int i = 0; i < arraySize; i++) {
+        [array insertObject:[NSNull null] atIndex:i];   // iOS doesn't handle pointer arrays so work around using NSNull
     }
+    return array;
+}
+
+- (void)buildTrees:(CCFibonacciHeapNode *)heap usingPointerArray:(NSMutableArray *)array withSize:(NSUInteger)size
+{
+    CCFibonacciHeapNode *x = _minNode;
+    int numRoots = [self countRoots:x];
     
     while (numRoots > 0) {
         NSUInteger d = x.degree;
@@ -250,8 +257,24 @@
         x = next;
         numRoots--;
     }
-    
-    _minNode = nil;
+}
+
+- (NSUInteger)countRoots:(CCFibonacciHeapNode *)heap
+{
+    NSUInteger numRoots = 0;
+    if (heap != nil) {
+        numRoots++;
+        heap = heap.right;
+        while(heap != _minNode) {
+            numRoots++;
+            heap = heap.right;
+        }
+    }
+    return numRoots;
+}
+
+- (void)rebuildHeapTreesFromArray:(NSMutableArray *)array withSize:(NSUInteger)arraySize
+{
     for (int i = 0; i < arraySize; i++) {
         id val = [array objectAtIndex:i];
         if ([val isEqual:[NSNull null]]) {
