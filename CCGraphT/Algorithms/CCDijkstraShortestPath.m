@@ -76,7 +76,7 @@
 
 - (double)pathLength
 {
-    return self.path ? DBL_MAX : self.path.weight;
+    return self.path == nil ? DBL_MAX : self.path.weight;
 }
 
 - (void)createEdgeList:(id <CCGraph>)graph using:(CCClosestFirstIterator *)iter from:(id)startVertex to:(id)endVertex
