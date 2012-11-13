@@ -36,7 +36,7 @@
     return self;
 }
 
-- (id<CCGraphIteratorEdgeProvider>)createEdgeProvider
+- (CCGraphIteratorEdgeProvider *)createEdgeProvider
 {
     if ([self.graph conformsToProtocol:@protocol(CCDirectedGraph)]) {
         return [[CCDirectedGraphEdgeProvider alloc] initWith:self.graph];
@@ -107,13 +107,13 @@
     return nil;
 }
 
-- (BOOL)isConnectedComponentExhausted { return YES; }   // STUB - Children must implement this appropriately
+- (BOOL)isConnectedComponentExhausted { return YES; }   // "Abstract" method
 
-- (void)encounterVertex:(id)vertex with:(id)edge {}     // STUB - Children must implement this appropriately
+- (void)encounterVertex:(id)vertex with:(id)edge {}     // "Abstract" method
 
-- (void)encounterVertexAgain:(id)vertex with:(id)edge {} // STUB - Children must implement this appropriately
+- (void)encounterVertexAgain:(id)vertex with:(id)edge {} // "Abstract" method
 
-- (id)provideNextVertex { return nil; }                 // STUB - Children must implement this appropriately
+- (id)provideNextVertex { return nil; }                 // "Abstract" method
 
 - (id)seenData:(id)vertex
 {
@@ -190,15 +190,22 @@
 @implementation CCFlyweightVertexEvent
 @end
 
-@implementation CCDirectedGraphEdgeProvider
+@implementation CCGraphIteratorEdgeProvider
+@synthesize graph = _graph;
 
 - (id)initWith:(id<CCGraph>)graph
 {
     if (self = [super init]) {
-        self.graph = (CCAbstractBaseGraph *)graph;
+        _graph = (CCAbstractBaseGraph *)graph;
     }
     return self;
 }
+
+- (NSSet *)edgesOf:(id)vertex { return nil; }  // "Abstract" method
+
+@end
+
+@implementation CCDirectedGraphEdgeProvider
 
 - (NSSet *)edgesOf:(id)vertex
 {
@@ -208,14 +215,6 @@
 @end
 
 @implementation CCUndirectedGraphEdgeProvider
-
-- (id)initWith:(id<CCGraph>)graph
-{
-    if (self = [super init]) {
-        self.graph = (CCAbstractBaseGraph *)graph;
-    }
-    return self;
-}
 
 - (NSSet *)edgesOf:(id)vertex
 {

@@ -9,9 +9,10 @@
 #import "CCGraphPathImpl.h"
 
 @interface CCGraphPathImpl ()
-@property (weak, nonatomic) id<CCGraph> graph;
-@property (weak, nonatomic) id startVertex;
-@property (weak, nonatomic) id endVertex;
+@property (strong, nonatomic) id<CCGraph> graph;
+@property (strong, nonatomic) NSArray *edgeList;
+@property (strong, nonatomic) id startVertex;
+@property (strong, nonatomic) id endVertex;
 @property (nonatomic) double weight;
 @end
 
@@ -21,6 +22,7 @@
 {
     if (self = [super init]) {
         self.graph = graph;
+        self.edgeList = edgeList;
         self.startVertex = startVertex;
         self.endVertex = endVertex;
         self.weight = weight;
@@ -31,27 +33,27 @@
 
 - (id<CCGraph>)graph
 {
-    return self.graph;
+    return _graph;
 }
 
 - (id)startVertex
 {
-    return self.startVertex;
+    return _startVertex;
 }
 
 - (id)endVertex
 {
-    return self.endVertex;
+    return _endVertex;
 }
 
 - (NSArray *)edgeList
 {
-    return self.edgeList;
+    return _edgeList;
 }
 
 - (double)weight
 {
-    return self.weight;
+    return _weight;
 }
 
 - (NSString *)description

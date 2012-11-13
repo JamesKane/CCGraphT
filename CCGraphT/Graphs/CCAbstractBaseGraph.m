@@ -594,7 +594,7 @@
 - (NSSet *)unmodifiableVertexEdges
 {
     if (_unmodifiableVertexEdges == nil) {
-        _unmodifiableVertexEdges = [NSSet setWithArray:self.vertexEdges];
+        _unmodifiableVertexEdges = [NSSet setWithArray:[self.vertexEdges allObjects]];
     }
     return _unmodifiableVertexEdges;
 }
@@ -742,11 +742,6 @@
         [[self getEdgeContainer:target] removeEdge:edge];
     }
 }
-
-//- (BOOL)containsVertex:(id)vertex
-//{
-//    return [self getEdgeContainer:vertex] != nil;
-//}
 
 - (CCUndirectedEdgeContainer *)getEdgeContainer:(id)vertex
 {

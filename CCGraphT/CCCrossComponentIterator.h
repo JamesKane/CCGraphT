@@ -26,17 +26,17 @@ typedef enum CCI_VISIT_COLOR {
     BLACK
 } VisitColor;
 
-@protocol CCGraphIteratorEdgeProvider <NSObject>
+@interface CCGraphIteratorEdgeProvider : NSObject
+@property (strong, readonly, nonatomic) CCAbstractBaseGraph *graph;
+
 - (id)initWith:(id<CCGraph>)graph;
 - (NSSet *)edgesOf:(id)vertex;
 @end
 
-@interface CCDirectedGraphEdgeProvider : NSObject <CCGraphIteratorEdgeProvider>
-@property (strong, nonatomic) CCAbstractBaseGraph *graph;
+@interface CCDirectedGraphEdgeProvider : CCGraphIteratorEdgeProvider
 @end
 
-@interface CCUndirectedGraphEdgeProvider : NSObject <CCGraphIteratorEdgeProvider>
-@property (strong, nonatomic) CCAbstractBaseGraph *graph;
+@interface CCUndirectedGraphEdgeProvider : CCGraphIteratorEdgeProvider
 @end
 
 @interface CCCrossComponentIterator : CCAbstractGraphIterator
@@ -48,7 +48,7 @@ typedef enum CCI_VISIT_COLOR {
 
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (strong, nonatomic) id startVertex;
-@property (strong, nonatomic) id<CCGraphIteratorEdgeProvider> specifics;
+@property (strong, nonatomic) CCGraphIteratorEdgeProvider *specifics;
 
 @property (weak, nonatomic) CCAbstractBaseGraph *graph;
 
