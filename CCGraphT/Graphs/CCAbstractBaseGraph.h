@@ -16,7 +16,7 @@
 - (id <CCEdgeSetFactory>)edgeSetFactory;
 @end
 
-@interface CCAbstractBaseGraph : CCAbstractGraph <NSCoding, NSCopying, CCSpecificsOwnerProtocol>
+@interface CCAbstractBaseGraph : CCAbstractGraph <NSCopying, CCSpecificsOwnerProtocol>
 - (id)initWithEF:(id<CCEdgeFactory>)ef allowingMultipleEdges:(BOOL)allowingMultipleEdges andLoops:(BOOL)allowingLoops;
 - (void)setEdgeFactory:(id<CCEdgeFactory>)edgeFactory;
 - (void)setEdgeSetFactory:(id<CCEdgeSetFactory>)edgeSetFactory;
@@ -26,6 +26,8 @@
 - (NSSet *)incomingEdgesOf:(id)vertex;
 - (NSInteger)outgoingDegreeOf:(id)vertex;
 - (NSSet *)outgoingEdgesOf:(id)vertex;
+
+- (void)setEdge:(id)edge withWeight:(double)weight;
 
 - (CCSpecifics *)createSpecifics;
 @end
@@ -65,7 +67,7 @@
 @property (strong, nonatomic) NSMutableDictionary *vertexMapUndirected;
 @end
 
-@interface CCDirectedEdgeContainer : NSObject <NSCoding>
+@interface CCDirectedEdgeContainer : NSObject
 @property (strong, nonatomic) NSMutableSet *incoming;
 @property (strong, nonatomic) NSMutableSet *outgoing;
 @property (strong, nonatomic, readonly) NSSet *unmodifiableIncoming;
@@ -78,7 +80,7 @@
 - (void)removeOutgoingEdge:(id)e;
 @end
 
-@interface CCUndirectedEdgeContainer : NSObject <NSCoding>
+@interface CCUndirectedEdgeContainer : NSObject
 @property (strong, nonatomic) NSMutableSet *vertexEdges;
 @property (strong, nonatomic, readonly) NSSet *unmodifiableVertexEdges;
 
@@ -88,7 +90,7 @@
 - (NSUInteger)count;
 @end
 
-@interface CCArrayListFactory : NSObject <NSCoding, CCEdgeSetFactory>
+@interface CCArrayListFactory : NSObject <CCEdgeSetFactory>
 @end
 
 @class TypeUtil;

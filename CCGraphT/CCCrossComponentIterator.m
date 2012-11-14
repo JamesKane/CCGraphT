@@ -115,6 +115,8 @@
 
 - (id)provideNextVertex { return nil; }                 // "Abstract" method
 
+- (CCSpecifics *)createGraphSpecifics:(CCAbstractGraph *)graph { return nil; } // "Abstract" method
+
 - (id)seenData:(id)vertex
 {
     return [self.seen objectForKey:vertex];

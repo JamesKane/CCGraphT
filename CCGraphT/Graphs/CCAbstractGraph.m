@@ -119,7 +119,7 @@
 - (id)removeEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (BOOL)removeEdge:(id)edge { return NO; }
 - (id<CCEdgeFactory>)edgeFactory { return nil; }
-- (BOOL)removeVertex:(id)vertex { return nil; }
+- (BOOL)removeVertex:(id)vertex { return NO; }
 - (NSSet *)vertexSet { return nil; }
 - (id)edgeSource:(id)edge { return nil; }
 - (id)edgeTarget:(id)edge { return nil; }

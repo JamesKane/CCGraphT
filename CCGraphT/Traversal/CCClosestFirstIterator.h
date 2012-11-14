@@ -21,7 +21,6 @@
 
 - (double)calculatePathLength:(id)vertex on:(id)edge;
 - (CCFibonacciHeapNode *)createSeenData:(id)vertex on:(id)edge;
-- (void)putSeenData:(CCFibonacciHeapNode *)data withKey:(id)vertex;
 @end
 
 @interface CCQueueEntry : NSObject

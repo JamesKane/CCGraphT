@@ -93,6 +93,9 @@
     }
 }
 
+#pragma mark --
+#pragma mark Stub protocol methods
 - (BOOL)hasNext { return NO; };
 - (id)next { return nil; };
+- (BOOL)isReuseEvents { return NO; }
 @end

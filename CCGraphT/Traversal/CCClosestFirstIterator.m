@@ -137,11 +137,6 @@
     return otherEntry.key + [self.graph edgeWeight:edge];
 }
 
-//- (void)checkRadiusTraversal:(BOOL)crossComponentTraversal
-//{
-//    
-//}
-
 - (CCFibonacciHeapNode *)createSeenData:(id)vertex on:(id)edge
 {
     CCQueueEntry *entry = [[CCQueueEntry alloc] init];

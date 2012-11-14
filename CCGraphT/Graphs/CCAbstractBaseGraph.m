@@ -379,8 +379,21 @@
     return [self getEdgeContainer:vertex] != nil;
 }
 
+// 'Abstract' methods
 - (id)getEdgeContainer:(id)vertex { return nil; }
-
+- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (id)getEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (void)addEdgeToTouchingVertices:(id)edge {}
+- (void)addVertex:(id)vertex {}
+- (NSSet *)vertexSet { return nil; }
+- (NSSet *)edgesOf:(id)vertex { return nil; }
+- (NSInteger)degreeOf:(id)vertex { return -1; }
+- (NSInteger)inDegreeOf:(id)vertex { return -1; }
+- (NSSet *)incomingEdgesOf:(id)vertex { return nil; }
+- (NSInteger)outgoingDegreeOf:(id)vertex { return -1; }
+- (NSSet *)outgoingEdgesOf:(id)vertex { return nil; }
+- (void)removeEdgeFromTouchingVertices:(id)edge {}
+- (void)removeVertex:(id)vertex {}
 @end
 
 #pragma mark --
