@@ -104,4 +104,25 @@
     
     return YES;
 }
+
+#pragma mark --
+#pragma mark Stub protocol methods to silence compiler warnings
+- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (id)getEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex { return nil; }
+- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge { return NO; }
+- (BOOL)addVertex:(id)vertex { return NO; }
+- (BOOL)containsEdge:(id)edge { return NO; }
+- (BOOL)containsVertex:(id)vertex { return NO; }
+- (NSSet *)edgeSet { return nil; }
+- (NSSet *)edgesOf:(id)vertex { return nil; }
+- (id)removeEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (BOOL)removeEdge:(id)edge { return NO; }
+- (id<CCEdgeFactory>)edgeFactory { return nil; }
+- (BOOL)removeVertex:(id)vertex { return nil; }
+- (NSSet *)vertexSet { return nil; }
+- (id)edgeSource:(id)edge { return nil; }
+- (id)edgeTarget:(id)edge { return nil; }
+- (double)edgeWeight:(id)edge { return DBL_MIN; }
+- (BOOL)assertVertexExists:(id)vertex { return NO; }
 @end
