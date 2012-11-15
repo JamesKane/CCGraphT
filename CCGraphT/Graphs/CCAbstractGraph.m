@@ -106,7 +106,7 @@
 }
 
 #pragma mark --
-#pragma mark Stub protocol methods to silence compiler warnings
+#pragma mark 'Abstract' stub protocol methods
 - (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)getEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex { return nil; }

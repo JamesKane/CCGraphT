@@ -42,6 +42,7 @@
 		8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */; };
 		8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */; };
 		8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */; };
+		8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */; };
 		8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */; };
 		8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4806164F44C10047566B /* CCSimpleGraph.m */; };
 		8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */; };
@@ -149,6 +150,8 @@
 		8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultDirectedGraph.m; path = Graphs/CCDefaultDirectedGraph.m; sourceTree = "<group>"; };
 		8E8F65D21652915A00931A8B /* CCDepthFirstIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDepthFirstIterator.h; path = Traversal/CCDepthFirstIterator.h; sourceTree = "<group>"; };
 		8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDepthFirstIterator.m; path = Traversal/CCDepthFirstIterator.m; sourceTree = "<group>"; };
+		8E8F65D61653CDDB00931A8B /* DepthFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DepthFirstIteratorTest.h; path = Traversal/DepthFirstIteratorTest.h; sourceTree = "<group>"; };
+		8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DepthFirstIteratorTest.m; path = Traversal/DepthFirstIteratorTest.m; sourceTree = "<group>"; };
 		8EAA4802164F3D430047566B /* DijkstraShortestPathTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DijkstraShortestPathTest.h; path = Algorithms/DijkstraShortestPathTest.h; sourceTree = "<group>"; };
 		8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DijkstraShortestPathTest.m; path = Algorithms/DijkstraShortestPathTest.m; sourceTree = "<group>"; };
 		8EAA4805164F44C10047566B /* CCSimpleGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleGraph.h; path = Graphs/CCSimpleGraph.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				8E29E6801651D5630002A2C4 /* ClosestFirstIteratorTest.m */,
 				8E29E6821651D5980002A2C4 /* AbstractGraphIteratorTest.h */,
 				8E29E6831651D5980002A2C4 /* AbstractGraphIteratorTest.m */,
+				8E8F65D61653CDDB00931A8B /* DepthFirstIteratorTest.h */,
+				8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */,
 			);
 			name = Traversal;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				8E2197A5164F565C00482051 /* FibonacciHeapTest.m in Sources */,
 				8E29E6811651D5630002A2C4 /* ClosestFirstIteratorTest.m in Sources */,
 				8E29E6841651D5980002A2C4 /* AbstractGraphIteratorTest.m in Sources */,
+				8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
