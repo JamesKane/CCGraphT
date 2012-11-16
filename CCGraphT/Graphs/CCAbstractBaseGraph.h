@@ -8,6 +8,7 @@
 
 #import "CCAbstractGraph.h"
 #import "CCEdgeSetFactory.h"
+#import "CCOrderedDictionary.h"
 
 @class CCSpecifics;
 
@@ -60,11 +61,11 @@
 @end
 
 @interface CCDirectedSpecifics : CCSpecifics
-@property (strong, nonatomic) NSMutableDictionary *vertexMapDirected;
+@property (strong, nonatomic) CCOrderedDictionary *vertexMapDirected;
 @end
 
 @interface CCUndirectedSpecifics : CCSpecifics
-@property (strong, nonatomic) NSMutableDictionary *vertexMapUndirected;
+@property (strong, nonatomic) CCOrderedDictionary *vertexMapUndirected;
 @end
 
 @interface CCDirectedEdgeContainer : NSObject

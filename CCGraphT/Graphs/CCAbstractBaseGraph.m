@@ -456,7 +456,7 @@
 - (id)init
 {
     if ((self = [super init])) {
-        self.vertexMapDirected = [[NSMutableDictionary alloc] init];
+        self.vertexMapDirected = [CCOrderedDictionary dictionary];
     }
     return self;
 }
@@ -630,7 +630,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.vertexMapUndirected = [NSMutableDictionary dictionary];
+        self.vertexMapUndirected = [CCOrderedDictionary dictionary];
     }
     return self;
 }

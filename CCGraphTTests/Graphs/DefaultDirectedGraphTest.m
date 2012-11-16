@@ -54,13 +54,13 @@
     CCDefaultEdge *e3 = [g createEdgeFromVertex:v3 toVertex:v1];
  
 //    Directed graphs use NSDictionary as a backing object.  Determinism is not ensured.
-    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
-    CCDefaultEdge *tmp = [iter nextObject];
-    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
-    tmp = [iter nextObject];
-    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
-    tmp = [iter nextObject];
-    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
+//    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
+//    CCDefaultEdge *tmp = [iter nextObject];
+//    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
+//    tmp = [iter nextObject];
+//    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
+//    tmp = [iter nextObject];
+//    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
     
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v1 inGraph:g], @"%@ should be in %@", e1, v1);
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v2 inGraph:g], @"%@ should be in %@", e1, v2);
@@ -101,15 +101,15 @@
     STAssertEquals(1, [g outgoingDegreeOf:v2], @"%@ has out degree of %d", v2, [g outgoingDegreeOf:v2]);
 }
 
-//- (void)testVertexOrderDeterminism
-//{
-//    // Disabled since NSDictionary does not ensure determinism.
-//    CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
-//    NSEnumerator *iter = [[g vertexArray] objectEnumerator];
-//    STAssertEqualObjects(v1, [iter nextObject], @"objects not equal");
-//    STAssertEqualObjects(v2, [iter nextObject], @"objects not equal");
-//    STAssertEqualObjects(v3, [iter nextObject], @"objects not equal");
-//}
+- (void)testVertexOrderDeterminism
+{
+    // Disabled since NSDictionary does not ensure determinism.
+    CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
+    NSEnumerator *iter = [[g vertexArray] objectEnumerator];
+    STAssertEqualObjects(v1, [iter nextObject], @"objects not equal");
+    STAssertEqualObjects(v2, [iter nextObject], @"objects not equal");
+    STAssertEqualObjects(v3, [iter nextObject], @"objects not equal");
+}
 
 - (CCDirectedMultigraph *)createMultigraphTriangleWithMultiLoop
 {

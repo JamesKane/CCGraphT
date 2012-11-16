@@ -43,6 +43,7 @@
 		8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */; };
 		8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */; };
 		8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */; };
+		8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */; };
 		8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */; };
 		8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4806164F44C10047566B /* CCSimpleGraph.m */; };
 		8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */; };
@@ -152,6 +153,8 @@
 		8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDepthFirstIterator.m; path = Traversal/CCDepthFirstIterator.m; sourceTree = "<group>"; };
 		8E8F65D61653CDDB00931A8B /* DepthFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DepthFirstIteratorTest.h; path = Traversal/DepthFirstIteratorTest.h; sourceTree = "<group>"; };
 		8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DepthFirstIteratorTest.m; path = Traversal/DepthFirstIteratorTest.m; sourceTree = "<group>"; };
+		8E8F65D916565A5800931A8B /* CCOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCOrderedDictionary.h; path = Utility/CCOrderedDictionary.h; sourceTree = "<group>"; };
+		8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCOrderedDictionary.m; path = Utility/CCOrderedDictionary.m; sourceTree = "<group>"; };
 		8EAA4802164F3D430047566B /* DijkstraShortestPathTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DijkstraShortestPathTest.h; path = Algorithms/DijkstraShortestPathTest.h; sourceTree = "<group>"; };
 		8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DijkstraShortestPathTest.m; path = Algorithms/DijkstraShortestPathTest.m; sourceTree = "<group>"; };
 		8EAA4805164F44C10047566B /* CCSimpleGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleGraph.h; path = Graphs/CCSimpleGraph.h; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */,
 				8E6F16AD164EC8F2003DC491 /* CCFibonacciHeapNode.h */,
 				8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */,
+				8E8F65D916565A5800931A8B /* CCOrderedDictionary.h */,
+				8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */,
 				8E29E6871651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m in Sources */,
 				8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */,
+				8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
