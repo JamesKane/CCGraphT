@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6243816016568FE400B2E541 /* SimpleDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6243815F16568FE400B2E541 /* SimpleDirectedGraphTest.m */; };
+		624381641656983700B2E541 /* CCSimpleDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 624381631656983700B2E541 /* CCSimpleDirectedGraph.m */; };
 		8E2197A5164F565C00482051 /* FibonacciHeapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2197A4164F565C00482051 /* FibonacciHeapTest.m */; };
 		8E29E6811651D5630002A2C4 /* ClosestFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E29E6801651D5630002A2C4 /* ClosestFirstIteratorTest.m */; };
 		8E29E6841651D5980002A2C4 /* AbstractGraphIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E29E6831651D5980002A2C4 /* AbstractGraphIteratorTest.m */; };
@@ -72,6 +74,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6243815E16568FE400B2E541 /* SimpleDirectedGraphTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleDirectedGraphTest.h; path = Graphs/SimpleDirectedGraphTest.h; sourceTree = "<group>"; };
+		6243815F16568FE400B2E541 /* SimpleDirectedGraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleDirectedGraphTest.m; path = Graphs/SimpleDirectedGraphTest.m; sourceTree = "<group>"; };
+		624381621656983700B2E541 /* CCSimpleDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleDirectedGraph.h; path = Graphs/CCSimpleDirectedGraph.h; sourceTree = "<group>"; };
+		624381631656983700B2E541 /* CCSimpleDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSimpleDirectedGraph.m; path = Graphs/CCSimpleDirectedGraph.m; sourceTree = "<group>"; };
 		8E2197A3164F565C00482051 /* FibonacciHeapTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FibonacciHeapTest.h; path = Utility/FibonacciHeapTest.h; sourceTree = "<group>"; };
 		8E2197A4164F565C00482051 /* FibonacciHeapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FibonacciHeapTest.m; path = Utility/FibonacciHeapTest.m; sourceTree = "<group>"; };
 		8E29E67F1651D5630002A2C4 /* ClosestFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClosestFirstIteratorTest.h; path = Traversal/ClosestFirstIteratorTest.h; sourceTree = "<group>"; };
@@ -327,6 +333,8 @@
 				8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */,
 				8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */,
 				8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */,
+				624381621656983700B2E541 /* CCSimpleDirectedGraph.h */,
+				624381631656983700B2E541 /* CCSimpleDirectedGraph.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -388,6 +396,8 @@
 			children = (
 				8E6F16B1164EF44F003DC491 /* DefaultDirectedGraphTest.h */,
 				8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */,
+				6243815E16568FE400B2E541 /* SimpleDirectedGraphTest.h */,
+				6243815F16568FE400B2E541 /* SimpleDirectedGraphTest.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -526,6 +536,7 @@
 				8E29E6871651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m in Sources */,
 				8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */,
 				8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */,
+				624381641656983700B2E541 /* CCSimpleDirectedGraph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +551,7 @@
 				8E29E6811651D5630002A2C4 /* ClosestFirstIteratorTest.m in Sources */,
 				8E29E6841651D5980002A2C4 /* AbstractGraphIteratorTest.m in Sources */,
 				8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */,
+				6243816016568FE400B2E541 /* SimpleDirectedGraphTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCGraph.h"
 
-@protocol CCDirectedGraph <NSObject>
+@protocol CCDirectedGraph <CCGraph>
 - (NSInteger)inDegreeOf:(id)vertex;
 - (NSArray *)incomingEdgesOf:(id)vertex;
 - (NSInteger)outgoingDegreeOf:(id)vertex;

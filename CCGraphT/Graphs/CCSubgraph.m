@@ -10,8 +10,8 @@
 #import "CCAbstractBaseGraph.h"
 
 @interface CCSubgraph ()
-@property (strong, nonatomic) NSArray *unmodifiableEdgeSet;
-@property (strong, nonatomic) NSArray *unmodifiableVertexSet;
+@property (strong, nonatomic) NSArray *unmodifiableEdgeArray;
+@property (strong, nonatomic) NSArray *unmodifiableVertexArray;
 @property (weak, nonatomic) CCAbstractBaseGraph *graph;
 @property (nonatomic) BOOL induced;
 @end

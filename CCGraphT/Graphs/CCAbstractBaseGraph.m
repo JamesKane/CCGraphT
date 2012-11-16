@@ -12,15 +12,16 @@
 #import "CCWeightedGraph.h"
 #import "CCGraphs.h"
 #import "CCDefaultWeightedEdge.h"
+#import "CCOrderedDictionary.h"
 
 #define ABG_LOOPS_NOT_ALLOWED @"loops not allowed"
 
 @interface CCAbstractBaseGraph ()
 @property (strong, nonatomic) id<CCEdgeFactory> edgeFactory;
 @property (strong, nonatomic) id<CCEdgeSetFactory> edgeSetFactory;
-@property (strong, nonatomic) NSMutableDictionary *edgeMap;
-@property (strong, nonatomic) NSArray *unmodifiableEdgeSet;
-@property (strong, nonatomic) NSArray *unmodifiableVertexSet;
+@property (strong, nonatomic) CCOrderedDictionary *edgeMap;
+@property (strong, nonatomic) NSArray *unmodifiableEdgeArray;
+@property (strong, nonatomic) NSArray *unmodifiableVertexArray;
 @property (strong, nonatomic) CCSpecifics *specifics;
 @property (nonatomic) BOOL allowingMultipleEdges;
 @property (nonatomic) BOOL allowingLoops;
@@ -36,7 +37,7 @@
 - (id)initWithEF:(id<CCEdgeFactory>)ef allowingMultipleEdges:(BOOL)allowingMultipleEdges andLoops:(BOOL)allowingLoops
 {
     if ((self = [super init])) {
-        self.edgeMap = [NSMutableDictionary dictionary];
+        self.edgeMap = [CCOrderedDictionary dictionary];
         self.edgeFactory = ef;
         self.allowingLoops = allowingLoops;
         self.allowingMultipleEdges = allowingMultipleEdges;
@@ -132,6 +133,7 @@
     CCIntrusiveEdge *edge = [self createInstrusiveEdge:e from:sourceVertex to:targetVertex];
     [self.edgeMap setObject:edge forKey:e];
     [self.specifics addEdgeToTouchingVertices:e];
+    self.unmodifiableEdgeArray = nil;
     
     return YES;
 }
@@ -158,6 +160,7 @@
         return NO;
     
     [self.specifics addVertex:vertex];
+    self.unmodifiableVertexArray = nil;     // Invalidate the cached array
     return YES;
 }
 
@@ -197,11 +200,11 @@
 
 - (NSArray *)edgeArray
 {
-    if (self.unmodifiableEdgeSet == nil) {
-        self.unmodifiableEdgeSet = [NSArray arrayWithArray:[self.edgeMap allKeys]];
+    if (self.unmodifiableEdgeArray == nil) {
+        self.unmodifiableEdgeArray = [NSArray arrayWithArray:[self.edgeMap allKeys]];
     }
     
-    return self.unmodifiableEdgeSet;
+    return self.unmodifiableEdgeArray;
 }
 
 - (NSArray *)edgesOf:(id)vertex
@@ -236,6 +239,7 @@
     if (e != nil) {
         [self.specifics removeEdgeFromTouchingVertices:e];
         [self.edgeMap removeObjectForKey:e];
+        self.unmodifiableEdgeArray = nil;
     }
     
     return e;
@@ -246,7 +250,7 @@
     if ([self containsEdge:edge]) {
         [self.specifics removeEdgeFromTouchingVertices:edge];
         [self.edgeMap removeObjectForKey:edge];
-        
+        self.unmodifiableEdgeArray = nil;
         return YES;
     }
     
@@ -259,7 +263,7 @@
         NSArray *touchingEdgesList = [self edgesOf:vertex];
         [self removeAllEdges:[NSArray arrayWithArray:touchingEdgesList]];
         [self.specifics removeVertex:vertex];
-        
+        self.unmodifiableVertexArray = nil;
         return YES;
     }
     
@@ -268,11 +272,11 @@
 
 - (NSArray *)vertexArray
 {
-    if (self.unmodifiableVertexSet == nil) {
-        self.unmodifiableVertexSet = [NSArray arrayWithArray:[self.specifics vertexArray]];
+    if (self.unmodifiableVertexArray == nil) {
+        self.unmodifiableVertexArray = [NSArray arrayWithArray:[self.specifics vertexArray]];
     }
     
-    return self.unmodifiableVertexSet;
+    return self.unmodifiableVertexArray;
 }
 
 - (double)edgeWeight:(id)edge
@@ -315,8 +319,8 @@
     newGraph.edgeMap = [NSDictionary dictionary];
     
     newGraph.edgeFactory = self.edgeFactory;
-    newGraph.unmodifiableEdgeSet = nil;
-    newGraph.unmodifiableVertexSet = nil;
+    newGraph.unmodifiableEdgeArray = nil;
+    newGraph.unmodifiableVertexArray = nil;
     
     newGraph.specifics = [newGraph createSpecifics];
     
@@ -464,6 +468,11 @@
 - (void)addVertex:(id)vertex
 {
     [self.vertexMapDirected setObject:[NSNull null] forKey:vertex];
+}
+
+- (void)removeVertex:(id)vertex
+{
+    [self.vertexMapDirected removeObjectForKey:vertex];
 }
 
 - (NSArray *)vertexArray
@@ -638,6 +647,11 @@
 - (void)addVertex:(id)vertex
 {
     [self.vertexMapUndirected setObject:[NSNull null] forKey:vertex];
+}
+
+- (void)removeVertex:(id)vertex
+{
+    [self.vertexMapUndirected removeObjectForKey:vertex];
 }
 
 - (NSArray *)vertexArray

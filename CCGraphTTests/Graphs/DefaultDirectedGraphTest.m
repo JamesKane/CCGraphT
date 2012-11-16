@@ -53,14 +53,13 @@
     CCDefaultEdge *e2 = [g createEdgeFromVertex:v2 toVertex:v2];
     CCDefaultEdge *e3 = [g createEdgeFromVertex:v3 toVertex:v1];
  
-//    Directed graphs use NSDictionary as a backing object.  Determinism is not ensured.
-//    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
-//    CCDefaultEdge *tmp = [iter nextObject];
-//    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
-//    tmp = [iter nextObject];
-//    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
-//    tmp = [iter nextObject];
-//    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
+    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
+    CCDefaultEdge *tmp = [iter nextObject];
+    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
+    tmp = [iter nextObject];
+    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
+    tmp = [iter nextObject];
+    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
     
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v1 inGraph:g], @"%@ should be in %@", e1, v1);
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v2 inGraph:g], @"%@ should be in %@", e1, v2);
