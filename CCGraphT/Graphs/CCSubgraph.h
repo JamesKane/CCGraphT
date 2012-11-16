@@ -11,10 +11,10 @@
 @class CCAbstractBaseGraph;
 
 @interface CCSubgraph : CCAbstractGraph
-@property (strong, nonatomic) NSMutableSet *edgeSet;
-@property (strong, nonatomic) NSMutableSet *vertexSet;
+@property (strong, nonatomic) NSMutableArray *edgeSet;
+@property (strong, nonatomic) NSMutableArray *vertexSet;
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSSet *)vertexSet andEdgeSubset:(NSSet *)edgeSubset;
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSSet *)vertexSet;
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSet andEdgeSubset:(NSArray *)edgeSubset;
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSet;
 
 @end

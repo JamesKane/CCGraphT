@@ -38,8 +38,8 @@
     [g setEdgeSetFactory:[[CCArrayListFactory alloc] init]];
     [self initMultiTriangleWithMultiLoop:g];
     
-    STAssertTrue([[g vertexSet] count] == 3, @"Vertex set contains %d entries", [[g vertexSet] count]);
-    STAssertTrue([[g edgeSet] count] == 4, @"Edge set contains %d entries", [[g edgeSet] count]);
+    STAssertTrue([[g vertexArray] count] == 3, @"Vertex set contains %d entries", [[g vertexArray] count]);
+    STAssertTrue([[g edgeArray] count] == 4, @"Edge set contains %d entries", [[g edgeArray] count]);
 }
 
 - (void)testEdgeOrderDeterminism
@@ -53,16 +53,14 @@
     CCDefaultEdge *e2 = [g createEdgeFromVertex:v2 toVertex:v2];
     CCDefaultEdge *e3 = [g createEdgeFromVertex:v3 toVertex:v1];
  
-// NOTE: Disabled these tests from the junit reference.  Using NSSet as a backing object
-// does not ensure ordering.  It can be different from one run to the next.  Need to
-// determine if this is a functional requirement for other classes.  If so the backing store needs to be changed to NSArray.
-//    NSEnumerator *iter = [[g edgeSet] objectEnumerator];
-//    CCDefaultEdge *tmp = [iter nextObject];
-//    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
-//    tmp = [iter nextObject];
-//    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
-//    tmp = [iter nextObject];
-//    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
+//    Directed graphs use NSDictionary as a backing object.  Determinism is not ensured.
+    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
+    CCDefaultEdge *tmp = [iter nextObject];
+    STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
+    tmp = [iter nextObject];
+    STAssertEqualObjects(e2, tmp, @"edges should be equal: %@, %@", e2, tmp);
+    tmp = [iter nextObject];
+    STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
     
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v1 inGraph:g], @"%@ should be in %@", e1, v1);
     STAssertTrue([CCGraphs testEdge:e1 isIncident:v2 inGraph:g], @"%@ should be in %@", e1, v2);
@@ -83,7 +81,7 @@
 {
     CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
     
-    NSSet *loops = [g allEdges:v1 to:v1];
+    NSArray *loops = [g allEdges:v1 to:v1];
     STAssertEquals((NSUInteger)1, [loops count], @"graph contains %d", [loops count]);
 }
 
@@ -103,16 +101,15 @@
     STAssertEquals(1, [g outgoingDegreeOf:v2], @"%@ has out degree of %d", v2, [g outgoingDegreeOf:v2]);
 }
 
-- (void)testVertexOrderDeterminism
-{
-    // Disabled since NSSet does not ensure determinism.  Need to verify this is a
-    // functional requirement.
+//- (void)testVertexOrderDeterminism
+//{
+//    // Disabled since NSDictionary does not ensure determinism.
 //    CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
-//    NSEnumerator *iter = [[g vertexSet] objectEnumerator];
+//    NSEnumerator *iter = [[g vertexArray] objectEnumerator];
 //    STAssertEqualObjects(v1, [iter nextObject], @"objects not equal");
 //    STAssertEqualObjects(v2, [iter nextObject], @"objects not equal");
 //    STAssertEqualObjects(v3, [iter nextObject], @"objects not equal");
-}
+//}
 
 - (CCDirectedMultigraph *)createMultigraphTriangleWithMultiLoop
 {

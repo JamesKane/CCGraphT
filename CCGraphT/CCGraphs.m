@@ -51,20 +51,20 @@
 
 + (BOOL)addToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
-    BOOL modified = [self addAllVerticesToGraph:destination fromSet:[source vertexSet]];
-    modified |= [self addAllEdgesToGraph:destination fromGraph:source inSet:[source edgeSet]];
+    BOOL modified = [self addAllVerticesToGraph:destination fromArray:[source vertexArray]];
+    modified |= [self addAllEdgesToGraph:destination fromGraph:source fromArray:[source edgeArray]];
     return modified;
 }
 
 + (void)addReversedToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
-    [self addAllVerticesToGraph:destination fromSet:[source vertexSet]];
-    for (id edge in [source edgeSet]) {
+    [self addAllVerticesToGraph:destination fromArray:[source vertexArray]];
+    for (id edge in [source edgeArray]) {
         [destination createEdgeFromVertex:[source edgeTarget:edge] toVertex:[source edgeSource:edge]];
     }
 }
 
-+ (BOOL)addAllEdgesToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source fromSet:(NSSet *)edges
++ (BOOL)addAllEdgesToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source fromArray:(NSArray *)edges
 {
     BOOL modified = NO;
     
@@ -79,7 +79,7 @@
     return modified;
 }
 
-+ (BOOL)addAllVerticesToGraph:(id<CCGraph>)destination fromSet:(NSSet *)vertices
++ (BOOL)addAllVerticesToGraph:(id<CCGraph>)destination fromArray:(NSArray *)vertices
 {
     BOOL modified = NO;
     
@@ -93,10 +93,9 @@
 + (NSArray *)predecessorsListOf:(id)vertex inGraph:(id<CCDirectedGraph>)g
 {
     NSMutableArray *predecessors = [NSMutableArray array];
-    NSSet *edges = [g incomingEdgesOf:vertex];
+    NSArray *edges = [g incomingEdgesOf:vertex];
     
     for (id e in edges) {
-        //[predecessors addObject:[self oppositeVertex:g for:e from:vertex]];
         [predecessors addObject:[self oppositeVertexInEdge:e fromVertex:vertex inGraph:g]];
     }
     
@@ -106,7 +105,7 @@
 + (NSArray *)successorListOf:(id)vertex inGraph:(id<CCDirectedGraph>)g
 {
     NSMutableArray *successors = [NSMutableArray array];
-    NSSet *edges = [g outgoingEdgesOf:vertex];
+    NSArray *edges = [g outgoingEdgesOf:vertex];
     
     for (id e in edges) {
         [successors addObject:[self oppositeVertexInEdge:e fromVertex:vertex inGraph:g]];
@@ -121,6 +120,19 @@
 }
 
 + (id)oppositeVertex:(id<CCGraph>)graph for:(id)edge from:(id)vertex
+{
+    id source = [graph edgeSource:edge];
+    id target = [graph edgeTarget:edge];
+    if ([vertex isEqual:source]) {
+        return target;
+    } else if ([vertex isEqual:target]) {
+        return source;
+    } else {
+        return nil;
+    }
+}
+
++ (id)oppositeVertexInEdge:(id)edge fromVertex:(id)vertex inGraph:(id<CCGraph>)graph
 {
     id source = [graph edgeSource:edge];
     id target = [graph edgeTarget:edge];

@@ -17,7 +17,7 @@
     if (self = [super init]) {
         self.graph = graph;
         self.specifics = [self createEdgeProvider];
-        self.vertexIterator = [[graph vertexSet] objectEnumerator];
+        self.vertexIterator = [[graph vertexArray] objectEnumerator];
         self.crossComponentTraversal = (startVertex == nil);
         
         self.reusableEdgeEvent = [[CCFlyweightEdgeEvent alloc] initWithSource:self onEdge:nil];
@@ -143,7 +143,7 @@
 
 - (void)addUnseenChildrenOf:(id)vertex
 {
-    NSSet *nodeEdges = [self.specifics edgesOf:vertex];
+    NSArray *nodeEdges = [self.specifics edgesOf:vertex];
     for (id edge in nodeEdges) {
         if (self.nListeners) {
             [self fireEdgeTraversed:[self createEdgeTraversalEvent:edge]];
@@ -203,13 +203,13 @@
     return self;
 }
 
-- (NSSet *)edgesOf:(id)vertex { return nil; }  // "Abstract" method
+- (NSArray *)edgesOf:(id)vertex { return nil; }  // "Abstract" method
 
 @end
 
 @implementation CCDirectedGraphEdgeProvider
 
-- (NSSet *)edgesOf:(id)vertex
+- (NSArray *)edgesOf:(id)vertex
 {
     return [self.graph outgoingEdgesOf:vertex];
 }
@@ -218,7 +218,7 @@
 
 @implementation CCUndirectedGraphEdgeProvider
 
-- (NSSet *)edgesOf:(id)vertex
+- (NSArray *)edgesOf:(id)vertex
 {
     return [self.graph edgesOf:vertex];
 }

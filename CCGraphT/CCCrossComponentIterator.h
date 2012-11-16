@@ -30,7 +30,7 @@ typedef enum CCI_VISIT_COLOR {
 @property (strong, readonly, nonatomic) CCAbstractBaseGraph *graph;
 
 - (id)initWith:(id<CCGraph>)graph;
-- (NSSet *)edgesOf:(id)vertex;
+- (NSArray *)edgesOf:(id)vertex;
 @end
 
 @interface CCDirectedGraphEdgeProvider : CCGraphIteratorEdgeProvider

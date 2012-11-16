@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol CCEdgeSetFactory <NSObject>
-- (NSMutableSet *)createEdgeSet:(id)vertex;
+- (NSMutableArray *)createEdgeSet:(id)vertex;
 @end

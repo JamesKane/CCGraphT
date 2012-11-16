@@ -19,12 +19,11 @@
 @property (strong, nonatomic) id<CCEdgeFactory> edgeFactory;
 @property (strong, nonatomic) id<CCEdgeSetFactory> edgeSetFactory;
 @property (strong, nonatomic) NSMutableDictionary *edgeMap;
-@property (strong, nonatomic) NSSet *unmodifiableEdgeSet;
-@property (strong, nonatomic) NSSet *unmodifiableVertexSet;
+@property (strong, nonatomic) NSArray *unmodifiableEdgeSet;
+@property (strong, nonatomic) NSArray *unmodifiableVertexSet;
 @property (strong, nonatomic) CCSpecifics *specifics;
 @property (nonatomic) BOOL allowingMultipleEdges;
 @property (nonatomic) BOOL allowingLoops;
-@property (strong, nonatomic) TypeUtil *vertexTypeDecl;
 @end
 
 #pragma mark --
@@ -56,7 +55,7 @@
     return [self.specifics assertVertexExists:vertex];
 }
 
-- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
 {
     return [self.specifics allEdges:sourceVertex to:targetVertex];
 }
@@ -188,7 +187,7 @@
 
 - (BOOL)containsVertex:(id)vertex
 {
-    return [[self.specifics vertexSet] containsObject:vertex];
+    return [[self.specifics vertexArray] containsObject:vertex];
 }
 
 - (NSInteger)degreeOf:(id)vertex
@@ -196,16 +195,16 @@
     return [self.specifics degreeOf:vertex];
 }
 
-- (NSSet *)edgeSet
+- (NSArray *)edgeArray
 {
     if (self.unmodifiableEdgeSet == nil) {
-        self.unmodifiableEdgeSet = [NSSet setWithArray:[self.edgeMap allKeys]];
+        self.unmodifiableEdgeSet = [NSArray arrayWithArray:[self.edgeMap allKeys]];
     }
     
     return self.unmodifiableEdgeSet;
 }
 
-- (NSSet *)edgesOf:(id)vertex
+- (NSArray *)edgesOf:(id)vertex
 {
     return [self.specifics edgesOf:vertex];
 }
@@ -215,7 +214,7 @@
     return [self.specifics inDegreeOf:vertex];
 }
 
-- (NSSet *)incomingEdgesOf:(id)vertex
+- (NSArray *)incomingEdgesOf:(id)vertex
 {
     return [self.specifics incomingEdgesOf:vertex];
 }
@@ -225,7 +224,7 @@
     return [self.specifics outgoingDegreeOf:vertex];
 }
 
-- (NSSet *)outgoingEdgesOf:(id)vertex
+- (NSArray *)outgoingEdgesOf:(id)vertex
 {
     return [self.specifics outgoingEdgesOf:vertex];
 }
@@ -257,8 +256,8 @@
 - (BOOL)removeVertex:(id)vertex
 {
     if ([self containsVertex:vertex]) {
-        NSSet *touchingEdgesList = [self edgesOf:vertex];
-        [self removeAllEdges:[NSArray arrayWithArray:[touchingEdgesList allObjects]]];
+        NSArray *touchingEdgesList = [self edgesOf:vertex];
+        [self removeAllEdges:[NSArray arrayWithArray:touchingEdgesList]];
         [self.specifics removeVertex:vertex];
         
         return YES;
@@ -267,10 +266,10 @@
     return NO;
 }
 
-- (NSSet *)vertexSet
+- (NSArray *)vertexArray
 {
     if (self.unmodifiableVertexSet == nil) {
-        self.unmodifiableVertexSet = [NSSet setWithSet:[self.specifics vertexSet]];
+        self.unmodifiableVertexSet = [NSArray arrayWithArray:[self.specifics vertexArray]];
     }
     
     return self.unmodifiableVertexSet;
@@ -332,7 +331,7 @@
 
 @implementation CCArrayListFactory
 
-- (NSMutableSet *)createEdgeSet:(id)vertex
+- (NSMutableArray *)createEdgeSet:(id)vertex
 {
     return [NSMutableArray array];
 }
@@ -381,17 +380,17 @@
 
 // 'Abstract' methods
 - (id)getEdgeContainer:(id)vertex { return nil; }
-- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)getEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (void)addEdgeToTouchingVertices:(id)edge {}
 - (void)addVertex:(id)vertex {}
-- (NSSet *)vertexSet { return nil; }
-- (NSSet *)edgesOf:(id)vertex { return nil; }
+- (NSArray *)vertexArray { return nil; }
+- (NSArray *)edgesOf:(id)vertex { return nil; }
 - (NSInteger)degreeOf:(id)vertex { return -1; }
 - (NSInteger)inDegreeOf:(id)vertex { return -1; }
-- (NSSet *)incomingEdgesOf:(id)vertex { return nil; }
+- (NSArray *)incomingEdgesOf:(id)vertex { return nil; }
 - (NSInteger)outgoingDegreeOf:(id)vertex { return -1; }
-- (NSSet *)outgoingEdgesOf:(id)vertex { return nil; }
+- (NSArray *)outgoingEdgesOf:(id)vertex { return nil; }
 - (void)removeEdgeFromTouchingVertices:(id)edge {}
 - (void)removeVertex:(id)vertex {}
 @end
@@ -412,18 +411,18 @@
     return self;
 }
 
-- (NSSet *)unmodifiableIncoming
+- (NSArray *)unmodifiableIncoming
 {
     if (_unmodifiableIncoming == nil) {
-        _unmodifiableIncoming = [NSSet setWithSet:self.incoming];
+        _unmodifiableIncoming = [NSArray arrayWithArray:self.incoming];
     }
     return _unmodifiableIncoming;
 }
 
-- (NSSet *)unmbodifableOutgoing
+- (NSArray *)unmbodifableOutgoing
 {
     if (_unmbodifableOutgoing == nil) {
-        _unmbodifableOutgoing = [NSSet setWithSet:self.outgoing];
+        _unmbodifableOutgoing = [NSArray arrayWithArray:self.outgoing];
     }
     return _unmbodifableOutgoing;
 }
@@ -467,17 +466,17 @@
     [self.vertexMapDirected setObject:[NSNull null] forKey:vertex];
 }
 
-- (NSSet *)vertexSet
+- (NSArray *)vertexArray
 {
-    return [NSSet setWithArray:[self.vertexMapDirected allKeys]];
+    return [NSArray arrayWithArray:[self.vertexMapDirected allKeys]];
 }
 
-- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
 {
-    NSMutableSet *edges = nil;
+    NSMutableArray *edges = nil;
     
     if ([self containsVertex:sourceVertex] && [self containsVertex:targetVertex]) {
-        edges = [NSMutableSet set];
+        edges = [NSMutableArray array];
         
         CCDirectedEdgeContainer *ec = [self getEdgeContainer:sourceVertex];
         
@@ -488,10 +487,10 @@
         }
     }
     
-    return [NSSet setWithSet:edges];
+    return [NSArray arrayWithArray:edges];
 }
 
-- (NSSet *)getEdge:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)getEdge:(id)sourceVertex to:(id)targetVertex
 {
     if ([self containsVertex:sourceVertex] && [self containsVertex:targetVertex]) {
         CCDirectedEdgeContainer *ec = [self getEdgeContainer:sourceVertex];
@@ -520,13 +519,13 @@
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"no such operation in a directed graph" userInfo:nil];
 }
 
-- (NSSet *)edgesOf:(id)vertex
+- (NSArray *)edgesOf:(id)vertex
 {
-    NSMutableArray *inAndOut = [NSMutableArray arrayWithArray:[((CCDirectedEdgeContainer *)[self getEdgeContainer:vertex]).incoming allObjects]];
-    [inAndOut addObjectsFromArray:[((CCDirectedEdgeContainer *)[self getEdgeContainer:vertex]).outgoing allObjects]];
+    NSMutableArray *inAndOut = [NSMutableArray arrayWithArray:((CCDirectedEdgeContainer *)[self getEdgeContainer:vertex]).incoming];
+    [inAndOut addObjectsFromArray:((CCDirectedEdgeContainer *)[self getEdgeContainer:vertex]).outgoing];
     
     if ([self.delegate allowingLoops]) {
-        NSMutableSet *loops = [NSMutableSet setWithSet:[self allEdges:vertex to:vertex]];
+        NSMutableArray *loops = [NSMutableArray arrayWithArray:[self allEdges:vertex to:vertex]];
         
         for (NSUInteger i = 0; i < [inAndOut count]; ) {
             id e = [inAndOut objectAtIndex:i];
@@ -540,7 +539,7 @@
         }
     }
     
-    return [NSSet setWithArray:inAndOut];
+    return [NSArray arrayWithArray:inAndOut];
 }
 
 - (NSInteger)inDegreeOf:(id)vertex
@@ -548,7 +547,7 @@
     return [[self getEdgeContainer:vertex].incoming count];
 }
 
-- (NSSet *)incomingEdgesOf:(id)vertex
+- (NSArray *)incomingEdgesOf:(id)vertex
 {
     return [self getEdgeContainer:vertex].unmodifiableIncoming;
 }
@@ -558,15 +557,10 @@
     return [[self getEdgeContainer:vertex].outgoing count];
 }
 
-- (NSSet *)outgoingEdgesOf:(id)vertex
+- (NSArray *)outgoingEdgesOf:(id)vertex
 {
     return [self getEdgeContainer:vertex].unmbodifableOutgoing;
 }
-
-//- (BOOL)containsVertex:(id)vertex
-//{
-//    return [self getEdgeContainer:vertex] != nil;
-//}
 
 - (void)removeEdgeFromTouchingVertices:(id)edge
 {
@@ -604,10 +598,10 @@
     return self;
 }
 
-- (NSSet *)unmodifiableVertexEdges
+- (NSArray *)unmodifiableVertexEdges
 {
     if (_unmodifiableVertexEdges == nil) {
-        _unmodifiableVertexEdges = [NSSet setWithArray:[self.vertexEdges allObjects]];
+        _unmodifiableVertexEdges = [NSArray arrayWithArray:self.vertexEdges];
     }
     return _unmodifiableVertexEdges;
 }
@@ -646,14 +640,14 @@
     [self.vertexMapUndirected setObject:[NSNull null] forKey:vertex];
 }
 
-- (NSSet *)vertexSet
+- (NSArray *)vertexArray
 {
-    return [NSSet setWithArray:[self.vertexMapUndirected allKeys]];
+    return [NSArray arrayWithArray:[self.vertexMapUndirected allKeys]];
 }
 
-- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
 {
-    NSMutableSet *edges = nil;
+    NSMutableArray *edges = nil;
     
     if ([self containsVertex:sourceVertex] && [self containsVertex:targetVertex]) {
         edges = [NSMutableArray array];
@@ -668,7 +662,7 @@
         }
     }
     
-    return [NSSet setWithSet:edges];
+    return [NSArray arrayWithArray:edges];
 }
 
 - (id)getEdge:(id)sourceVertex to:(id)targetVertex
@@ -703,7 +697,7 @@
 {
     if (YES) {
         int degree = 0;
-        NSSet *edges = [self getEdgeContainer:vertex].vertexEdges;
+        NSArray *edges = [self getEdgeContainer:vertex].vertexEdges;
         
         for (id e in edges) {
             if ([[self edgeSource:e] isEqual: [self edgeTarget:e]]) {
@@ -719,7 +713,7 @@
     }
 }
 
-- (NSSet *)edgesOf:(id)vertex
+- (NSArray *)edgesOf:(id)vertex
 {
     return [self getEdgeContainer:vertex].unmodifiableVertexEdges;
 }
@@ -729,7 +723,7 @@
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"no such operation in an undirected graph" userInfo:nil];
 }
 
-- (NSSet *)incomingEdgesOf:(id)vertex
+- (NSArray *)incomingEdgesOf:(id)vertex
 {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"no such operation in an undirected graph" userInfo:nil];
 }
@@ -739,7 +733,7 @@
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"no such operation in an undirected graph" userInfo:nil];
 }
 
-- (NSSet *)outgoingEdgesOf:(id)vertex
+- (NSArray *)outgoingEdgesOf:(id)vertex
 {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"no such operation in an undirected graph" userInfo:nil];
 }

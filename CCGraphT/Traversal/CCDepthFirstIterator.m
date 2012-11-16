@@ -25,7 +25,7 @@
 {
     self = [super initWithGraph:graph startFrom:startVertex];
     if (self) {
-        stack = [NSMutableArray alloc];
+        stack = [NSMutableArray array];
     }
     
     return self;

@@ -11,7 +11,7 @@
 
 @protocol CCGraph <NSObject>
 
-- (NSSet *)allEdges:(id)sourceVertex to:(id)targetVertex;
+- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex;
 
 - (id)getEdge:(id)sourceVertex to:(id)targetVertex;
 
@@ -29,13 +29,13 @@
 
 - (BOOL)containsVertex:(id)vertex;
 
-- (NSSet *)edgeSet;
+- (NSArray *)edgeArray;
 
-- (NSSet *)edgesOf:(id)vertex;
+- (NSArray *)edgesOf:(id)vertex;
 
 - (BOOL)removeAllEdges:(NSArray *)edges;
 
-- (NSSet *)removeAllEdges:(id)sourceVertex to:(id)targetVertex;
+- (NSArray *)removeAllEdges:(id)sourceVertex to:(id)targetVertex;
 
 - (BOOL)removeAllVertices:(NSArray *)vertices;
 
@@ -45,7 +45,7 @@
 
 - (BOOL)removeVertex:(id)vertex;
 
-- (NSSet *)vertexSet;
+- (NSArray *)vertexArray;
 
 - (id)edgeSource:(id)edge;
 
