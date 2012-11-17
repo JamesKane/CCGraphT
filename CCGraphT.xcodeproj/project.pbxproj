@@ -13,6 +13,13 @@
 		8E29E6811651D5630002A2C4 /* ClosestFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E29E6801651D5630002A2C4 /* ClosestFirstIteratorTest.m */; };
 		8E29E6841651D5980002A2C4 /* AbstractGraphIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E29E6831651D5980002A2C4 /* AbstractGraphIteratorTest.m */; };
 		8E29E6871651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */; };
+		8E4D4E1D1657BEE900273ABF /* CCClassBasedVertexFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E1C1657BEE800273ABF /* CCClassBasedVertexFactory.m */; };
+		8E4D4E201657C13000273ABF /* CCDefaultGraphMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E1F1657C13000273ABF /* CCDefaultGraphMapping.m */; };
+		8E4D4E231657C61600273ABF /* CCGraphUnion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E221657C61600273ABF /* CCGraphUnion.m */; };
+		8E4D4E261657C75000273ABF /* CCWeightCombiner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E251657C75000273ABF /* CCWeightCombiner.m */; };
+		8E4D4E291657D2F000273ABF /* CCDirectedGraphUnion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E281657D2F000273ABF /* CCDirectedGraphUnion.m */; };
+		8E4D4E301657D88100273ABF /* CCMultigraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E2F1657D88100273ABF /* CCMultigraph.m */; };
+		8E4D4E331657DA1C00273ABF /* CCOrderedSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4D4E321657DA1C00273ABF /* CCOrderedSet.m */; };
 		8E6F160D164C8125003DC491 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F160C164C8125003DC491 /* Foundation.framework */; };
 		8E6F161C164C8125003DC491 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161B164C8125003DC491 /* SenTestingKit.framework */; };
 		8E6F161E164C8125003DC491 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F161D164C8125003DC491 /* UIKit.framework */; };
@@ -42,10 +49,11 @@
 		8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */; };
 		8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */; };
 		8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */; };
-		8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */; };
 		8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */; };
 		8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */; };
 		8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */; };
+		8E98C0B91657242A0010813A /* CCGraphDelegator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E98C0B81657242A0010813A /* CCGraphDelegator.m */; };
+		8E98C0BD16572ABD0010813A /* CCEdgeReversedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E98C0BC16572ABD0010813A /* CCEdgeReversedGraph.m */; };
 		8EAA4804164F3D430047566B /* DijkstraShortestPathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */; };
 		8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4806164F44C10047566B /* CCSimpleGraph.m */; };
 		8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */; };
@@ -90,6 +98,20 @@
 		8E29E6831651D5980002A2C4 /* AbstractGraphIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractGraphIteratorTest.m; path = Traversal/AbstractGraphIteratorTest.m; sourceTree = "<group>"; };
 		8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultDirectedWeightedGraph.h; path = Graphs/CCDefaultDirectedWeightedGraph.h; sourceTree = "<group>"; };
 		8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultDirectedWeightedGraph.m; path = Graphs/CCDefaultDirectedWeightedGraph.m; sourceTree = "<group>"; };
+		8E4D4E1B1657BEE800273ABF /* CCClassBasedVertexFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCClassBasedVertexFactory.h; path = Graphs/CCClassBasedVertexFactory.h; sourceTree = "<group>"; };
+		8E4D4E1C1657BEE800273ABF /* CCClassBasedVertexFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCClassBasedVertexFactory.m; path = Graphs/CCClassBasedVertexFactory.m; sourceTree = "<group>"; };
+		8E4D4E1E1657C13000273ABF /* CCDefaultGraphMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultGraphMapping.h; path = Graphs/CCDefaultGraphMapping.h; sourceTree = "<group>"; };
+		8E4D4E1F1657C13000273ABF /* CCDefaultGraphMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultGraphMapping.m; path = Graphs/CCDefaultGraphMapping.m; sourceTree = "<group>"; };
+		8E4D4E211657C61600273ABF /* CCGraphUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCGraphUnion.h; path = Graphs/CCGraphUnion.h; sourceTree = "<group>"; };
+		8E4D4E221657C61600273ABF /* CCGraphUnion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCGraphUnion.m; path = Graphs/CCGraphUnion.m; sourceTree = "<group>"; };
+		8E4D4E241657C75000273ABF /* CCWeightCombiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCWeightCombiner.h; path = Utility/CCWeightCombiner.h; sourceTree = "<group>"; };
+		8E4D4E251657C75000273ABF /* CCWeightCombiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCWeightCombiner.m; path = Utility/CCWeightCombiner.m; sourceTree = "<group>"; };
+		8E4D4E271657D2F000273ABF /* CCDirectedGraphUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDirectedGraphUnion.h; sourceTree = "<group>"; };
+		8E4D4E281657D2F000273ABF /* CCDirectedGraphUnion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDirectedGraphUnion.m; sourceTree = "<group>"; };
+		8E4D4E2E1657D88100273ABF /* CCMultigraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMultigraph.h; path = Graphs/CCMultigraph.h; sourceTree = "<group>"; };
+		8E4D4E2F1657D88100273ABF /* CCMultigraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCMultigraph.m; path = Graphs/CCMultigraph.m; sourceTree = "<group>"; };
+		8E4D4E311657DA1C00273ABF /* CCOrderedSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCOrderedSet.h; path = Utility/CCOrderedSet.h; sourceTree = "<group>"; };
+		8E4D4E321657DA1C00273ABF /* CCOrderedSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCOrderedSet.m; path = Utility/CCOrderedSet.m; sourceTree = "<group>"; };
 		8E6F1609164C8125003DC491 /* libCCGraphT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCCGraphT.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6F160C164C8125003DC491 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E6F1610164C8125003DC491 /* CCGraphT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCGraphT-Prefix.pch"; sourceTree = "<group>"; };
@@ -107,7 +129,7 @@
 		8E6F1658164D2687003DC491 /* CCGraphPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphPath.h; sourceTree = "<group>"; };
 		8E6F165B164D26D3003DC491 /* CCListenableGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCListenableGraph.h; sourceTree = "<group>"; };
 		8E6F165C164D26E6003DC491 /* CCUndirectedGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCUndirectedGraph.h; sourceTree = "<group>"; };
-		8E6F165D164D2707003DC491 /* CCVertextFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCVertextFactory.h; sourceTree = "<group>"; };
+		8E6F165D164D2707003DC491 /* CCVertexFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCVertexFactory.h; sourceTree = "<group>"; };
 		8E6F165E164D2741003DC491 /* CCWeightedGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWeightedGraph.h; sourceTree = "<group>"; };
 		8E6F165F164D2843003DC491 /* CCGraphT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCGraphT.h; sourceTree = "<group>"; };
 		8E6F1660164D2978003DC491 /* CCAbstractGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAbstractGraph.h; path = Graphs/CCAbstractGraph.h; sourceTree = "<group>"; };
@@ -157,14 +179,16 @@
 		8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCFibonacciHeapNode.m; path = Utility/CCFibonacciHeapNode.m; sourceTree = "<group>"; };
 		8E6F16B1164EF44F003DC491 /* DefaultDirectedGraphTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultDirectedGraphTest.h; path = Graphs/DefaultDirectedGraphTest.h; sourceTree = "<group>"; };
 		8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultDirectedGraphTest.m; path = Graphs/DefaultDirectedGraphTest.m; sourceTree = "<group>"; };
-		8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDefaultDirectedGraph.h; path = Graphs/CCDefaultDirectedGraph.h; sourceTree = "<group>"; };
-		8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDefaultDirectedGraph.m; path = Graphs/CCDefaultDirectedGraph.m; sourceTree = "<group>"; };
 		8E8F65D21652915A00931A8B /* CCDepthFirstIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDepthFirstIterator.h; path = Traversal/CCDepthFirstIterator.h; sourceTree = "<group>"; };
 		8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDepthFirstIterator.m; path = Traversal/CCDepthFirstIterator.m; sourceTree = "<group>"; };
 		8E8F65D61653CDDB00931A8B /* DepthFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DepthFirstIteratorTest.h; path = Traversal/DepthFirstIteratorTest.h; sourceTree = "<group>"; };
 		8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DepthFirstIteratorTest.m; path = Traversal/DepthFirstIteratorTest.m; sourceTree = "<group>"; };
 		8E8F65D916565A5800931A8B /* CCOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCOrderedDictionary.h; path = Utility/CCOrderedDictionary.h; sourceTree = "<group>"; };
 		8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCOrderedDictionary.m; path = Utility/CCOrderedDictionary.m; sourceTree = "<group>"; };
+		8E98C0B71657242A0010813A /* CCGraphDelegator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCGraphDelegator.h; path = Graphs/CCGraphDelegator.h; sourceTree = "<group>"; };
+		8E98C0B81657242A0010813A /* CCGraphDelegator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCGraphDelegator.m; path = Graphs/CCGraphDelegator.m; sourceTree = "<group>"; };
+		8E98C0BB16572ABD0010813A /* CCEdgeReversedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCEdgeReversedGraph.h; path = Graphs/CCEdgeReversedGraph.h; sourceTree = "<group>"; };
+		8E98C0BC16572ABD0010813A /* CCEdgeReversedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCEdgeReversedGraph.m; path = Graphs/CCEdgeReversedGraph.m; sourceTree = "<group>"; };
 		8EAA4802164F3D430047566B /* DijkstraShortestPathTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DijkstraShortestPathTest.h; path = Algorithms/DijkstraShortestPathTest.h; sourceTree = "<group>"; };
 		8EAA4803164F3D430047566B /* DijkstraShortestPathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DijkstraShortestPathTest.m; path = Algorithms/DijkstraShortestPathTest.m; sourceTree = "<group>"; };
 		8EAA4805164F44C10047566B /* CCSimpleGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSimpleGraph.h; path = Graphs/CCSimpleGraph.h; sourceTree = "<group>"; };
@@ -230,6 +254,55 @@
 			name = Traversal;
 			sourceTree = "<group>";
 		};
+		8E4D4E2A1657D66900273ABF /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */,
+				8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */,
+				8E6F1660164D2978003DC491 /* CCAbstractGraph.h */,
+				8E6F1661164D2978003DC491 /* CCAbstractGraph.m */,
+			);
+			name = Abstract;
+			sourceTree = "<group>";
+		};
+		8E4D4E2B1657D68B00273ABF /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F1675164DEFD0003DC491 /* CCEdgeSetFactory.h */,
+				8E6F1679164E1E31003DC491 /* CCClassBasedEdgeFactory.h */,
+				8E6F167A164E1E31003DC491 /* CCClassBasedEdgeFactory.m */,
+				8E4D4E1B1657BEE800273ABF /* CCClassBasedVertexFactory.h */,
+				8E4D4E1C1657BEE800273ABF /* CCClassBasedVertexFactory.m */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		8E4D4E2C1657D6B600273ABF /* Directed */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */,
+				8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */,
+				8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */,
+				8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */,
+				8E4D4E271657D2F000273ABF /* CCDirectedGraphUnion.h */,
+				8E4D4E281657D2F000273ABF /* CCDirectedGraphUnion.m */,
+				8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */,
+				8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */,
+				8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */,
+				8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */,
+				624381621656983700B2E541 /* CCSimpleDirectedGraph.h */,
+				624381631656983700B2E541 /* CCSimpleDirectedGraph.m */,
+			);
+			name = Directed;
+			sourceTree = "<group>";
+		};
+		8E4D4E2D1657D6CD00273ABF /* Undirected */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Undirected;
+			sourceTree = "<group>";
+		};
 		8E6F15FE164C8125003DC491 = {
 			isa = PBXGroup;
 			children = (
@@ -262,24 +335,24 @@
 		8E6F160E164C8125003DC491 /* CCGraphT */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F16A9164EC882003DC491 /* Utility */,
-				8E6F1694164EA497003DC491 /* Event */,
-				8E6F168F164EA0F5003DC491 /* Traversal */,
-				8E6F1688164E9989003DC491 /* Algorithms */,
-				8E6F1659164D268C003DC491 /* Graphs */,
-				8E6F160F164C8125003DC491 /* Supporting Files */,
 				8E6F1654164D260A003DC491 /* CCDirectedGraph.h */,
 				8E6F1655164D2629003DC491 /* CCEdgeFactory.h */,
 				8E6F1656164D265E003DC491 /* CCGraph.h */,
 				8E6F1657164D2676003DC491 /* CCGraphMapping.h */,
 				8E6F1658164D2687003DC491 /* CCGraphPath.h */,
-				8E6F165B164D26D3003DC491 /* CCListenableGraph.h */,
-				8E6F165C164D26E6003DC491 /* CCUndirectedGraph.h */,
-				8E6F165D164D2707003DC491 /* CCVertextFactory.h */,
-				8E6F165E164D2741003DC491 /* CCWeightedGraph.h */,
-				8E6F165F164D2843003DC491 /* CCGraphT.h */,
 				8E6F1666164DE2D9003DC491 /* CCGraphs.h */,
 				8E6F1667164DE2D9003DC491 /* CCGraphs.m */,
+				8E6F165F164D2843003DC491 /* CCGraphT.h */,
+				8E6F165B164D26D3003DC491 /* CCListenableGraph.h */,
+				8E6F165C164D26E6003DC491 /* CCUndirectedGraph.h */,
+				8E6F165D164D2707003DC491 /* CCVertexFactory.h */,
+				8E6F165E164D2741003DC491 /* CCWeightedGraph.h */,
+				8E6F1688164E9989003DC491 /* Algorithms */,
+				8E6F1694164EA497003DC491 /* Event */,
+				8E6F1659164D268C003DC491 /* Graphs */,
+				8E6F168F164EA0F5003DC491 /* Traversal */,
+				8E6F16A9164EC882003DC491 /* Utility */,
+				8E6F160F164C8125003DC491 /* Supporting Files */,
 			);
 			path = CCGraphT;
 			sourceTree = "<group>";
@@ -318,39 +391,34 @@
 		8E6F1659164D268C003DC491 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F1660164D2978003DC491 /* CCAbstractGraph.h */,
-				8E6F1661164D2978003DC491 /* CCAbstractGraph.m */,
-				8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */,
-				8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */,
+				8E4D4E2A1657D66900273ABF /* Abstract */,
+				8E4D4E2C1657D6B600273ABF /* Directed */,
+				8E4D4E2D1657D6CD00273ABF /* Undirected */,
+				8E4D4E2B1657D68B00273ABF /* Factories */,
 				8E6F166F164DEA7F003DC491 /* CCDefaultEdge.h */,
 				8E6F1670164DEA7F003DC491 /* CCDefaultEdge.m */,
+				8E4D4E1E1657C13000273ABF /* CCDefaultGraphMapping.h */,
+				8E4D4E1F1657C13000273ABF /* CCDefaultGraphMapping.m */,
 				8E6F1672164DEA9B003DC491 /* CCDefaultWeightedEdge.h */,
 				8E6F1673164DEA9B003DC491 /* CCDefaultWeightedEdge.m */,
-				8E6F1675164DEFD0003DC491 /* CCEdgeSetFactory.h */,
-				8E6F1676164E1315003DC491 /* CCIntrusiveEdge.h */,
-				8E6F1677164E1315003DC491 /* CCIntrusiveEdge.m */,
-				8E6F1679164E1E31003DC491 /* CCClassBasedEdgeFactory.h */,
-				8E6F167A164E1E31003DC491 /* CCClassBasedEdgeFactory.m */,
-				8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */,
-				8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */,
-				8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */,
-				8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */,
-				8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */,
-				8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */,
-				8E6F1685164E2931003DC491 /* CCSubgraph.h */,
-				8E6F1686164E2931003DC491 /* CCSubgraph.m */,
+				8E98C0BB16572ABD0010813A /* CCEdgeReversedGraph.h */,
+				8E98C0BC16572ABD0010813A /* CCEdgeReversedGraph.m */,
+				8E98C0B71657242A0010813A /* CCGraphDelegator.h */,
+				8E98C0B81657242A0010813A /* CCGraphDelegator.m */,
 				8E6F168C164E9B3F003DC491 /* CCGraphPathImpl.h */,
 				8E6F168D164E9B3F003DC491 /* CCGraphPathImpl.m */,
-				8E6F16B4164EF4CA003DC491 /* CCDefaultDirectedGraph.h */,
-				8E6F16B5164EF4CB003DC491 /* CCDefaultDirectedGraph.m */,
+				8E4D4E211657C61600273ABF /* CCGraphUnion.h */,
+				8E4D4E221657C61600273ABF /* CCGraphUnion.m */,
+				8E6F1676164E1315003DC491 /* CCIntrusiveEdge.h */,
+				8E6F1677164E1315003DC491 /* CCIntrusiveEdge.m */,
+				8E4D4E2E1657D88100273ABF /* CCMultigraph.h */,
+				8E4D4E2F1657D88100273ABF /* CCMultigraph.m */,
 				8EAA4805164F44C10047566B /* CCSimpleGraph.h */,
 				8EAA4806164F44C10047566B /* CCSimpleGraph.m */,
 				8EAA4808164F45EA0047566B /* CCSimpleWeightedGraph.h */,
 				8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */,
-				8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */,
-				8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */,
-				624381621656983700B2E541 /* CCSimpleDirectedGraph.h */,
-				624381631656983700B2E541 /* CCSimpleDirectedGraph.m */,
+				8E6F1685164E2931003DC491 /* CCSubgraph.h */,
+				8E6F1686164E2931003DC491 /* CCSubgraph.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -387,11 +455,11 @@
 		8E6F1694164EA497003DC491 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F1698164EA4F6003DC491 /* CCTraversalListener.h */,
 				8E6F169A164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.h */,
 				8E6F169B164EA5AA003DC491 /* CCConnectedComponentTraversalEvent.m */,
 				8E6F169D164EA91B003DC491 /* CCEdgeTraversalEvent.h */,
 				8E6F169E164EA91B003DC491 /* CCEdgeTraversalEvent.m */,
+				8E6F1698164EA4F6003DC491 /* CCTraversalListener.h */,
 				8E6F16A0164EAA5F003DC491 /* CCVertexTraversalEvent.h */,
 				8E6F16A1164EAA5F003DC491 /* CCVertexTraversalEvent.m */,
 			);
@@ -407,6 +475,10 @@
 				8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */,
 				8E8F65D916565A5800931A8B /* CCOrderedDictionary.h */,
 				8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */,
+				8E4D4E311657DA1C00273ABF /* CCOrderedSet.h */,
+				8E4D4E321657DA1C00273ABF /* CCOrderedSet.m */,
+				8E4D4E241657C75000273ABF /* CCWeightCombiner.h */,
+				8E4D4E251657C75000273ABF /* CCWeightCombiner.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -550,7 +622,6 @@
 				8E6F16A8164EC832003DC491 /* CCClosestFirstIterator.m in Sources */,
 				8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */,
 				8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */,
-				8E6F16B6164EF4CC003DC491 /* CCDefaultDirectedGraph.m in Sources */,
 				8EAA4807164F44C10047566B /* CCSimpleGraph.m in Sources */,
 				8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */,
 				8E29E6871651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m in Sources */,
@@ -559,6 +630,15 @@
 				624381641656983700B2E541 /* CCSimpleDirectedGraph.m in Sources */,
 				8EF2303916570D3F0020DB4A /* CCBreadthFirstIterator.m in Sources */,
 				8EF23040165716D10020DB4A /* CCTopologicalOrderIterator.m in Sources */,
+				8E98C0B91657242A0010813A /* CCGraphDelegator.m in Sources */,
+				8E98C0BD16572ABD0010813A /* CCEdgeReversedGraph.m in Sources */,
+				8E4D4E1D1657BEE900273ABF /* CCClassBasedVertexFactory.m in Sources */,
+				8E4D4E201657C13000273ABF /* CCDefaultGraphMapping.m in Sources */,
+				8E4D4E231657C61600273ABF /* CCGraphUnion.m in Sources */,
+				8E4D4E261657C75000273ABF /* CCWeightCombiner.m in Sources */,
+				8E4D4E291657D2F000273ABF /* CCDirectedGraphUnion.m in Sources */,
+				8E4D4E301657D88100273ABF /* CCMultigraph.m in Sources */,
+				8E4D4E331657DA1C00273ABF /* CCOrderedSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

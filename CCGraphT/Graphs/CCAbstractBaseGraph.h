@@ -28,6 +28,7 @@
 - (NSInteger)outgoingDegreeOf:(id)vertex;
 - (NSArray *)outgoingEdgesOf:(id)vertex;
 
+- (NSInteger)degreeOf:(id)vertex;
 - (void)setEdge:(id)edge withWeight:(double)weight;
 
 - (CCSpecifics *)createSpecifics;

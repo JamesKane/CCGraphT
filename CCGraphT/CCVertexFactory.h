@@ -1,5 +1,5 @@
 //
-//  CCVertextFactory.h
+//  CCVertexFactory.h
 //  CCGraphT
 //
 //  Created by James Kane on 11/9/12.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CCVertextFactory <NSObject>
+@protocol CCVertexFactory <NSObject>
 
 - (id)createVertex;
 

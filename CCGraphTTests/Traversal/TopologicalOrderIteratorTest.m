@@ -10,6 +10,7 @@
 #import "CCTopologicalOrderIterator.h"
 #import "CCDefaultDirectedGraph.h"
 #import "CCDefaultEdge.h"
+#import "CCEdgeReversedGraph.h"
 
 @implementation TopologicalOrderIteratorTest
 
@@ -18,7 +19,7 @@
 
 - (void)testRecipe
 {
-    id<CCDirectedGraph> graph = [[CCDefaultDirectedGraph alloc] initWithEdgeClass:[CCDefaultEdge class]];
+    CCAbstractBaseGraph *graph = [[CCDefaultDirectedGraph alloc] initWithEdgeClass:[CCDefaultEdge class]];
     NSArray *v = [NSArray arrayWithObjects:@"preheat oven",
                   @"sift dry ingredients", @"stir wet ingredients",
                   @"mix wet and dry ingredients", @"spoon onto pan",
@@ -55,6 +56,21 @@
     }
     
     // Reversed graph
+    CCEdgeReversedGraph *reversed = [[CCEdgeReversedGraph alloc] initWithGraph:graph];
+    iter = [[CCTopologicalOrderIterator alloc] initWithGraph:reversed];
+    i = [v count] - 1;
+    
+    while ([iter hasNext]) {
+        STAssertEqualObjects([v objectAtIndex:i], [iter next], @"");
+        --i;
+    }
+}
+
+- (void)testEmptyGraph
+{
+    id<CCDirectedGraph> graph = [[CCDefaultDirectedGraph alloc] initWithEdgeClass:[CCDefaultEdge class]];
+    id<CCGraphIterator> iter = [[CCTopologicalOrderIterator alloc] initWithGraph:graph];
+    STAssertFalse([iter hasNext], @"");
 }
 
 @end

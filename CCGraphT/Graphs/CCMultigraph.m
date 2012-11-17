@@ -1,15 +1,15 @@
 //
-//  CCDefaultDirectedGraph.m
+//  CCMultigraph.m
 //  CCGraphT
 //
-//  Created by James Kane on 11/10/12.
+//  Created by James Kane on 11/17/12.
 //  Copyright (c) 2012 James Kane. All rights reserved.
 //
 
-#import "CCDefaultDirectedGraph.h"
+#import "CCMultigraph.h"
 #import "CCClassBasedEdgeFactory.h"
 
-@implementation CCDefaultDirectedGraph
+@implementation CCMultigraph
 
 - (id)initWithEdgeClass:(Class)edgeClass
 {
@@ -18,9 +18,8 @@
 
 - (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
 {
-    if (self = [super initWithEF:ef allowingMultipleEdges:NO andLoops:YES]) {
-        
-    }
+    self = [super initWithEF:ef allowingMultipleEdges:true andLoops:false];
     return self;
 }
+
 @end

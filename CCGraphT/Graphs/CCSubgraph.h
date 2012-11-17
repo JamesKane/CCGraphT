@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *edgeArray;
 @property (strong, nonatomic) NSMutableArray *vertexArray;
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexArray andEdgeSubset:(NSArray *)edgeSubset;
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexArray;
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset andEdgeSubset:(NSArray *)edgeSubset;
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset;
 
 @end
