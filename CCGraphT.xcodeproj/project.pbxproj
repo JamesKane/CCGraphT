@@ -51,6 +51,8 @@
 		8EAA480A164F45EA0047566B /* CCSimpleWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */; };
 		8EF2303916570D3F0020DB4A /* CCBreadthFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF2303816570D3F0020DB4A /* CCBreadthFirstIterator.m */; };
 		8EF2303D16570F730020DB4A /* BreadthFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF2303C16570F730020DB4A /* BreadthFirstIteratorTest.m */; };
+		8EF23040165716D10020DB4A /* CCTopologicalOrderIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF2303F165716D10020DB4A /* CCTopologicalOrderIterator.m */; };
+		8EF2304316571E840020DB4A /* TopologicalOrderIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF2304216571E840020DB4A /* TopologicalOrderIteratorTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,10 @@
 		8EF2303816570D3F0020DB4A /* CCBreadthFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBreadthFirstIterator.m; path = Traversal/CCBreadthFirstIterator.m; sourceTree = "<group>"; };
 		8EF2303B16570F730020DB4A /* BreadthFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreadthFirstIteratorTest.h; path = Traversal/BreadthFirstIteratorTest.h; sourceTree = "<group>"; };
 		8EF2303C16570F730020DB4A /* BreadthFirstIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreadthFirstIteratorTest.m; path = Traversal/BreadthFirstIteratorTest.m; sourceTree = "<group>"; };
+		8EF2303E165716D10020DB4A /* CCTopologicalOrderIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCTopologicalOrderIterator.h; path = Traversal/CCTopologicalOrderIterator.h; sourceTree = "<group>"; };
+		8EF2303F165716D10020DB4A /* CCTopologicalOrderIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCTopologicalOrderIterator.m; path = Traversal/CCTopologicalOrderIterator.m; sourceTree = "<group>"; };
+		8EF2304116571E840020DB4A /* TopologicalOrderIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopologicalOrderIteratorTest.h; path = Traversal/TopologicalOrderIteratorTest.h; sourceTree = "<group>"; };
+		8EF2304216571E840020DB4A /* TopologicalOrderIteratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopologicalOrderIteratorTest.m; path = Traversal/TopologicalOrderIteratorTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,8 @@
 				8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */,
 				8EF2303B16570F730020DB4A /* BreadthFirstIteratorTest.h */,
 				8EF2303C16570F730020DB4A /* BreadthFirstIteratorTest.m */,
+				8EF2304116571E840020DB4A /* TopologicalOrderIteratorTest.h */,
+				8EF2304216571E840020DB4A /* TopologicalOrderIteratorTest.m */,
 			);
 			name = Traversal;
 			sourceTree = "<group>";
@@ -362,14 +370,16 @@
 				8E6F1690164EA18B003DC491 /* CCGraphIterator.h */,
 				8E6F1691164EA288003DC491 /* CCAbstractGraphIterator.h */,
 				8E6F1692164EA288003DC491 /* CCAbstractGraphIterator.m */,
-				8E6F16A3164EAFCF003DC491 /* CCCrossComponentIterator.h */,
-				8E6F16A4164EAFCF003DC491 /* CCCrossComponentIterator.m */,
-				8E6F16A6164EC832003DC491 /* CCClosestFirstIterator.h */,
-				8E6F16A7164EC832003DC491 /* CCClosestFirstIterator.m */,
-				8E8F65D21652915A00931A8B /* CCDepthFirstIterator.h */,
-				8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */,
 				8EF2303716570D3F0020DB4A /* CCBreadthFirstIterator.h */,
 				8EF2303816570D3F0020DB4A /* CCBreadthFirstIterator.m */,
+				8E6F16A6164EC832003DC491 /* CCClosestFirstIterator.h */,
+				8E6F16A7164EC832003DC491 /* CCClosestFirstIterator.m */,
+				8E6F16A3164EAFCF003DC491 /* CCCrossComponentIterator.h */,
+				8E6F16A4164EAFCF003DC491 /* CCCrossComponentIterator.m */,
+				8E8F65D21652915A00931A8B /* CCDepthFirstIterator.h */,
+				8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */,
+				8EF2303E165716D10020DB4A /* CCTopologicalOrderIterator.h */,
+				8EF2303F165716D10020DB4A /* CCTopologicalOrderIterator.m */,
 			);
 			name = Traversal;
 			sourceTree = "<group>";
@@ -548,6 +558,7 @@
 				8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */,
 				624381641656983700B2E541 /* CCSimpleDirectedGraph.m in Sources */,
 				8EF2303916570D3F0020DB4A /* CCBreadthFirstIterator.m in Sources */,
+				8EF23040165716D10020DB4A /* CCTopologicalOrderIterator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +575,7 @@
 				8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */,
 				6243816016568FE400B2E541 /* SimpleDirectedGraphTest.m in Sources */,
 				8EF2303D16570F730020DB4A /* BreadthFirstIteratorTest.m in Sources */,
+				8EF2304316571E840020DB4A /* TopologicalOrderIteratorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
