@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 James Kane. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CCGraph.h"
 
-@protocol CCUndirectedGraph <NSObject>
+@protocol CCUndirectedGraph <CCGraph>
 
 @end

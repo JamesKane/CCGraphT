@@ -49,8 +49,7 @@
 
 - (void)encounterVertex:(id)vertex with:(id)edge
 {
-    //[self colorSeenData:vertex withColor:WHITE];
-    [self putSeenData:vertex withKey:[NSNumber numberWithInt:WHITE]];
+    [self putSeenData:[NSNumber numberWithInt:WHITE] withKey:vertex];
     [stack addObject:vertex];
 }
 
@@ -67,15 +66,20 @@
 
 - (id)provideNextVertex
 {
-    id v = [stack lastObject];
-    while (v == [NSNull null]) {
-        [self recordFinish];
+    id v;
+    while (YES) {
         v = [stack lastObject];
+        [stack removeLastObject];
+        if (v == [NSNull null]) {
+            [self recordFinish];
+        } else {
+            break;
+        }
     }
     
     [stack addObject:v];
     [stack addObject:[NSNull null]];
-    [self putSeenData:v withKey:[NSNumber numberWithInt:GRAY]];
+    [self putSeenData:[NSNumber numberWithInt:GRAY] withKey:v];
     return v;
 }
 
@@ -83,7 +87,7 @@
 {
     id v = [stack lastObject];
     [stack removeLastObject];
-    [self putSeenData:v withKey:[NSNumber numberWithInt:BLACK]];
+    [self putSeenData:[NSNumber numberWithInt:BLACK] withKey:v];
     [self finishVertex:v];
 }
 @end
