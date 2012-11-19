@@ -48,7 +48,7 @@
     if (!mappedSourceVertex || !mappedTargetVertex) {
         return nil;
     } else {
-        return [targetGraph getEdge:mappedSourceVertex to:mappedTargetVertex];
+        return [targetGraph edgeConnecting:mappedSourceVertex to:mappedTargetVertex];
     }
 }
 

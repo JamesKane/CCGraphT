@@ -25,14 +25,14 @@
     return self;
 }
 
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [self.delegate allEdges:sourceVertex to:targetVertex];
+    return [self.delegate allEdgesConnecting:sourceVertex to:targetVertex];
 }
 
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [self.delegate getEdge:sourceVertex to:targetVertex];
+    return [self.delegate edgeConnecting:sourceVertex to:targetVertex];
 }
 
 - (id<CCEdgeFactory>)edgeFactory
@@ -45,9 +45,9 @@
     return [self.delegate createEdgeFromVertex:sourceVertex toVertex:targetVertex];
 }
 
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
 {
-    return [self.delegate addEdge:sourceVertex to:targetVertex with:edge];
+    return [self.delegate addEdge:edge from:sourceVertex to:targetVertex];
 }
 
 - (BOOL)addVertex:(id)vertex
@@ -70,9 +70,9 @@
     return [self.delegate degreeOf:vertex];
 }
 
-- (NSArray *)edgeArray
+- (NSArray *)edgeSet
 {
-    return [self.delegate edgeArray];
+    return [self.delegate edgeSet];
 }
 
 - (NSArray *)edgesOf:(id)vertex
@@ -115,9 +115,9 @@
     return [self.delegate description];
 }
 
-- (NSArray *)vertexArray
+- (NSArray *)vertexSet
 {
-    return [self.delegate vertexArray];
+    return [self.delegate vertexSet];
 }
 
 - (id)edgeSource:(id)edge

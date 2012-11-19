@@ -38,8 +38,8 @@
     [g setEdgeSetFactory:[[CCArrayListFactory alloc] init]];
     [self initMultiTriangleWithMultiLoop:g];
     
-    STAssertTrue([[g vertexArray] count] == 3, @"Vertex set contains %d entries", [[g vertexArray] count]);
-    STAssertTrue([[g edgeArray] count] == 4, @"Edge set contains %d entries", [[g edgeArray] count]);
+    STAssertTrue([[g vertexSet] count] == 3, @"Vertex set contains %d entries", [[g vertexSet] count]);
+    STAssertTrue([[g edgeSet] count] == 4, @"Edge set contains %d entries", [[g edgeSet] count]);
 }
 
 - (void)testEdgeOrderDeterminism
@@ -53,7 +53,7 @@
     CCDefaultEdge *e2 = [g createEdgeFromVertex:v2 toVertex:v2];
     CCDefaultEdge *e3 = [g createEdgeFromVertex:v3 toVertex:v1];
  
-    NSEnumerator *iter = [[g edgeArray] objectEnumerator];
+    NSEnumerator *iter = [[g edgeSet] objectEnumerator];
     CCDefaultEdge *tmp = [iter nextObject];
     STAssertEqualObjects(e1, tmp, @"edges should be equal: %@, %@", e1, tmp);
     tmp = [iter nextObject];
@@ -80,7 +80,7 @@
 {
     CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
     
-    NSArray *loops = [g allEdges:v1 to:v1];
+    NSArray *loops = [g allEdgesConnecting:v1 to:v1];
     STAssertEquals((NSUInteger)1, [loops count], @"graph contains %d", [loops count]);
 }
 
@@ -104,7 +104,7 @@
 {
     // Disabled since NSDictionary does not ensure determinism.
     CCDirectedMultigraph *g = [self createMultigraphTriangleWithMultiLoop];
-    NSEnumerator *iter = [[g vertexArray] objectEnumerator];
+    NSEnumerator *iter = [[g vertexSet] objectEnumerator];
     STAssertEqualObjects(v1, [iter nextObject], @"objects not equal");
     STAssertEqualObjects(v2, [iter nextObject], @"objects not equal");
     STAssertEqualObjects(v3, [iter nextObject], @"objects not equal");

@@ -72,15 +72,15 @@
 
 - (void)testAddEdgeEdge
 {
-    STAssertThrows([g1 addEdge:v1 to:v1 with:eLoop], @"loops not allowed");
-    STAssertThrows([g3 addEdge:v1 to:v1 with:nil], @"nil edge not allowed");
+    STAssertThrows([g1 addEdge:v1 from:v1 to:eLoop], @"loops not allowed");
+    STAssertThrows([g3 addEdge:v1 from:v1 to:nil], @"nil edge not allowed");
     
     CCDefaultEdge *e = [eFactory createEdge:v2 to:v1];
-    STAssertThrows([g1 addEdge:@"ya" to:@"ya" with:e], @"vertex must be in graph");
+    STAssertThrows([g1 addEdge:@"ya" from:@"ya" to:e], @"vertex must be in graph");
     
-    STAssertEquals(NO, [g2 addEdge:v2 to:v1 with:e], @"");
-    STAssertEquals(NO, [g3 addEdge:v2 to:v1 with:e], @"");
-    STAssertEquals(YES, [g4 addEdge:v2 to:v1 with:e], @"");
+    STAssertEquals(NO, [g2 addEdge:v2 from:v1 to:e], @"");
+    STAssertEquals(NO, [g3 addEdge:v2 from:v1 to:e], @"");
+    STAssertEquals(YES, [g4 addEdge:v2 from:v1 to:e], @"");
 }
 
 - (void)testAddEdgeObjectObject
@@ -95,37 +95,37 @@
 
 - (void)testAddVertex
 {
-    STAssertEquals((NSUInteger)1, [[g1 vertexArray] count], @"");
-    STAssertEquals((NSUInteger)2, [[g2 vertexArray] count], @"");
-    STAssertEquals((NSUInteger)3, [[g3 vertexArray] count], @"");
-    STAssertEquals((NSUInteger)4, [[g4 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)1, [[g1 vertexSet] count], @"");
+    STAssertEquals((NSUInteger)2, [[g2 vertexSet] count], @"");
+    STAssertEquals((NSUInteger)3, [[g3 vertexSet] count], @"");
+    STAssertEquals((NSUInteger)4, [[g4 vertexSet] count], @"");
     
     STAssertFalse([g1 addVertex:v1], @"vertex in graph should not be added again");
     STAssertTrue([g1 addVertex:v2], @"vertex should be added");
-    STAssertEquals((NSUInteger)2, [[g1 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)2, [[g1 vertexSet] count], @"");
 }
 
 - (void)testContainsEdgeObjectObject
 {
-    STAssertFalse([g1 containsEdge:v1 to:v2], @"");
-    STAssertFalse([g1 containsEdge:v1 to:v1], @"");
+    STAssertFalse([g1 containsEdgeConnecting:v1 to:v2], @"");
+    STAssertFalse([g1 containsEdgeConnecting:v1 to:v1], @"");
     
-    STAssertTrue([g2 containsEdge:v1 to:v2], @"");
-    STAssertTrue([g2 containsEdge:v2 to:v1], @"");
+    STAssertTrue([g2 containsEdgeConnecting:v1 to:v2], @"");
+    STAssertTrue([g2 containsEdgeConnecting:v2 to:v1], @"");
     
-    STAssertTrue([g3 containsEdge:v1 to:v2], @"");
-    STAssertTrue([g3 containsEdge:v2 to:v1], @"");
-    STAssertTrue([g3 containsEdge:v3 to:v2], @"");
-    STAssertTrue([g3 containsEdge:v2 to:v3], @"");
-    STAssertTrue([g3 containsEdge:v1 to:v3], @"");
-    STAssertTrue([g3 containsEdge:v3 to:v1], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v1 to:v2], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v2 to:v1], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v3 to:v2], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v2 to:v3], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v1 to:v3], @"");
+    STAssertTrue([g3 containsEdgeConnecting:v3 to:v1], @"");
     
-    STAssertFalse([g4 containsEdge:v1 to:v4], @"");
+    STAssertFalse([g4 containsEdgeConnecting:v1 to:v4], @"");
     [g4 createEdgeFromVertex:v1 toVertex:v4];
-    STAssertTrue([g4 containsEdge:v1 to:v4], @"");
+    STAssertTrue([g4 containsEdgeConnecting:v1 to:v4], @"");
     
-    STAssertFalse([g3 containsEdge:v4 to:v2], @"");
-    STAssertFalse([g3 containsEdge:nil to:nil], @"");
+    STAssertFalse([g3 containsEdgeConnecting:v4 to:v2], @"");
+    STAssertFalse([g3 containsEdgeConnecting:nil to:nil], @"");
 }
 
 - (void)testEdgesOf
@@ -172,28 +172,28 @@
 
 - (void)testRemoveEdgeEdge
 {
-    STAssertEquals((NSUInteger)4, [[g4 edgeArray] count], @"");
-    [g4 removeEdge:v1 to:v2];
-    STAssertEquals((NSUInteger)3, [[g4 edgeArray] count], @"");
+    STAssertEquals((NSUInteger)4, [[g4 edgeSet] count], @"");
+    [g4 removeEdgeConnecting:v1 to:v2];
+    STAssertEquals((NSUInteger)3, [[g4 edgeSet] count], @"");
     STAssertFalse([g4 removeEdge:eLoop], @"");
-    STAssertTrue([g4 removeEdge:[g4 getEdge:v2 to:v3]], @"");
-    STAssertEquals((NSUInteger)2, [[g4 edgeArray] count], @"");
+    STAssertTrue([g4 removeEdge:[g4 edgeConnecting:v2 to:v3]], @"");
+    STAssertEquals((NSUInteger)2, [[g4 edgeSet] count], @"");
 }
 
 - (void)testRemoveVertex
 {
-    STAssertEquals((NSUInteger)4, [[g4 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)4, [[g4 vertexSet] count], @"");
     STAssertTrue([g4 removeVertex:v1], @"");
-    STAssertEquals((NSUInteger)3, [[g4 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)3, [[g4 vertexSet] count], @"");
     
-    STAssertEquals((NSUInteger)2, [[g4 edgeArray] count], @"");
+    STAssertEquals((NSUInteger)2, [[g4 edgeSet] count], @"");
     STAssertFalse([g4 removeVertex:v1], @"");
     STAssertTrue([g4 removeVertex:v2], @"");
-    STAssertEquals((NSUInteger)1, [[g4 edgeArray] count], @"");
+    STAssertEquals((NSUInteger)1, [[g4 edgeSet] count], @"");
     STAssertTrue([g4 removeVertex:v3], @"");
-    STAssertEquals((NSUInteger)0, [[g4 edgeArray] count], @"");
-    STAssertEquals((NSUInteger)1, [[g4 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)0, [[g4 edgeSet] count], @"");
+    STAssertEquals((NSUInteger)1, [[g4 vertexSet] count], @"");
     STAssertTrue([g4 removeVertex:v4], @"");
-    STAssertEquals((NSUInteger)0, [[g4 vertexArray] count], @"");
+    STAssertEquals((NSUInteger)0, [[g4 vertexSet] count], @"");
 }
 @end

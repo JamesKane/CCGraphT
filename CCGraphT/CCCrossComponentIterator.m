@@ -17,7 +17,7 @@
     if (self = [super init]) {
         self.graph = graph;
         self.specifics = [self createEdgeProvider];
-        self.vertexIterator = [[graph vertexArray] objectEnumerator];
+        self.vertexIterator = [[graph vertexSet] objectEnumerator];
         self.crossComponentTraversal = (startVertex == nil);
         
         self.reusableEdgeEvent = [[CCFlyweightEdgeEvent alloc] initWithSource:self onEdge:nil];

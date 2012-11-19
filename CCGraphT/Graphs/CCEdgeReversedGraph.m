@@ -10,14 +10,14 @@
 
 @implementation CCEdgeReversedGraph
 
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [super getEdge:targetVertex to:sourceVertex];
+    return [super edgeConnecting:targetVertex to:sourceVertex];
 }
 
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [super allEdges:targetVertex to:sourceVertex];
+    return [super allEdgesConnecting:targetVertex to:sourceVertex];
 }
 
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
@@ -25,9 +25,9 @@
     return [super createEdgeFromVertex:targetVertex toVertex:sourceVertex];
 }
 
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
 {
-    return [super addEdge:targetVertex to:sourceVertex with:edge];
+    return [super addEdge:sourceVertex from:edge to:targetVertex];
 }
 
 - (NSInteger)inDegreeOf:(id)vertex
@@ -50,9 +50,9 @@
     return [super incomingEdgesOf:vertex];
 }
 
-- (id)removeEdge:(id)sourceVertex to:(id)targetVertex
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [super removeEdge:targetVertex to:sourceVertex];
+    return [super removeEdgeConnecting:targetVertex to:sourceVertex];
 }
 
 - (id)edgeSource:(id)edge
@@ -67,7 +67,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Graph = [%@, %@]", [self vertexArray], [self edgeArray]];
+    return [NSString stringWithFormat:@"Graph = [%@, %@]", [self vertexSet], [self edgeSet]];
 }
 
 @end

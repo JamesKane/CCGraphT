@@ -11,41 +11,41 @@
 
 @protocol CCGraph <NSObject>
 
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex;
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex;
 
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex;
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex;
 
 - (id<CCEdgeFactory>)edgeFactory;
 
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex;
 
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge;
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex;
 
 - (BOOL)addVertex:(id)vertex;
 
-- (BOOL)containsEdge:(id)sourceVertex to:(id)targetVertex;
+- (BOOL)containsEdgeConnecting:(id)sourceVertex to:(id)targetVertex;
 
 - (BOOL)containsEdge:(id)edge;
 
 - (BOOL)containsVertex:(id)vertex;
 
-- (NSArray *)edgeArray;
+- (NSArray *)edgeSet;
 
 - (NSArray *)edgesOf:(id)vertex;
 
-- (BOOL)removeAllEdges:(NSArray *)edges;
+- (BOOL)removeEdgesInArray:(NSArray *)edges;
 
-- (NSArray *)removeAllEdges:(id)sourceVertex to:(id)targetVertex;
+- (NSArray *)removeEdgesConnecting:(id)sourceVertex to:(id)targetVertex;
 
-- (BOOL)removeAllVertices:(NSArray *)vertices;
+- (BOOL)removeVerticesInArray:(NSArray *)vertices;
 
-- (id)removeEdge:(id)sourceVertex to:(id)targetVertex;
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex;
 
 - (BOOL)removeEdge:(id)edge;
 
 - (BOOL)removeVertex:(id)vertex;
 
-- (NSArray *)vertexArray;
+- (NSArray *)vertexSet;
 
 - (id)edgeSource:(id)edge;
 

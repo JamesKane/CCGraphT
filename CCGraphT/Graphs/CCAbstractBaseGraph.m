@@ -56,7 +56,7 @@
     return [self.specifics assertVertexExists:vertex];
 }
 
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
 {
     return [self.specifics allEdges:sourceVertex to:targetVertex];
 }
@@ -71,7 +71,7 @@
     return self.allowingMultipleEdges;
 }
 
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
     return [self.specifics getEdge:sourceVertex to:targetVertex];
 }
@@ -91,7 +91,7 @@
     [self assertVertexExists:sourceVertex];
     [self assertVertexExists:targetVertex];
     
-    if (!self.allowingMultipleEdges && [self containsEdge:sourceVertex to:targetVertex]) {
+    if (!self.allowingMultipleEdges && [self containsEdgeConnecting:sourceVertex to:targetVertex]) {
         return nil;
     }
     
@@ -112,27 +112,27 @@
     return e;
 }
 
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)e
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
 {
-    if (e == nil)
+    if (targetVertex == nil)
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"graph cannot contain nil edge" userInfo:nil];
-    if ([self containsEdge:e])
+    if ([self containsEdge:targetVertex])
         return NO;
-    
+
+    [self assertVertexExists:edge];
     [self assertVertexExists:sourceVertex];
-    [self assertVertexExists:targetVertex];
     
-    if (!self.allowingMultipleEdges && [self containsEdge:sourceVertex to:targetVertex]) {
+    if (!self.allowingMultipleEdges && [self containsEdgeConnecting:edge to:sourceVertex]) {
         return NO;
     }
     
-    if (!self.allowingLoops && [sourceVertex isEqual:targetVertex]) {
+    if (!self.allowingLoops && [edge isEqual:sourceVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:ABG_LOOPS_NOT_ALLOWED userInfo:nil];
     }
     
-    CCIntrusiveEdge *edge = [self createInstrusiveEdge:e from:sourceVertex to:targetVertex];
-    [self.edgeMap setObject:edge forKey:e];
-    [self.specifics addEdgeToTouchingVertices:e];
+    CCIntrusiveEdge *e = [self createInstrusiveEdge:targetVertex from:edge to:sourceVertex];
+    [self.edgeMap setObject:e forKey:targetVertex];
+    [self.specifics addEdgeToTouchingVertices:targetVertex];
     self.unmodifiableEdgeArray = nil;
     
     return YES;
@@ -198,7 +198,7 @@
     return [self.specifics degreeOf:vertex];
 }
 
-- (NSArray *)edgeArray
+- (NSArray *)edgeSet
 {
     if (self.unmodifiableEdgeArray == nil) {
         self.unmodifiableEdgeArray = [NSArray arrayWithArray:[self.edgeMap allKeys]];
@@ -232,9 +232,9 @@
     return [self.specifics outgoingEdgesOf:vertex];
 }
 
-- (id)removeEdge:(id)sourceVertex to:(id)targetVertex
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    id e = [self getEdge:sourceVertex to:targetVertex];
+    id e = [self edgeConnecting:sourceVertex to:targetVertex];
     
     if (e != nil) {
         [self.specifics removeEdgeFromTouchingVertices:e];
@@ -261,7 +261,7 @@
 {
     if ([self containsVertex:vertex]) {
         NSArray *touchingEdgesList = [self edgesOf:vertex];
-        [self removeAllEdges:[NSArray arrayWithArray:touchingEdgesList]];
+        [self removeEdgesInArray:[NSArray arrayWithArray:touchingEdgesList]];
         [self.specifics removeVertex:vertex];
         self.unmodifiableVertexArray = nil;
         return YES;
@@ -270,7 +270,7 @@
     return NO;
 }
 
-- (NSArray *)vertexArray
+- (NSArray *)vertexSet
 {
     if (self.unmodifiableVertexArray == nil) {
         self.unmodifiableVertexArray = [NSArray arrayWithArray:[self.specifics vertexArray]];

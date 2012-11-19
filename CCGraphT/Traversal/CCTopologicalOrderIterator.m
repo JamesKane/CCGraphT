@@ -76,7 +76,7 @@
 
 - (id)initialize:(id<CCDirectedGraph>)dg usingQueue:(NSMutableArray *)queue andMap:(NSMutableDictionary *)map
 {
-    NSEnumerator *i = [[dg vertexArray] objectEnumerator];
+    NSEnumerator *i = [[dg vertexSet] objectEnumerator];
     id vertex;
     while ((vertex = [i nextObject])){
         NSInteger inDegree = [dg inDegreeOf:vertex];

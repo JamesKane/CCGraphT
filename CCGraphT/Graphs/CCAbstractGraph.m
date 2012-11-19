@@ -12,12 +12,12 @@
 
 #pragma mark --
 #pragma mark CCGraph methods
-- (BOOL)containsEdge:(id)sourceVertex to:(id)targetVertex
+- (BOOL)containsEdgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    return [self getEdge:sourceVertex to:targetVertex] != nil;
+    return [self edgeConnecting:sourceVertex to:targetVertex] != nil;
 }
 
-- (BOOL)removeAllEdges:(NSArray *)edges
+- (BOOL)removeEdgesInArray:(NSArray *)edges
 {
     BOOL modified = NO;
     for (id e in edges) {
@@ -26,14 +26,14 @@
     return modified;
 }
 
-- (NSArray *)removeAllEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)removeEdgesConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    NSArray *removed = [self allEdges:sourceVertex to:targetVertex];
-    [self removeAllEdges:removed];
+    NSArray *removed = [self allEdgesConnecting:sourceVertex to:targetVertex];
+    [self removeEdgesInArray:removed];
     return removed;
 }
 
-- (BOOL)removeAllVertices:(NSArray *)vertices
+- (BOOL)removeVerticesInArray:(NSArray *)vertices
 {
     BOOL modified = NO;
     for (id v in vertices) {
@@ -46,13 +46,13 @@
 #pragma mark NSObject methods
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Graph = {Vertices = {%@}, Edges={%@}}", [self vertexArray], [self edgeArray]];
+    return [NSString stringWithFormat:@"Graph = {Vertices = {%@}, Edges={%@}}", [self vertexSet], [self edgeSet]];
 }
 
 - (NSUInteger)hash
 {
-    NSUInteger hash = [[self vertexArray] hash];
-    for (id e in [self edgeArray]) {
+    NSUInteger hash = [[self vertexSet] hash];
+    for (id e in [self edgeSet]) {
         NSUInteger part = [e hash];
         NSUInteger source = [[self edgeSource:e] hash];
         NSUInteger target = [[self edgeTarget:e] hash];
@@ -75,15 +75,15 @@
         return NO;
     }
     
-    if (![[self vertexArray] isEqual:[object vertexArray]]) {
+    if (![[self vertexSet] isEqual:[object vertexSet]]) {
         return NO;
     }
     
-    if (![[self vertexArray] count] != [[object vertexArray] count]) {
+    if (![[self vertexSet] count] != [[object vertexSet] count]) {
         return NO;
     }
     
-    for (id e in [self edgeArray]) {
+    for (id e in [self edgeSet]) {
         id source = [self edgeSource:e];
         id target = [self edgeTarget:e];
         
@@ -107,20 +107,20 @@
 
 #pragma mark --
 #pragma mark 'Abstract' stub protocol methods
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex { return nil; }
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex { return nil; }
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge { return NO; }
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex { return NO; }
 - (BOOL)addVertex:(id)vertex { return NO; }
 - (BOOL)containsEdge:(id)edge { return NO; }
 - (BOOL)containsVertex:(id)vertex { return NO; }
-- (NSArray *)edgeArray { return nil; }
+- (NSArray *)edgeSet { return nil; }
 - (NSArray *)edgesOf:(id)vertex { return nil; }
-- (id)removeEdge:(id)sourceVertex to:(id)targetVertex { return nil; }
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (BOOL)removeEdge:(id)edge { return NO; }
 - (id<CCEdgeFactory>)edgeFactory { return nil; }
 - (BOOL)removeVertex:(id)vertex { return NO; }
-- (NSArray *)vertexArray { return nil; }
+- (NSArray *)vertexSet { return nil; }
 - (id)edgeSource:(id)edge { return nil; }
 - (id)edgeTarget:(id)edge { return nil; }
 - (double)edgeWeight:(id)edge { return DBL_MIN; }

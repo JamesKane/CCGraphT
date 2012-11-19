@@ -42,8 +42,8 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
 //            [((id<CCListenableGraph>)base) addGraphListener:[[CCBaseGraphListener alloc] init]];
 //        }
         
-        [self addVertices:[base vertexArray] usingFilter:vertexSubset];
-        [self addEdges:[base edgeArray] usingFilter:edgeSubset];
+        [self addVertices:[base vertexSet] usingFilter:vertexSubset];
+        [self addEdges:[base edgeSet] usingFilter:edgeSubset];
     }
     
     return self;
@@ -57,12 +57,12 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
 #pragma mark --
 #pragma mark Graph override methods
 
-- (NSArray *)allEdges:(id)sourceVertex to:(id)targetVertex
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
 {
     NSMutableSet *edges = [NSMutableSet set];
     
     if ([self containsVertex:sourceVertex] && [self containsVertex:targetVertex]) {
-        NSArray *baseEdges = [self.base allEdges:sourceVertex to:targetVertex];
+        NSArray *baseEdges = [self.base allEdgesConnecting:sourceVertex to:targetVertex];
         for (id e in baseEdges) {
             if ([self.edgeSet containsObject:e]) {
                 [edges addObject:e];
@@ -73,9 +73,9 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return [NSArray arrayWithArray:[edges allObjects]];
 }
 
-- (id)getEdge:(id)sourceVertex to:(id)targetVertex
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    NSArray *edges = [self allEdges:sourceVertex to:targetVertex];
+    NSArray *edges = [self allEdgesConnecting:sourceVertex to:targetVertex];
     if (!edges || [edges count] == 0) {
         return nil;
     } else {
@@ -93,11 +93,11 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     [self assertVertexExists:sourceVertex];
     [self assertVertexExists:targetVertex];
     
-    if (![self.base containsEdge:sourceVertex to:targetVertex]) {
+    if (![self.base containsEdgeConnecting:sourceVertex to:targetVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:CCSG_NO_SUCH_EDGE_IN_BASE userInfo:nil];
     }
     
-    NSArray *edges = [self.base allEdges:sourceVertex to:targetVertex];
+    NSArray *edges = [self.base allEdgesConnecting:sourceVertex to:targetVertex];
     for (id e in edges) {
         if (![self containsEdge:e]) {
             [self.edgeSet addObject:e];
@@ -109,23 +109,23 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return nil;
 }
 
-- (BOOL)addEdge:(id)sourceVertex to:(id)targetVertex with:(id)edge
+- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
 {
-    if (edge == nil) {
+    if (targetVertex == nil) {
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"a nil edge is not allowed" userInfo:nil];
     }
     
-    if (![self.base containsEdge:edge]) {
+    if (![self.base containsEdge:targetVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:CCSG_NO_SUCH_EDGE_IN_BASE userInfo:nil];
     }
-    
+
+    [self assertVertexExists:edge];
     [self assertVertexExists:sourceVertex];
-    [self assertVertexExists:targetVertex];
     
-    if ([self containsEdge:edge]) {
+    if ([self containsEdge:targetVertex]) {
         return NO;
     } else {
-        [self.edgeSet addObject:edge];
+        [self.edgeSet addObject:targetVertex];
         self.unmodifiableEdgeArray = nil;
         return YES;
     }
@@ -160,7 +160,7 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return [self.vertexSet containsObject:vertex];
 }
 
-- (NSArray *)edgeArray
+- (NSArray *)edgeSet
 {
     if (!self.unmodifiableEdgeArray) {
         self.unmodifiableEdgeArray = [NSArray arrayWithArray:[self.edgeSet allObjects]];
@@ -195,9 +195,9 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return exists;
 }
 
-- (id)removeEdge:(id)sourceVertex to:(id)targetVertex
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
 {
-    id e = [self getEdge:sourceVertex to:targetVertex];
+    id e = [self edgeConnecting:sourceVertex to:targetVertex];
     return [self removeEdge:e] ? e : nil;
 }
 
@@ -206,7 +206,7 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     BOOL exists = [self containsVertex:vertex];
     if (exists) {
         if ([self.base containsVertex:vertex]) {
-            [self removeAllEdges:[self edgesOf:vertex]];
+            [self removeEdgesInArray:[self edgesOf:vertex]];
         }
         [self.vertexSet removeObject:vertex];
         self.unmodifiableVertexArray = nil;
@@ -214,7 +214,7 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return exists;
 }
 
-- (NSArray *)vertexArray
+- (NSArray *)vertexSet
 {
     if (!self.unmodifiableVertexArray) {
         self.unmodifiableVertexArray = [NSArray arrayWithArray:[self.vertexSet allObjects]];
@@ -260,13 +260,13 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     BOOL containsVertices;
     BOOL edgeIncluded;
     for (id e in edgeArray) {
-        id sourceVertex = [self.graph edgeSource:e];
-        id targetVertex = [self.graph edgeTarget:e];
+        id sourceVertex = [self.base edgeSource:e];
+        id targetVertex = [self.base edgeTarget:e];
         containsVertices = [self containsVertex:sourceVertex] && [self containsVertex:targetVertex];
         edgeIncluded = (filter == nil) || [filter containsObject:e];
         
         if (containsVertices && edgeIncluded) {
-            [self addEdge:sourceVertex to:targetVertex with:e];
+            [self addEdge:sourceVertex from:targetVertex to:e];
         }
     }
 }

@@ -19,7 +19,7 @@
         [(id <CCWeightedGraph>)g setEdge:e withWeight:weight];
     }
     
-    return [g addEdge:sourceVertex to:targetVertex with:e] ? e : nil;
+    return [g addEdge:sourceVertex from:targetVertex to:e] ? e : nil;
 }
 
 + (id)addEdge:(id)e toGraph:(id<CCGraph>)g from:(id)sourceVertex to:(id)targetVertex
@@ -38,7 +38,7 @@
     [targetGraph addVertex:sourceVertex];
     [targetGraph addVertex:targetVertex];
     
-    return [targetGraph addEdge:sourceVertex to:targetVertex with:edge];
+    return [targetGraph addEdge:sourceVertex from:targetVertex to:edge];
 }
 
 + (id)createEdgeInGraph:(id<CCGraph>)g adding:(id)sourceVertex to:(id)targetVertex withWeight:(double)weight
@@ -51,15 +51,15 @@
 
 + (BOOL)addToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
-    BOOL modified = [self addAllVerticesToGraph:destination fromArray:[source vertexArray]];
-    modified |= [self addAllEdgesToGraph:destination fromGraph:source fromArray:[source edgeArray]];
+    BOOL modified = [self addAllVerticesToGraph:destination fromArray:[source vertexSet]];
+    modified |= [self addAllEdgesToGraph:destination fromGraph:source fromArray:[source edgeSet]];
     return modified;
 }
 
 + (void)addReversedToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
-    [self addAllVerticesToGraph:destination fromArray:[source vertexArray]];
-    for (id edge in [source edgeArray]) {
+    [self addAllVerticesToGraph:destination fromArray:[source vertexSet]];
+    for (id edge in [source edgeSet]) {
         [destination createEdgeFromVertex:[source edgeTarget:edge] toVertex:[source edgeSource:edge]];
     }
 }
@@ -73,7 +73,7 @@
         id t = [source edgeTarget:e];
         [destination addVertex:s];
         [destination addVertex:t];
-        modified |= [destination addEdge:s to:t with:e];
+        modified |= [destination addEdge:s from:t to:e];
     }
     
     return modified;
