@@ -28,11 +28,23 @@
 {
     if (self == object)
         return YES;
+//    
+//    if ([self hash] != [object hash])
+//        return NO;
     
-    if ([object isKindOfClass:[self class]]) {
-        return [self.source isEqual:((CCIntrusiveEdge *)object).source] && [self.target isEqual:((CCIntrusiveEdge *)object).target];
+    if ([object isKindOfClass:[self class]]) {       
+        return ((_source == ((CCIntrusiveEdge *)object)->_source) || [_source isEqual:((CCIntrusiveEdge *)object)->_source]) &&
+               ((_target == ((CCIntrusiveEdge *)object)->_target) || [_target isEqual:((CCIntrusiveEdge *)object)->_target]);
+
     }
     
     return NO;
+}
+
+#define NSUINT_BIT (CHAR_BIT * sizeof(NSUInteger))
+#define NSUINTROTATE(val, howmuch) ((((NSUInteger)val) << howmuch) | (((NSUInteger)val) >> (NSUINT_BIT - howmuch)))
+- (NSUInteger)hash
+{
+    return NSUINTROTATE([_source hash], NSUINT_BIT / 2) ^ [_target hash];
 }
 @end
