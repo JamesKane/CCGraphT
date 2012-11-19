@@ -67,7 +67,7 @@
     [dg addVertex:l];
     
     [dg createEdgeFromVertex:a toVertex:b];
-    [dg createEdgeFromVertex:b toVertex:d];
+    [dg createEdgeFromVertex:b toVertex:c];
     [dg createEdgeFromVertex:c toVertex:j];
     [dg createEdgeFromVertex:c toVertex:d];
     [dg createEdgeFromVertex:c toVertex:e];
@@ -84,9 +84,9 @@
     
     CCDepthFirstIterator *dfs = [[CCDepthFirstIterator alloc] initWithGraph:dg];
     NSMutableString *actual = [NSMutableString string];
-//    while ([dfs hasNext]) {
-//        [actual appendString:[dfs next]];
-//    }
+    while ([dfs hasNext]) {
+        [actual appendString:[dfs next]];
+    }
     
     NSString *expected = @"ABCGIFEHJKLD";
     STAssertEqualObjects(actual, expected, @"Search did not work as expected");

@@ -23,9 +23,18 @@
 - (void)testDirectedGraph
 {
 //    result = [NSMutableArray array];
-//    CCDefaultDirectedWeightedGraph *graph = [self createDirectedGraph];
+//    id<CCDirectedGraph> graph = [self createDirectedGraph];
 //    
 //    CCAbstractGraphIterator *iterator = [self createIterator:graph starting:@"1"];
+//    
+//    while ([iterator hasNext]) {
+//        [result appendString:[iterator next]];
+//        if ([iterator hasNext]) {
+//            [result appendString:@","];
+//        }
+//    }
+//    
+//    STAssertEqualObjects([self expectedStr2], result, @"");
 }
 
 - (NSString *)expectedFinishString

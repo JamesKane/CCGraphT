@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 James Kane. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CCGraph.h"
 
 #define WG_DEFAULT_EDGE_WEIGHT 1;
 
-@protocol CCWeightedGraph <NSObject>
+@protocol CCWeightedGraph <CCGraph>
 - (void)setEdge:(id)e withWeight:(double)weight;
 @end
