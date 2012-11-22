@@ -28,9 +28,6 @@
 {
     if (self == object)
         return YES;
-//    
-//    if ([self hash] != [object hash])
-//        return NO;
     
     if ([object isKindOfClass:[self class]]) {       
         return ((_source == ((CCIntrusiveEdge *)object)->_source) || [_source isEqual:((CCIntrusiveEdge *)object)->_source]) &&
