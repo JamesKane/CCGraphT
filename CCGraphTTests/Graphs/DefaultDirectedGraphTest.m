@@ -61,11 +61,11 @@
     tmp = [iter nextObject];
     STAssertEqualObjects(e3, tmp, @"edges should be equal: %@, %@", e3, tmp);
     
-    STAssertTrue([CCGraphs testEdge:e1 isIncident:v1 inGraph:g], @"%@ should be in %@", e1, v1);
-    STAssertTrue([CCGraphs testEdge:e1 isIncident:v2 inGraph:g], @"%@ should be in %@", e1, v2);
-    STAssertFalse([CCGraphs testEdge:e1 isIncident:v3 inGraph:g], @"%@ should be in %@", e1, v3);
-    STAssertEquals(v2, [CCGraphs oppositeVertex:g for:e1 from:v1], @"edges should be equal: %@, %@", v2, [CCGraphs oppositeVertex:g for:e1 from:v1]);
-    STAssertEquals(v1, [CCGraphs oppositeVertex:g for:e1 from:v2], @"edges should be equal: %@, %@", v1, [CCGraphs oppositeVertex:g for:e1 from:v2]);
+    STAssertTrue([CCGraphs testEdge:e1 isIncidentVertex:v1 inGraph:g], @"%@ should be in %@", e1, v1);
+    STAssertTrue([CCGraphs testEdge:e1 isIncidentVertex:v2 inGraph:g], @"%@ should be in %@", e1, v2);
+    STAssertFalse([CCGraphs testEdge:e1 isIncidentVertex:v3 inGraph:g], @"%@ should be in %@", e1, v3);
+    STAssertEquals(v2, [CCGraphs oppositeVertexInGraph:g forEdge:e1 fromVertex:v1], @"edges should be equal: %@, %@", v2, [CCGraphs oppositeVertexInGraph:g forEdge:e1 fromVertex:v1]);
+    STAssertEquals(v1, [CCGraphs oppositeVertexInGraph:g forEdge:e1 fromVertex:v2], @"edges should be equal: %@, %@", v1, [CCGraphs oppositeVertexInGraph:g forEdge:e1 fromVertex:v2]);
 }
 
 - (void)testEdgesOf

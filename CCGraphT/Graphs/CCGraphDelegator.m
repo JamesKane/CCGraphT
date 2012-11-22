@@ -14,6 +14,7 @@
 @end
 
 @implementation CCGraphDelegator
+@synthesize delegate = _delegate;
 
 - (id)initWithGraph:(CCAbstractBaseGraph *)g
 {
@@ -45,9 +46,9 @@
     return [self.delegate createEdgeFromVertex:sourceVertex toVertex:targetVertex];
 }
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
-    return [self.delegate addEdge:edge from:sourceVertex to:targetVertex];
+    return [self.delegate addEdge:edge fromVertex:sourceVertex toVertex:targetVertex];
 }
 
 - (BOOL)addVertex:(id)vertex

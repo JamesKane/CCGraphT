@@ -19,7 +19,7 @@
 
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex;
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex;
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex;
 
 - (BOOL)addVertex:(id)vertex;
 

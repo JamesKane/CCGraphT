@@ -131,7 +131,7 @@
 {
     [self assertNonNegativeEdge:edge];
     
-    id otherVertex = [CCGraphs oppositeVertex:self.graph for:edge from:vertex];
+    id otherVertex = [CCGraphs oppositeVertexInGraph:self.graph forEdge:edge fromVertex:vertex];
     CCFibonacciHeapNode *otherEntry = [self seenData:otherVertex];
     
     return otherEntry.key + [self.graph edgeWeight:edge];

@@ -149,7 +149,7 @@
             [self fireEdgeTraversed:[self createEdgeTraversalEvent:edge]];
         }
         
-        id oppositeV = [CCGraphs oppositeVertex:self.graph for:edge from:vertex];
+        id oppositeV = [CCGraphs oppositeVertexInGraph:self.graph forEdge:edge fromVertex:vertex];
         
         if ([self isSeenVertex:oppositeV]) {
             [self encounterVertexAgain:oppositeV with:edge];

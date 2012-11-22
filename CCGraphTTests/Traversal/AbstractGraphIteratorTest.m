@@ -69,14 +69,14 @@
     [graph addVertex:@"orphan"];
     
     [graph createEdgeFromVertex:v1 toVertex:v2];
-    [CCGraphs createEdgeInGraph:graph from:v1 to:v3 withWeight:100];
-    [CCGraphs createEdgeInGraph:graph from:v2 to:v4 withWeight:1000];
+    [CCGraphs createEdgeInGraph:graph fromVertex:v1 toVertex:v3 withWeight:100];
+    [CCGraphs createEdgeInGraph:graph fromVertex:v2 toVertex:v4 withWeight:1000];
     [graph createEdgeFromVertex:v3 toVertex:v5];
-    [CCGraphs createEdgeInGraph:graph from:v3 to:v6 withWeight:100];
+    [CCGraphs createEdgeInGraph:graph fromVertex:v3 toVertex:v6 withWeight:100];
     [graph createEdgeFromVertex:v5 toVertex:v6];
-    [CCGraphs createEdgeInGraph:graph from:v5 to:v7 withWeight:200];
+    [CCGraphs createEdgeInGraph:graph fromVertex:v5 toVertex:v7 withWeight:200];
     [graph createEdgeFromVertex:v6 toVertex:v1];
-    [CCGraphs createEdgeInGraph:graph from:v7 to:v8 withWeight:100];
+    [CCGraphs createEdgeInGraph:graph fromVertex:v7 toVertex:v8 withWeight:100];
     [graph createEdgeFromVertex:v7 toVertex:v9];
     [graph createEdgeFromVertex:v8 toVertex:v2];
     [graph createEdgeFromVertex:v9 toVertex:v4];
@@ -88,6 +88,9 @@
 {
     return nil;
 }
+
+- (NSString *)expectedStr1 { return nil; }
+- (NSString *)expectedStr2 { return nil; }
 @end
 
 @interface MyTraversalListener : NSObject

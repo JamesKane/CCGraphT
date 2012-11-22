@@ -66,7 +66,7 @@
     STAssertEqualObjects(n4.left, n3, @"");
     STAssertEqualObjects(n4.right, n1, @"");
     
-    CCFibonacciHeapNode *n5 = [h removeMin];
+    [h removeMin];
     STAssertEqualObjects(n1.left, n1, @"");
     STAssertEqualObjects(n1.right, n1, @"");
     STAssertEqualObjects(n1.parent, n4, @"");

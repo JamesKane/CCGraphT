@@ -23,7 +23,7 @@
     return self;
 }
 
-- (id)createEdge:(id)sourceVertex to:(id)targetVertex
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
     return [[self.edgeClass alloc] init];
 }

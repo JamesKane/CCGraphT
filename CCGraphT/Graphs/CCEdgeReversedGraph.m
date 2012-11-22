@@ -25,9 +25,9 @@
     return [super createEdgeFromVertex:targetVertex toVertex:sourceVertex];
 }
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
-    return [super addEdge:sourceVertex from:edge to:targetVertex];
+    return [super addEdge:edge fromVertex:sourceVertex toVertex:targetVertex];
 }
 
 - (NSInteger)inDegreeOf:(id)vertex

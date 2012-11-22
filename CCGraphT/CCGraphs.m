@@ -10,19 +10,19 @@
 
 @implementation CCGraphs
 
-+ (id)createEdgeInGraph:(id<CCGraph>)g from:(id)sourceVertex to:(id)targetVertex withWeight:(double)weight
++ (id)createEdgeInGraph:(id<CCGraph>)g fromVertex:(id)sourceVertex toVertex:(id)targetVertex withWeight:(double)weight
 {
     id<CCEdgeFactory> ef = [g edgeFactory];
-    id e = [ef createEdge:sourceVertex to:targetVertex];
+    id e = [ef createEdgeFromVertex:sourceVertex toVertex:targetVertex];
     
     if ([g conformsToProtocol:@protocol(CCWeightedGraph)]) {
         [(id <CCWeightedGraph>)g setEdge:e withWeight:weight];
     }
     
-    return [g addEdge:sourceVertex from:targetVertex to:e] ? e : nil;
+    return [g addEdge:e fromVertex:sourceVertex toVertex:targetVertex] ? e : nil;
 }
 
-+ (id)addEdge:(id)e toGraph:(id<CCGraph>)g from:(id)sourceVertex to:(id)targetVertex
++ (id)addEdge:(id)e toGraph:(id<CCGraph>)g fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
     [g addVertex:sourceVertex];
     [g addVertex:targetVertex];
@@ -38,25 +38,25 @@
     [targetGraph addVertex:sourceVertex];
     [targetGraph addVertex:targetVertex];
     
-    return [targetGraph addEdge:sourceVertex from:targetVertex to:edge];
+    return [targetGraph addEdge:edge fromVertex:sourceVertex toVertex:targetVertex];
 }
 
-+ (id)createEdgeInGraph:(id<CCGraph>)g adding:(id)sourceVertex to:(id)targetVertex withWeight:(double)weight
++ (id)createEdgeInGraph:(id<CCGraph>)g addingVertex:(id)sourceVertex toVertex:(id)targetVertex withWeight:(double)weight
 {
     [g addVertex:sourceVertex];
     [g addVertex:targetVertex];
     
-    return [self createEdgeInGraph:g from:sourceVertex to:targetVertex withWeight:weight];
+    return [self createEdgeInGraph:g fromVertex:sourceVertex toVertex:targetVertex withWeight:weight];
 }
 
-+ (BOOL)addToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
++ (BOOL)addAllElementsToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
     BOOL modified = [self addAllVerticesToGraph:destination fromArray:[source vertexSet]];
     modified |= [self addAllEdgesToGraph:destination fromGraph:source fromArray:[source edgeSet]];
     return modified;
 }
 
-+ (void)addReversedToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
++ (void)addReversedElementsToGraph:(id<CCGraph>)destination fromGraph:(id<CCGraph>)source
 {
     [self addAllVerticesToGraph:destination fromArray:[source vertexSet]];
     for (id edge in [source edgeSet]) {
@@ -73,7 +73,7 @@
         id t = [source edgeTarget:e];
         [destination addVertex:s];
         [destination addVertex:t];
-        modified |= [destination addEdge:s from:t to:e];
+        modified |= [destination addEdge:e fromVertex:s toVertex:t];
     }
     
     return modified;
@@ -90,7 +90,7 @@
     return modified;
 }
 
-+ (NSArray *)predecessorsListOf:(id)vertex inGraph:(id<CCDirectedGraph>)g
++ (NSArray *)predecessorsListOfVertex:(id)vertex inGraph:(id<CCDirectedGraph>)g
 {
     NSMutableArray *predecessors = [NSMutableArray array];
     NSArray *edges = [g incomingEdgesOf:vertex];
@@ -102,7 +102,7 @@
     return predecessors;
 }
 
-+ (NSArray *)successorListOf:(id)vertex inGraph:(id<CCDirectedGraph>)g
++ (NSArray *)successorListOfVertex:(id)vertex inGraph:(id<CCDirectedGraph>)g
 {
     NSMutableArray *successors = [NSMutableArray array];
     NSArray *edges = [g outgoingEdgesOf:vertex];
@@ -114,12 +114,12 @@
     return successors;
 }
 
-+ (BOOL)testEdge:(id)e isIncident:(id)v inGraph:(id<CCGraph>)g
++ (BOOL)testEdge:(id)e isIncidentVertex:(id)v inGraph:(id<CCGraph>)g
 {
     return [[g edgeSource:e] isEqual:v] || [[g edgeTarget:e] isEqual:v];
 }
 
-+ (id)oppositeVertex:(id<CCGraph>)graph for:(id)edge from:(id)vertex
++ (id)oppositeVertexInGraph:(id<CCGraph>)graph forEdge:(id)edge fromVertex:(id)vertex
 {
     id source = [graph edgeSource:edge];
     id target = [graph edgeTarget:edge];
@@ -152,7 +152,7 @@
     id v = [path startVertex];
     [list addObject:v];
     for (id e in [path edgeList]) {
-        v = [self oppositeVertex:g for:e from:v];
+        v = [self oppositeVertexInGraph:g forEdge:e fromVertex:v];
         [list addObject:v];
     }
     return list;

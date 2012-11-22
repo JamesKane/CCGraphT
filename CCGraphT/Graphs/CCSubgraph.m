@@ -11,8 +11,8 @@
 #import "CCOrderedSet.h"
 #import "CCListenableGraph.h"
 
-static const NSString *CCSG_NO_SUCH_EDGE_IN_BASE = @"no such edge in base graph";
-static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
+static NSString *CCSG_NO_SUCH_EDGE_IN_BASE = @"no such edge in base graph";
+static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
 
 @interface CCSubgraph ()
 @property (strong, nonatomic) CCOrderedSet *edgeSet;
@@ -24,6 +24,12 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
 @end
 
 @implementation CCSubgraph
+@synthesize edgeSet = _edgeSet;
+@synthesize vertexSet = _vertexSet;
+@synthesize unmodifiableEdgeArray = _unmodifiableEdgeArray;
+@synthesize unmodifiableVertexArray = _unmodifiableVertexArray;
+@synthesize base = _base;
+@synthesize induced = _induced;
 
 - (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset andEdgeSubset:(NSArray *)edgeSubset
 {
@@ -109,7 +115,7 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
     return nil;
 }
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
     if (targetVertex == nil) {
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"a nil edge is not allowed" userInfo:nil];
@@ -266,7 +272,7 @@ static const NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base gr
         edgeIncluded = (filter == nil) || [filter containsObject:e];
         
         if (containsVertices && edgeIncluded) {
-            [self addEdge:sourceVertex from:targetVertex to:e];
+            [self addEdge:sourceVertex fromVertex:targetVertex toVertex:e];
         }
     }
 }

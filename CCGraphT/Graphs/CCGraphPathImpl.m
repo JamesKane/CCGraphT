@@ -17,6 +17,11 @@
 @end
 
 @implementation CCGraphPathImpl
+@synthesize graph = _graph;
+@synthesize edgeList = _edgeList;
+@synthesize startVertex = _startVertex;
+@synthesize endVertex = _endVertex;
+@synthesize weight = _weight;
 
 - (id)initWith:(id<CCGraph>)graph from:(id)startVertex to:(id)endVertex having:(NSArray *)edgeList with:(double)weight
 {

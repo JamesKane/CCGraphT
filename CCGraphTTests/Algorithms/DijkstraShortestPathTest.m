@@ -47,12 +47,12 @@
     [g addVertex:v4];
     [g addVertex:v5];
     
-    e12 = [CCGraphs createEdgeInGraph:g from:v1 to:v2 withWeight:bias * 2];
-    e13 = [CCGraphs createEdgeInGraph:g from:v1 to:v3 withWeight:bias * 3];
-    e24 = [CCGraphs createEdgeInGraph:g from:v2 to:v4 withWeight:bias * 5];
-    e34 = [CCGraphs createEdgeInGraph:g from:v3 to:v4 withWeight:bias * 20];
-    e45 = [CCGraphs createEdgeInGraph:g from:v4 to:v5 withWeight:bias * 5];
-    e15 = [CCGraphs createEdgeInGraph:g from:v1 to:v5 withWeight:bias * 100];
+    e12 = [CCGraphs createEdgeInGraph:g fromVertex:v1 toVertex:v2 withWeight:bias * 2];
+    e13 = [CCGraphs createEdgeInGraph:g fromVertex:v1 toVertex:v3 withWeight:bias * 3];
+    e24 = [CCGraphs createEdgeInGraph:g fromVertex:v2 toVertex:v4 withWeight:bias * 5];
+    e34 = [CCGraphs createEdgeInGraph:g fromVertex:v3 toVertex:v4 withWeight:bias * 20];
+    e45 = [CCGraphs createEdgeInGraph:g fromVertex:v4 toVertex:v5 withWeight:bias * 5];
+    e15 = [CCGraphs createEdgeInGraph:g fromVertex:v1 toVertex:v5 withWeight:bias * 100];
 }
 
 - (void)testConstructor

@@ -33,6 +33,12 @@
 @implementation CCAbstractBaseGraph
 @synthesize edgeFactory = _edgeFactory;
 @synthesize edgeSetFactory = _edgeSetFactory;
+@synthesize edgeMap = _edgeMap;
+@synthesize unmodifiableEdgeArray = _unmodifiableEdgeArray;
+@synthesize unmodifiableVertexArray = _unmodifiableVertexArray;
+@synthesize specifics = _specifics;
+@synthesize allowingMultipleEdges = _allowingMultipleEdges;
+@synthesize allowingLoops = _allowingLoops;
 
 - (id)initWithEF:(id<CCEdgeFactory>)ef allowingMultipleEdges:(BOOL)allowingMultipleEdges andLoops:(BOOL)allowingLoops
 {
@@ -99,7 +105,7 @@
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:ABG_LOOPS_NOT_ALLOWED userInfo:nil];
     }
     
-    id e = [self.edgeFactory createEdge:sourceVertex to:targetVertex];
+    id e = [self.edgeFactory createEdgeFromVertex:sourceVertex toVertex:targetVertex];
     
     if ([self containsEdge:e]) {
         return nil;
@@ -112,27 +118,27 @@
     return e;
 }
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
-    if (targetVertex == nil)
+    if (edge == nil)
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"graph cannot contain nil edge" userInfo:nil];
-    if ([self containsEdge:targetVertex])
+    if ([self containsEdge:edge])
         return NO;
 
-    [self assertVertexExists:edge];
+    [self assertVertexExists:targetVertex];
     [self assertVertexExists:sourceVertex];
     
-    if (!self.allowingMultipleEdges && [self containsEdgeConnecting:edge to:sourceVertex]) {
+    if (!self.allowingMultipleEdges && [self containsEdgeConnecting:sourceVertex to:targetVertex]) {
         return NO;
     }
     
-    if (!self.allowingLoops && [edge isEqual:sourceVertex]) {
+    if (!self.allowingLoops && [targetVertex isEqual:sourceVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:ABG_LOOPS_NOT_ALLOWED userInfo:nil];
     }
     
-    CCIntrusiveEdge *e = [self createInstrusiveEdge:targetVertex from:edge to:sourceVertex];
-    [self.edgeMap setObject:e forKey:targetVertex];
-    [self.specifics addEdgeToTouchingVertices:targetVertex];
+    CCIntrusiveEdge *e = [self createInstrusiveEdge:edge from:sourceVertex to:targetVertex];
+    [self.edgeMap setObject:edge forKey:e];
+    [self.specifics addEdgeToTouchingVertices:e];
     self.unmodifiableEdgeArray = nil;
     
     return YES;
@@ -185,7 +191,7 @@
 
 - (BOOL)containsEdge:(id)edge
 {
-    return [[self.edgeMap allKeys] containsObject:edge];
+    return [self.edgeMap objectForKey:edge] != nil;
 }
 
 - (BOOL)containsVertex:(id)vertex
@@ -261,7 +267,7 @@
 {
     if ([self containsVertex:vertex]) {
         NSArray *touchingEdgesList = [self edgesOf:vertex];
-        [self removeEdgesInArray:[NSArray arrayWithArray:touchingEdgesList]];
+        [self removeEdgesInArray:touchingEdgesList];
         [self.specifics removeVertex:vertex];
         self.unmodifiableVertexArray = nil;
         return YES;
@@ -324,7 +330,7 @@
     
     newGraph.specifics = [newGraph createSpecifics];
     
-    [CCGraphs addToGraph:newGraph fromGraph:self];
+    [CCGraphs addAllElementsToGraph:newGraph fromGraph:self];
     
     return newGraph;
 }
@@ -346,6 +352,7 @@
 #pragma mark CCSpecfics class implementation
 
 @implementation CCSpecifics
+@synthesize delegate = _delegate;
 
 - (BOOL)assertVertexExists:(id)vertex
 {
@@ -360,9 +367,6 @@
 
 - (id)edgeSource:(id)edge
 {
-    // In theory all edges should be derived from CCIntrusiveEdge, but this
-    // will get the port running while learning how this cluster of classes
-    // is really interacting.
     if ([edge respondsToSelector:@selector(source)]) {
         return [edge performSelector:@selector(source)];
     }
@@ -403,6 +407,8 @@
 #pragma mark CCDirectedGraphContainer class implementation
 
 @implementation CCDirectedEdgeContainer
+@synthesize incoming = _incoming;
+@synthesize outgoing = _outgoing;
 @synthesize unmodifiableIncoming = _unmodifiableIncoming;
 @synthesize unmbodifableOutgoing = _unmbodifableOutgoing;
 
@@ -456,6 +462,7 @@
 #pragma mark CCDirectedSpecifics class implementation
 
 @implementation CCDirectedSpecifics
+@synthesize vertexMapDirected = _vertexMapDirected;
 
 - (id)init
 {
@@ -597,6 +604,7 @@
 #pragma mark CCUndirectedGraphContainer class implementation
 
 @implementation CCUndirectedEdgeContainer
+@synthesize vertexEdges = _vertexEdges;
 @synthesize unmodifiableVertexEdges = _unmodifiableVertexEdges;
 
 - (id)initWithFactory:(id<CCEdgeSetFactory>)edgeSetFactory for:(id)vertex
@@ -635,6 +643,7 @@
 #pragma mark CCUndirectedSpecifics class implementation
 
 @implementation CCUndirectedSpecifics
+@synthesize vertexMapUndirected = _vertexMapUndirected;
 
 - (id)init
 {

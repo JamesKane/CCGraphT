@@ -14,6 +14,8 @@
 @end
 
 @implementation CCDirectedGraphUnion
+@synthesize g1 = _g1;
+@synthesize g2 = _g2;
 
 - (NSInteger)inDegreeOf:(id)vertex
 {

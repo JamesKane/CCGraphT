@@ -16,6 +16,10 @@
 @end
 
 @implementation CCDefaultGraphMapping
+@synthesize graphMappingForward = _graphMappingForward;
+@synthesize graphMappingReverse = _graphMappingReverse;
+@synthesize graph1 = _graph1;
+@synthesize graph2 = _graph2;
 
 - (id)initWithMap:(NSMutableDictionary *)g1ToG2 toMap:(NSMutableDictionary *)g2ToG1 fromGraph:(id<CCGraph>)g1 toGraph:(id<CCGraph>)g2
 {

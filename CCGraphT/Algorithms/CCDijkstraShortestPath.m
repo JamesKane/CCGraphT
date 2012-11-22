@@ -93,7 +93,7 @@
         }
         
         [edgeList addObject:edge];
-        v = [CCGraphs oppositeVertex:graph for:edge from:v];
+        v = [CCGraphs oppositeVertexInGraph:graph forEdge:edge fromVertex:v];
     }
     
     double pathLength = [iter shortestPathLength:endVertex];

@@ -110,7 +110,7 @@
 - (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex { return nil; }
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex { return nil; }
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex { return NO; }
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex { return NO; }
 - (BOOL)addVertex:(id)vertex { return NO; }
 - (BOOL)containsEdge:(id)edge { return NO; }
 - (BOOL)containsVertex:(id)vertex { return NO; }

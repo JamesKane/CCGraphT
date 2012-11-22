@@ -41,7 +41,7 @@
     g4 = [[CCSimpleDirectedGraph alloc] initWithEdgeClass:[CCDefaultEdge class]];
     
     eFactory = [g1 edgeFactory];
-    eLoop = [eFactory createEdge:v1 to:v1];
+    eLoop = [eFactory createEdgeFromVertex:v1 toVertex:v1];
     
     [g1 addVertex:v1];
     
@@ -72,15 +72,15 @@
 
 - (void)testAddEdgeEdge
 {
-    STAssertThrows([g1 addEdge:v1 from:v1 to:eLoop], @"loops not allowed");
-    STAssertThrows([g3 addEdge:v1 from:v1 to:nil], @"nil edge not allowed");
+    STAssertThrows([g1 addEdge:eLoop fromVertex:v1 toVertex:v1], @"loops not allowed");
+    STAssertThrows([g3 addEdge:nil fromVertex:v1 toVertex:v1], @"nil edge not allowed");
     
-    CCDefaultEdge *e = [eFactory createEdge:v2 to:v1];
-    STAssertThrows([g1 addEdge:@"ya" from:@"ya" to:e], @"vertex must be in graph");
+    CCDefaultEdge *e = [eFactory createEdgeFromVertex:v2 toVertex:v1];
+    STAssertThrows([g1 addEdge:e fromVertex:@"ya" toVertex:@"ya"], @"vertex must be in graph");
     
-    STAssertEquals(NO, [g2 addEdge:v2 from:v1 to:e], @"");
-    STAssertEquals(NO, [g3 addEdge:v2 from:v1 to:e], @"");
-    STAssertEquals(YES, [g4 addEdge:v2 from:v1 to:e], @"");
+    STAssertEquals(NO, [g2 addEdge:e fromVertex:v2 toVertex:v1], @"");
+    STAssertEquals(NO, [g3 addEdge:e fromVertex:v2 toVertex:v1], @"");
+    STAssertEquals(YES, [g4 addEdge:e fromVertex:v2 toVertex:v1], @"");
 }
 
 - (void)testAddEdgeObjectObject

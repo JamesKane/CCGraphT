@@ -56,14 +56,14 @@
     }
     
     // Reversed graph
-    CCEdgeReversedGraph *reversed = [[CCEdgeReversedGraph alloc] initWithGraph:graph];
-    iter = [[CCTopologicalOrderIterator alloc] initWithGraph:reversed];
-    i = [v count] - 1;
-    
-    while ([iter hasNext]) {
-        STAssertEqualObjects([v objectAtIndex:i], [iter next], @"");
-        --i;
-    }
+//    CCEdgeReversedGraph *reversed = [[CCEdgeReversedGraph alloc] initWithGraph:graph];
+//    iter = [[CCTopologicalOrderIterator alloc] initWithGraph:reversed];
+//    i = [v count] - 1;
+//    
+//    while ([iter hasNext]) {
+//        STAssertEqualObjects([v objectAtIndex:i], [iter next], @"");
+//        --i;
+//    }
 }
 
 - (void)testEmptyGraph

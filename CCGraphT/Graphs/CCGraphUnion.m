@@ -17,6 +17,9 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
 @end
 
 @implementation CCGraphUnion
+@synthesize g1 = _g1;
+@synthesize g2 = _g2;
+@synthesize operator = _operator;
 
 - (id)initWith:(id<CCGraph>)g1 and:(id<CCGraph>)g2 using:(id<CCWeightCombiner>)operator
 {
@@ -68,7 +71,7 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)addEdge:(id)edge from:(id)sourceVertex to:(id)targetVertex
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
 {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
