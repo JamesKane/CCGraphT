@@ -49,6 +49,13 @@
 		8E6F16AC164EC8BF003DC491 /* CCFibonacciHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AB164EC8BF003DC491 /* CCFibonacciHeap.m */; };
 		8E6F16AF164EC8F2003DC491 /* CCFibonacciHeapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */; };
 		8E6F16B3164EF44F003DC491 /* DefaultDirectedGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */; };
+		8E7FAFCE165E5CDA00441CBC /* CCAsUndirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFCD165E5CDA00441CBC /* CCAsUndirectedGraph.m */; };
+		8E7FAFD1165E60EC00441CBC /* AsUnweightedDirectedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFD0165E60EC00441CBC /* AsUnweightedDirectedGraph.m */; };
+		8E7FAFD4165E61DD00441CBC /* CCAsUnweightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFD3165E61DD00441CBC /* CCAsUnweightedGraph.m */; };
+		8E7FAFD7165E628B00441CBC /* CCAsWeightedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFD6165E628B00441CBC /* CCAsWeightedGraph.m */; };
+		8E7FAFDA165E665500441CBC /* CCDirectedMaskSubgraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFD9165E665500441CBC /* CCDirectedMaskSubgraph.m */; };
+		8E7FAFDD165E66A300441CBC /* CCMaskSubgraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFDC165E66A300441CBC /* CCMaskSubgraph.m */; };
+		8E7FAFE1165E694800441CBC /* CCMaskEdgeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FAFE0165E694700441CBC /* CCMaskEdgeSet.m */; };
 		8E8F65D41652915A00931A8B /* CCDepthFirstIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */; };
 		8E8F65D81653CDDB00931A8B /* DepthFirstIteratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65D71653CDDB00931A8B /* DepthFirstIteratorTest.m */; };
 		8E8F65DB16565A5800931A8B /* CCOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F65DA16565A5800931A8B /* CCOrderedDictionary.m */; };
@@ -179,6 +186,21 @@
 		8E6F16AE164EC8F2003DC491 /* CCFibonacciHeapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCFibonacciHeapNode.m; path = Utility/CCFibonacciHeapNode.m; sourceTree = "<group>"; };
 		8E6F16B1164EF44F003DC491 /* DefaultDirectedGraphTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefaultDirectedGraphTest.h; path = Graphs/DefaultDirectedGraphTest.h; sourceTree = "<group>"; };
 		8E6F16B2164EF44F003DC491 /* DefaultDirectedGraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultDirectedGraphTest.m; path = Graphs/DefaultDirectedGraphTest.m; sourceTree = "<group>"; };
+		8E7FAFCC165E5CDA00441CBC /* CCAsUndirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAsUndirectedGraph.h; path = Graphs/CCAsUndirectedGraph.h; sourceTree = "<group>"; };
+		8E7FAFCD165E5CDA00441CBC /* CCAsUndirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAsUndirectedGraph.m; path = Graphs/CCAsUndirectedGraph.m; sourceTree = "<group>"; };
+		8E7FAFCF165E60EC00441CBC /* AsUnweightedDirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsUnweightedDirectedGraph.h; path = Graphs/AsUnweightedDirectedGraph.h; sourceTree = "<group>"; };
+		8E7FAFD0165E60EC00441CBC /* AsUnweightedDirectedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsUnweightedDirectedGraph.m; path = Graphs/AsUnweightedDirectedGraph.m; sourceTree = "<group>"; };
+		8E7FAFD2165E61DD00441CBC /* CCAsUnweightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAsUnweightedGraph.h; path = Graphs/CCAsUnweightedGraph.h; sourceTree = "<group>"; };
+		8E7FAFD3165E61DD00441CBC /* CCAsUnweightedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAsUnweightedGraph.m; path = Graphs/CCAsUnweightedGraph.m; sourceTree = "<group>"; };
+		8E7FAFD5165E628B00441CBC /* CCAsWeightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAsWeightedGraph.h; path = Graphs/CCAsWeightedGraph.h; sourceTree = "<group>"; };
+		8E7FAFD6165E628B00441CBC /* CCAsWeightedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAsWeightedGraph.m; path = Graphs/CCAsWeightedGraph.m; sourceTree = "<group>"; };
+		8E7FAFD8165E665400441CBC /* CCDirectedMaskSubgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDirectedMaskSubgraph.h; path = Graphs/CCDirectedMaskSubgraph.h; sourceTree = "<group>"; };
+		8E7FAFD9165E665500441CBC /* CCDirectedMaskSubgraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDirectedMaskSubgraph.m; path = Graphs/CCDirectedMaskSubgraph.m; sourceTree = "<group>"; };
+		8E7FAFDB165E66A300441CBC /* CCMaskSubgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMaskSubgraph.h; path = Graphs/CCMaskSubgraph.h; sourceTree = "<group>"; };
+		8E7FAFDC165E66A300441CBC /* CCMaskSubgraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCMaskSubgraph.m; path = Graphs/CCMaskSubgraph.m; sourceTree = "<group>"; };
+		8E7FAFDE165E686100441CBC /* CCMaskFunctor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCMaskFunctor.h; path = Graphs/CCMaskFunctor.h; sourceTree = "<group>"; };
+		8E7FAFDF165E694700441CBC /* CCMaskEdgeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCMaskEdgeSet.h; path = Graphs/CCMaskEdgeSet.h; sourceTree = "<group>"; };
+		8E7FAFE0165E694700441CBC /* CCMaskEdgeSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCMaskEdgeSet.m; path = Graphs/CCMaskEdgeSet.m; sourceTree = "<group>"; };
 		8E8F65D21652915A00931A8B /* CCDepthFirstIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDepthFirstIterator.h; path = Traversal/CCDepthFirstIterator.h; sourceTree = "<group>"; };
 		8E8F65D31652915A00931A8B /* CCDepthFirstIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDepthFirstIterator.m; path = Traversal/CCDepthFirstIterator.m; sourceTree = "<group>"; };
 		8E8F65D61653CDDB00931A8B /* DepthFirstIteratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DepthFirstIteratorTest.h; path = Traversal/DepthFirstIteratorTest.h; sourceTree = "<group>"; };
@@ -257,10 +279,6 @@
 		8E4D4E2A1657D66900273ABF /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */,
-				8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */,
-				8E6F1660164D2978003DC491 /* CCAbstractGraph.h */,
-				8E6F1661164D2978003DC491 /* CCAbstractGraph.m */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -280,27 +298,8 @@
 		8E4D4E2C1657D6B600273ABF /* Directed */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */,
-				8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */,
-				8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */,
-				8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */,
-				8E4D4E271657D2F000273ABF /* CCDirectedGraphUnion.h */,
-				8E4D4E281657D2F000273ABF /* CCDirectedGraphUnion.m */,
-				8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */,
-				8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */,
-				8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */,
-				8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */,
-				624381621656983700B2E541 /* CCSimpleDirectedGraph.h */,
-				624381631656983700B2E541 /* CCSimpleDirectedGraph.m */,
 			);
 			name = Directed;
-			sourceTree = "<group>";
-		};
-		8E4D4E2D1657D6CD00273ABF /* Undirected */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Undirected;
 			sourceTree = "<group>";
 		};
 		8E6F15FE164C8125003DC491 = {
@@ -391,16 +390,36 @@
 		8E6F1659164D268C003DC491 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
-				8E4D4E2A1657D66900273ABF /* Abstract */,
-				8E4D4E2C1657D6B600273ABF /* Directed */,
-				8E4D4E2D1657D6CD00273ABF /* Undirected */,
-				8E4D4E2B1657D68B00273ABF /* Factories */,
+				8E6F1663164DD22C003DC491 /* CCAbstractBaseGraph.h */,
+				8E6F1664164DD22C003DC491 /* CCAbstractBaseGraph.m */,
+				8E6F1660164D2978003DC491 /* CCAbstractGraph.h */,
+				8E6F1661164D2978003DC491 /* CCAbstractGraph.m */,
+				8E7FAFCC165E5CDA00441CBC /* CCAsUndirectedGraph.h */,
+				8E7FAFCD165E5CDA00441CBC /* CCAsUndirectedGraph.m */,
+				8E7FAFCF165E60EC00441CBC /* AsUnweightedDirectedGraph.h */,
+				8E7FAFD0165E60EC00441CBC /* AsUnweightedDirectedGraph.m */,
+				8E7FAFD2165E61DD00441CBC /* CCAsUnweightedGraph.h */,
+				8E7FAFD3165E61DD00441CBC /* CCAsUnweightedGraph.m */,
+				8E7FAFD5165E628B00441CBC /* CCAsWeightedGraph.h */,
+				8E7FAFD6165E628B00441CBC /* CCAsWeightedGraph.m */,
+				8E7FAFD8165E665400441CBC /* CCDirectedMaskSubgraph.h */,
+				8E7FAFD9165E665500441CBC /* CCDirectedMaskSubgraph.m */,
+				8E6F167C164E20A3003DC491 /* CCDefaultDirectedGraph.h */,
+				8E6F167D164E20A3003DC491 /* CCDefaultDirectedGraph.m */,
+				8E29E6851651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.h */,
+				8E29E6861651D6B30002A2C4 /* CCDefaultDirectedWeightedGraph.m */,
 				8E6F166F164DEA7F003DC491 /* CCDefaultEdge.h */,
 				8E6F1670164DEA7F003DC491 /* CCDefaultEdge.m */,
 				8E4D4E1E1657C13000273ABF /* CCDefaultGraphMapping.h */,
 				8E4D4E1F1657C13000273ABF /* CCDefaultGraphMapping.m */,
 				8E6F1672164DEA9B003DC491 /* CCDefaultWeightedEdge.h */,
 				8E6F1673164DEA9B003DC491 /* CCDefaultWeightedEdge.m */,
+				8E4D4E271657D2F000273ABF /* CCDirectedGraphUnion.h */,
+				8E4D4E281657D2F000273ABF /* CCDirectedGraphUnion.m */,
+				8E6F167F164E2664003DC491 /* CCDirectedMultigraph.h */,
+				8E6F1680164E2665003DC491 /* CCDirectedMultigraph.m */,
+				8E6F1682164E27CA003DC491 /* CCDirectedWeightedMultigraph.h */,
+				8E6F1683164E27CA003DC491 /* CCDirectedWeightedMultigraph.m */,
 				8E98C0BB16572ABD0010813A /* CCEdgeReversedGraph.h */,
 				8E98C0BC16572ABD0010813A /* CCEdgeReversedGraph.m */,
 				8E98C0B71657242A0010813A /* CCGraphDelegator.h */,
@@ -415,10 +434,20 @@
 				8E4D4E2F1657D88100273ABF /* CCMultigraph.m */,
 				8EAA4805164F44C10047566B /* CCSimpleGraph.h */,
 				8EAA4806164F44C10047566B /* CCSimpleGraph.m */,
+				624381621656983700B2E541 /* CCSimpleDirectedGraph.h */,
+				624381631656983700B2E541 /* CCSimpleDirectedGraph.m */,
 				8EAA4808164F45EA0047566B /* CCSimpleWeightedGraph.h */,
 				8EAA4809164F45EA0047566B /* CCSimpleWeightedGraph.m */,
 				8E6F1685164E2931003DC491 /* CCSubgraph.h */,
 				8E6F1686164E2931003DC491 /* CCSubgraph.m */,
+				8E4D4E2A1657D66900273ABF /* Abstract */,
+				8E4D4E2C1657D6B600273ABF /* Directed */,
+				8E4D4E2B1657D68B00273ABF /* Factories */,
+				8E7FAFDE165E686100441CBC /* CCMaskFunctor.h */,
+				8E7FAFDB165E66A300441CBC /* CCMaskSubgraph.h */,
+				8E7FAFDC165E66A300441CBC /* CCMaskSubgraph.m */,
+				8E7FAFDF165E694700441CBC /* CCMaskEdgeSet.h */,
+				8E7FAFE0165E694700441CBC /* CCMaskEdgeSet.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -639,6 +668,13 @@
 				8E4D4E291657D2F000273ABF /* CCDirectedGraphUnion.m in Sources */,
 				8E4D4E301657D88100273ABF /* CCMultigraph.m in Sources */,
 				8E4D4E331657DA1C00273ABF /* CCOrderedSet.m in Sources */,
+				8E7FAFCE165E5CDA00441CBC /* CCAsUndirectedGraph.m in Sources */,
+				8E7FAFD1165E60EC00441CBC /* AsUnweightedDirectedGraph.m in Sources */,
+				8E7FAFD4165E61DD00441CBC /* CCAsUnweightedGraph.m in Sources */,
+				8E7FAFD7165E628B00441CBC /* CCAsWeightedGraph.m in Sources */,
+				8E7FAFDA165E665500441CBC /* CCDirectedMaskSubgraph.m in Sources */,
+				8E7FAFDD165E66A300441CBC /* CCMaskSubgraph.m in Sources */,
+				8E7FAFE1165E694800441CBC /* CCMaskEdgeSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

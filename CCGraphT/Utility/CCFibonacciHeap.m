@@ -238,7 +238,7 @@
         NSUInteger d = x.degree;
         CCFibonacciHeapNode *next = x.right;
         while (YES) {
-            CCFibonacciHeapNode *y = [array objectAtIndex:d];
+            CCFibonacciHeapNode *y = array[d];
             if ([(NSNull *)y isEqual:[NSNull null]]) {
                 break;
             }
@@ -250,10 +250,10 @@
             }
             
             [self link:y to:x];
-            [array replaceObjectAtIndex:d withObject:[NSNull null]];
+            array[d] = [NSNull null];
             d++;
         }
-        [array replaceObjectAtIndex:d withObject:x];
+        array[d] = x;
         x = next;
         numRoots--;
     }
@@ -276,7 +276,7 @@
 - (void)rebuildHeapTreesFromArray:(NSMutableArray *)array withSize:(NSUInteger)arraySize
 {
     for (int i = 0; i < arraySize; i++) {
-        id val = [array objectAtIndex:i];
+        id val = array[i];
         if ([val isEqual:[NSNull null]]) {
             continue;
         }

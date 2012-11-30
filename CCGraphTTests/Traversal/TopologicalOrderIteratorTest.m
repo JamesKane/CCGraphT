@@ -20,10 +20,10 @@
 - (void)testRecipe
 {
     CCAbstractBaseGraph *graph = [[CCDefaultDirectedGraph alloc] initWithEdgeClass:[CCDefaultEdge class]];
-    NSArray *v = [NSArray arrayWithObjects:@"preheat oven",
+    NSArray *v = @[@"preheat oven",
                   @"sift dry ingredients", @"stir wet ingredients",
                   @"mix wet and dry ingredients", @"spoon onto pan",
-                  @"bake", @"cool", @"frost", @"eat", nil];
+                  @"bake", @"cool", @"frost", @"eat"];
     
     ADD_VERTEX(4);
     ADD_VERTEX(8);
@@ -51,7 +51,7 @@
     int i = 0;
     
     while ([iter hasNext]) {
-        STAssertEqualObjects([v objectAtIndex:i], [iter next], @"");
+        STAssertEqualObjects(v[i], [iter next], @"");
         ++i;
     }
     

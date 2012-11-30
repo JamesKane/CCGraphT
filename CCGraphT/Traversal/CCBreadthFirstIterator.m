@@ -42,7 +42,7 @@
 
 - (id)provideNextVertex
 {
-    id result = [self.queue objectAtIndex:0];
+    id result = (self.queue)[0];
     [self.queue removeObject:result];
     return result;
 }

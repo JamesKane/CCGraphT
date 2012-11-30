@@ -111,7 +111,7 @@
         return nil;
     } else {
         CCIntrusiveEdge *edge = [self createInstrusiveEdge:e from:sourceVertex to:targetVertex];
-        [self.edgeMap setObject:edge forKey:e];
+        (self.edgeMap)[e] = edge;
         [self.specifics addEdgeToTouchingVertices:e];
     }
     
@@ -137,7 +137,7 @@
     }
     
     CCIntrusiveEdge *e = [self createInstrusiveEdge:edge from:sourceVertex to:targetVertex];
-    [self.edgeMap setObject:edge forKey:e];
+    (self.edgeMap)[e] = edge;
     [self.specifics addEdgeToTouchingVertices:e];
     self.unmodifiableEdgeArray = nil;
     
@@ -186,12 +186,12 @@
         return edge;
     }
     
-    return [self.edgeMap objectForKey:edge];
+    return (self.edgeMap)[edge];
 }
 
 - (BOOL)containsEdge:(id)edge
 {
-    return [self.edgeMap objectForKey:edge] != nil;
+    return (self.edgeMap)[edge] != nil;
 }
 
 - (BOOL)containsVertex:(id)vertex
@@ -322,7 +322,7 @@
 {
     CCAbstractBaseGraph *newGraph = [super copy];
     
-    newGraph.edgeMap = [NSDictionary dictionary];
+    newGraph.edgeMap = [NSMutableDictionary dictionary];
     
     newGraph.edgeFactory = self.edgeFactory;
     newGraph.unmodifiableEdgeArray = nil;
@@ -474,7 +474,7 @@
 
 - (void)addVertex:(id)vertex
 {
-    [self.vertexMapDirected setObject:[NSNull null] forKey:vertex];
+    (self.vertexMapDirected)[vertex] = [NSNull null];
 }
 
 - (void)removeVertex:(id)vertex
@@ -544,7 +544,7 @@
         NSMutableArray *loops = [NSMutableArray arrayWithArray:[self allEdges:vertex to:vertex]];
         
         for (NSUInteger i = 0; i < [inAndOut count]; ) {
-            id e = [inAndOut objectAtIndex:i];
+            id e = inAndOut[i];
             
             if([loops containsObject:e]) {
                 [inAndOut removeObjectAtIndex:i];
@@ -589,11 +589,11 @@
 
 - (CCDirectedEdgeContainer *)getEdgeContainer:(id)vertex
 {
-    CCDirectedEdgeContainer *ec = [self.vertexMapDirected objectForKey:vertex];
+    CCDirectedEdgeContainer *ec = (self.vertexMapDirected)[vertex];
     
     if ((NSNull *)ec == [NSNull null]) {
         ec = [[CCDirectedEdgeContainer alloc] initWithFactory:[self.delegate edgeSetFactory] for:vertex];
-        [self.vertexMapDirected setObject:ec forKey:vertex];
+        (self.vertexMapDirected)[vertex] = ec;
     }
     
     return ec;
@@ -655,7 +655,7 @@
 
 - (void)addVertex:(id)vertex
 {
-    [self.vertexMapUndirected setObject:[NSNull null] forKey:vertex];
+    (self.vertexMapUndirected)[vertex] = [NSNull null];
 }
 
 - (void)removeVertex:(id)vertex
@@ -775,11 +775,11 @@
 
 - (CCUndirectedEdgeContainer *)getEdgeContainer:(id)vertex
 {
-    CCUndirectedEdgeContainer *ec = [self.vertexMapUndirected objectForKey:vertex];
+    CCUndirectedEdgeContainer *ec = (self.vertexMapUndirected)[vertex];
     
     if ((NSNull *)ec == [NSNull null]) {
         ec = [[CCUndirectedEdgeContainer alloc] initWithFactory:[self.delegate edgeSetFactory] for:vertex];
-        [self.vertexMapUndirected setObject:ec forKey:vertex];
+        (self.vertexMapUndirected)[vertex] = ec;
     }
     
     return ec;

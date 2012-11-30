@@ -85,7 +85,7 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     if (!edges || [edges count] == 0) {
         return nil;
     } else {
-        return [edges objectAtIndex:0];
+        return edges[0];
     }
 }
 

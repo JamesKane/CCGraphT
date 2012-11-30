@@ -35,12 +35,12 @@
         [super setEdge:edge withWeight:weight];
     }
     
-    [self.weightMap setObject:[NSNumber numberWithDouble:weight] forKey:edge];
+    (self.weightMap)[edge] = @(weight);
 }
 
 - (double)edgeWeight:(id)edge
 {
-    NSNumber *w = [self.weightMap objectForKey:edge];
+    NSNumber *w = (self.weightMap)[edge];
     return w != nil ? [w doubleValue] : [super edgeWeight:edge];
 }
 

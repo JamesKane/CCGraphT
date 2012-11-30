@@ -61,7 +61,7 @@
 
 - (id)objectForKey:(id)aKey
 {
-    return [_dictionary objectForKey:aKey];
+    return _dictionary[aKey];
 }
 
 - (NSEnumerator *)keyEnumerator
@@ -79,9 +79,9 @@
 
 - (void)setObject:(id)anObject forKey:(id<NSCopying>)aKey
 {
-    if (![_dictionary objectForKey:aKey])
+    if (!_dictionary[aKey])
         [_orderStack addObject:aKey];
-    [_dictionary setObject:anObject forKey:aKey];
+    _dictionary[aKey] = anObject;
 }
 
 - (void)removeObjectForKey:(id)aKey

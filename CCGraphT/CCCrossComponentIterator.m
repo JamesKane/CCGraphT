@@ -119,7 +119,7 @@
 
 - (id)seenData:(id)vertex
 {
-    return [self.seen objectForKey:vertex];
+    return (self.seen)[vertex];
 }
 
 - (BOOL)isSeenVertex:(id)vertex
@@ -129,8 +129,8 @@
 
 - (id)putSeenData:(id)data withKey:(id)vertex
 {
-    id prev = [self.seen objectForKey:vertex];
-    [self.seen setObject:data forKey:vertex];
+    id prev = (self.seen)[vertex];
+    (self.seen)[vertex] = data;
     return prev;
 }
 

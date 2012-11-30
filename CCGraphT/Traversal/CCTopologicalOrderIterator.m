@@ -62,11 +62,11 @@
 
 - (void)decrementInDegree:(id)vertex
 {
-    NSNumber *inDegree = [self.inDegreeMap objectForKey:vertex];
+    NSNumber *inDegree = (self.inDegreeMap)[vertex];
     
     if ([inDegree integerValue] > 0) {
-        inDegree = [NSNumber numberWithInteger:[inDegree integerValue]-1];
-        [self.inDegreeMap setObject:inDegree forKey:vertex];
+        inDegree = @([inDegree integerValue]-1);
+        (self.inDegreeMap)[vertex] = inDegree;
         
         if ([inDegree integerValue] == 0) {
             [self.queue addObject:vertex];
@@ -80,7 +80,7 @@
     id vertex;
     while ((vertex = [i nextObject])){
         NSInteger inDegree = [dg inDegreeOf:vertex];
-        [map setObject:[NSNumber numberWithInteger:inDegree] forKey:vertex];
+        map[vertex] = @(inDegree);
         if (inDegree == 0) {
             [queue addObject:vertex];
         }

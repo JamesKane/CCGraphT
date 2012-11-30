@@ -59,6 +59,6 @@
 - (id)getVertex:(id)vertex correspondence:(BOOL)forward
 {
     NSMutableDictionary *graphMapping = forward ? self.graphMappingForward : self.graphMappingReverse;
-    return [graphMapping objectForKey:vertex];
+    return graphMapping[vertex];
 }
 @end
