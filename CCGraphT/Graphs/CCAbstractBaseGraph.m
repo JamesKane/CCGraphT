@@ -718,7 +718,7 @@
 
 - (int)degreeOf:(id)vertex
 {
-    if (YES) {
+    if ([self.delegate allowingLoops]) {
         int degree = 0;
         NSArray *edges = [self getEdgeContainer:vertex].vertexEdges;
         
