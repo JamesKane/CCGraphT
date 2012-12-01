@@ -8,12 +8,15 @@
 
 #import "CCAbstractGraph.h"
 #import "CCWeightCombiner.h"
+#import "CCDirectedGraph.h"
 
 @interface CCGraphUnion : CCAbstractGraph
 
-- (id)initWith:(id<CCGraph>)g1 and:(id<CCGraph>)g2 using:(id<CCWeightCombiner>)operator;
-- (id)initWith:(id<CCGraph>)g1 and:(id<CCGraph>)g2;
+- (id)initWith:(id <CCGraph>)g1 and:(id <CCGraph>)g2 using:(id <CCWeightCombiner>)operator;
 
-- (id<CCGraph>)g1;
-- (id<CCGraph>)g2;
+- (id)initWith:(id <CCGraph>)g1 and:(id <CCGraph>)g2;
+
+- (id <CCDirectedGraph>)g1;
+
+- (id <CCDirectedGraph>)g2;
 @end

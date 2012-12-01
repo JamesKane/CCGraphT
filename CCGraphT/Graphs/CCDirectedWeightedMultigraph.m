@@ -7,12 +7,10 @@
 //
 
 #import "CCDirectedWeightedMultigraph.h"
-#import "CCClassBasedEdgeFactory.h"
 
 @implementation CCDirectedWeightedMultigraph
 
-- (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
-{
+- (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef {
     return [super initWithEdgeFactory:ef];
 }
 

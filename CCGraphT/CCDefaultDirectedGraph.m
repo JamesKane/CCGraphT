@@ -11,16 +11,14 @@
 
 @implementation CCDefaultDirectedGraph
 
-- (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
-{
+- (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef {
     if (self = [super initWithEF:ef allowingMultipleEdges:NO andLoops:YES]) {
-        
+
     }
     return self;
 }
 
-- (id)initWithEdgeClass:(Class)edgeClass
-{
+- (id)initWithEdgeClass:(Class)edgeClass {
     return [self initWithEdgeFactory:[[CCClassBasedEdgeFactory alloc] initWithEdgeClass:edgeClass]];
 }
 @end

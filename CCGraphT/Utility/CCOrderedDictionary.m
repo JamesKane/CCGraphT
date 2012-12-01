@@ -19,79 +19,69 @@
 #pragma mark --
 #pragma NSDictionary overrides
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         _dictionary = [NSMutableDictionary dictionary];
         _orderStack = [NSMutableArray array];
     }
-    
+
     return self;
 }
 
-- (id)initWithCapacity:(NSUInteger)numItems
-{
+- (id)initWithCapacity:(NSUInteger)numItems {
     self = [super init];
     if (self) {
         _dictionary = [[NSMutableDictionary alloc] initWithCapacity:numItems];
         _orderStack = [[NSMutableArray alloc] initWithCapacity:numItems];
     }
-    
+
     return self;
 }
 
-- (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
-{
-    
+- (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys {
+
     self = [super init];
-    
+
     if (self) {
         _dictionary = [[NSMutableDictionary alloc] initWithObjects:objects forKeys:keys];
         _orderStack = [NSMutableArray arrayWithArray:keys];
     }
-    
+
     return self;
 }
 
-- (NSUInteger)count
-{
+- (NSUInteger)count {
     return [_dictionary count];
 }
 
-- (id)objectForKey:(id)aKey
-{
+- (id)objectForKey:(id)aKey {
     return _dictionary[aKey];
 }
 
-- (NSEnumerator *)keyEnumerator
-{
+- (NSEnumerator *)keyEnumerator {
     return [_orderStack objectEnumerator];
 }
 
-- (NSArray *)allKeys
-{
+- (NSArray *)allKeys {
     return _orderStack;
 }
 
 #pragma mark --
 #pragma NSMutableDictionary overrides
 
-- (void)setObject:(id)anObject forKey:(id<NSCopying>)aKey
-{
+- (void)setObject:(id)anObject forKey:(id <NSCopying>)aKey {
     if (!_dictionary[aKey])
         [_orderStack addObject:aKey];
     _dictionary[aKey] = anObject;
 }
 
-- (void)removeObjectForKey:(id)aKey
-{
+- (void)removeObjectForKey:(id)aKey {
     [_dictionary removeObjectForKey:aKey];
     [_orderStack removeObject:aKey];
 }
 
-+ (id)dictionary
-{
++ (id)dictionary {
     CCOrderedDictionary *result = [[CCOrderedDictionary alloc] init];
     return result;
 }

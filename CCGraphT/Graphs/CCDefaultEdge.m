@@ -9,8 +9,7 @@
 #import "CCDefaultEdge.h"
 
 @implementation CCDefaultEdge
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"(%@ : %@)", self.source, self.target];
 }
 @end

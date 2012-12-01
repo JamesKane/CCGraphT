@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface CCFibonacciHeapNode : NSObject
-@property (strong, nonatomic) id data;
-@property (strong, nonatomic) CCFibonacciHeapNode *child;
-@property (strong, nonatomic) CCFibonacciHeapNode *left;
-@property (strong, nonatomic) CCFibonacciHeapNode *parent;
-@property (strong, nonatomic) CCFibonacciHeapNode *right;
-@property (nonatomic) BOOL mark;
-@property (nonatomic) double key;
-@property (nonatomic) NSUInteger degree;
+@property(strong, nonatomic) id data;
+@property(strong, nonatomic) CCFibonacciHeapNode *child;
+@property(strong, nonatomic) CCFibonacciHeapNode *left;
+@property(strong, nonatomic) CCFibonacciHeapNode *parent;
+@property(strong, nonatomic) CCFibonacciHeapNode *right;
+@property(nonatomic) BOOL mark;
+@property(nonatomic) double key;
+@property(nonatomic) NSUInteger degree;
 
 - (id)initWithData:(id)data;
 @end

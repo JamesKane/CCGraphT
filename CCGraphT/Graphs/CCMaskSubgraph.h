@@ -11,6 +11,6 @@
 
 @interface CCMaskSubgraph : CCAbstractGraph
 
-- (id)initWithGraph:(id<CCGraph>)base andMask:(id<CCMaskFunctor>)mask;
+- (id)initWithGraph:(id <CCGraph>)base andMask:(id <CCMaskFunctor>)mask;
 
 @end

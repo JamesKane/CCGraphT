@@ -12,8 +12,7 @@
 @synthesize source = _source;
 @synthesize vertex = _vertex;
 
-- (id)initWithSource:(id)source onVertex:(id)vertex
-{
+- (id)initWithSource:(id)source onVertex:(id)vertex {
     if (self = [super init]) {
         _source = source;
         _vertex = vertex;

@@ -12,25 +12,22 @@
 #import "CCGraphs.h"
 
 @interface CCClosestFirstIterator ()
-@property (strong, nonatomic) CCFibonacciHeap *heap;
-@property (nonatomic) double radius;
-@property (nonatomic) BOOL initialized;
+@property(strong, nonatomic) CCFibonacciHeap *heap;
+@property(nonatomic) double radius;
+@property(nonatomic) BOOL initialized;
 @end
 
 @implementation CCClosestFirstIterator
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)graph
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)graph {
     return [self initWithGraph:graph startFrom:nil];
 }
 
-- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex
-{
+- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex {
     return [self initWithGraph:graph startFrom:startVertex withRadius:DBL_MAX];
 }
 
-- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex withRadius:(double)radius
-{
+- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex withRadius:(double)radius {
     if (self = [super initWithGraph:graph startFrom:startVertex]) {
         self.heap = [[CCFibonacciHeap alloc] init];
         self.radius = radius;
@@ -40,37 +37,33 @@
     return self;
 }
 
-- (void)checkRadiusTraversal:(BOOL)crossComponentTraversal
-{
+- (void)checkRadiusTraversal:(BOOL)crossComponentTraversal {
     if (self.initialized) {
         [self checkRadiusTraversal:crossComponentTraversal];
     }
     [super setCrossComponentTraversal:crossComponentTraversal];
 }
 
-- (double)shortestPathLength:(id)vertex
-{
+- (double)shortestPathLength:(id)vertex {
     CCFibonacciHeapNode *node = [self seenData:vertex];
-    
+
     if (!node) {
         return DBL_MAX;
     }
-    
+
     return node.key;
 }
 
-- (id)spanningTreeEdge:(id)vertex
-{
+- (id)spanningTreeEdge:(id)vertex {
     CCFibonacciHeapNode *node = [self seenData:vertex];
     if (!node) {
         return nil;
     }
-    
+
     return [node.data spanningTreeEdge];
 }
 
-- (BOOL)isConnectedComponentExhausted
-{
+- (BOOL)isConnectedComponentExhausted {
     if (![self.heap size]) {
         return YES;
     } else {
@@ -83,8 +76,7 @@
     }
 }
 
-- (void)encounterVertex:(id)vertex with:(id)edge
-{
+- (void)encounterVertex:(id)vertex with:(id)edge {
     double shortestPathLength;
     if (!edge) {
         shortestPathLength = 0;
@@ -96,53 +88,48 @@
     [self.heap insert:node withKey:shortestPathLength];
 }
 
-- (void)encounterVertexAgain:(id)vertex with:(id)edge
-{
+- (void)encounterVertexAgain:(id)vertex with:(id)edge {
     CCFibonacciHeapNode *node = [self seenData:vertex];
-    
-    if (((CCQueueEntry *)(node.data)).frozen) {
+
+    if (((CCQueueEntry *) (node.data)).frozen) {
         return;
     }
-    
+
     double candidatePathLength = [self calculatePathLength:vertex on:edge];
-    
+
     if (candidatePathLength < node.key) {
-        ((CCQueueEntry *)(node.data)).spanningTreeEdge = edge;
+        ((CCQueueEntry *) (node.data)).spanningTreeEdge = edge;
         [self.heap decreaseNode:node keyTo:candidatePathLength];
     }
 }
 
-- (id)provideNextVertex
-{
+- (id)provideNextVertex {
     CCFibonacciHeapNode *node = [self.heap removeMin];
-    ((CCQueueEntry *)(node.data)).frozen = YES;
-    
-    return ((CCQueueEntry *)(node.data)).vertex;
+    ((CCQueueEntry *) (node.data)).frozen = YES;
+
+    return ((CCQueueEntry *) (node.data)).vertex;
 }
 
-- (void)assertNonNegativeEdge:(id)edge
-{
+- (void)assertNonNegativeEdge:(id)edge {
     if ([self.graph edgeWeight:edge] < 0) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:@"negative edge weights no allowed" userInfo:nil];
     }
 }
 
-- (double)calculatePathLength:(id)vertex on:(id)edge
-{
+- (double)calculatePathLength:(id)vertex on:(id)edge {
     [self assertNonNegativeEdge:edge];
-    
+
     id otherVertex = [CCGraphs oppositeVertexInGraph:self.graph forEdge:edge fromVertex:vertex];
     CCFibonacciHeapNode *otherEntry = [self seenData:otherVertex];
-    
+
     return otherEntry.key + [self.graph edgeWeight:edge];
 }
 
-- (CCFibonacciHeapNode *)createSeenData:(id)vertex on:(id)edge
-{
+- (CCFibonacciHeapNode *)createSeenData:(id)vertex on:(id)edge {
     CCQueueEntry *entry = [[CCQueueEntry alloc] init];
     entry.vertex = vertex;
     entry.spanningTreeEdge = edge;
-    
+
     return [[CCFibonacciHeapNode alloc] initWithData:entry];
 }
 

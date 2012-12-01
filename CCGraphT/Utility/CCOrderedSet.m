@@ -9,14 +9,13 @@
 #import "CCOrderedSet.h"
 
 @interface CCOrderedSet ()
-@property (strong, nonatomic) NSMutableSet *set;
-@property (strong, nonatomic) NSMutableArray *stack;
+@property(strong, nonatomic) NSMutableSet *set;
+@property(strong, nonatomic) NSMutableArray *stack;
 @end
 
 @implementation CCOrderedSet
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         _set = [NSMutableSet set];
@@ -28,16 +27,14 @@
 #pragma mark --
 #pragma mark NSMutableSet override methods
 
-- (void)addObject:(id)object
-{
+- (void)addObject:(id)object {
     if (![self.set containsObject:object]) {
         [self.stack addObject:object];
         [self.set addObject:object];
     }
 }
 
-- (void)removeObject:(id)object
-{
+- (void)removeObject:(id)object {
     if ([self.set containsObject:object]) {
         [self.stack removeObject:object];
         [self.stack removeObject:object];
@@ -47,18 +44,15 @@
 #pragma mark --
 #pragma mark NSSet override methods
 
-- (NSUInteger)count
-{
+- (NSUInteger)count {
     return [self.stack count];
 }
 
-- (id)member:(id)object
-{
+- (id)member:(id)object {
     return [self.set member:object];
 }
 
-- (NSEnumerator *)objectEnumerator
-{
+- (NSEnumerator *)objectEnumerator {
     return [self.stack objectEnumerator];
 }
 @end

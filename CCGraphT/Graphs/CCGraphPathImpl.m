@@ -9,11 +9,11 @@
 #import "CCGraphPathImpl.h"
 
 @interface CCGraphPathImpl ()
-@property (strong, nonatomic) id<CCGraph> graph;
-@property (strong, nonatomic) NSArray *edgeList;
-@property (strong, nonatomic) id startVertex;
-@property (strong, nonatomic) id endVertex;
-@property (nonatomic) double weight;
+@property(strong, nonatomic) id <CCGraph> graph;
+@property(strong, nonatomic) NSArray *edgeList;
+@property(strong, nonatomic) id startVertex;
+@property(strong, nonatomic) id endVertex;
+@property(nonatomic) double weight;
 @end
 
 @implementation CCGraphPathImpl
@@ -23,8 +23,7 @@
 @synthesize endVertex = _endVertex;
 @synthesize weight = _weight;
 
-- (id)initWith:(id<CCGraph>)graph from:(id)startVertex to:(id)endVertex having:(NSArray *)edgeList with:(double)weight
-{
+- (id)initWith:(id <CCGraph>)graph from:(id)startVertex to:(id)endVertex having:(NSArray *)edgeList with:(double)weight {
     if (self = [super init]) {
         self.graph = graph;
         self.edgeList = edgeList;
@@ -32,37 +31,31 @@
         self.endVertex = endVertex;
         self.weight = weight;
     }
-    
+
     return self;
 }
 
-- (id<CCGraph>)graph
-{
+- (id <CCGraph>)graph {
     return _graph;
 }
 
-- (id)startVertex
-{
+- (id)startVertex {
     return _startVertex;
 }
 
-- (id)endVertex
-{
+- (id)endVertex {
     return _endVertex;
 }
 
-- (NSArray *)edgeList
-{
+- (NSArray *)edgeList {
     return _edgeList;
 }
 
-- (double)weight
-{
+- (double)weight {
     return _weight;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [self.endVertex description];
 }
 @end

@@ -11,13 +11,11 @@
 
 @implementation CCDirectedMultigraph
 
-- (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
-{
+- (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef {
     return [super initWithEF:ef allowingMultipleEdges:YES andLoops:YES];
 }
 
-- (id)initWithEdgeClass:(Class)edgeClass
-{
+- (id)initWithEdgeClass:(Class)edgeClass {
     return [self initWithEdgeFactory:[[CCClassBasedEdgeFactory alloc] initWithEdgeClass:edgeClass]];
 }
 

@@ -10,8 +10,7 @@
 
 @implementation CCFibonacciHeapNode
 
-- (id)initWithData:(id)data
-{
+- (id)initWithData:(id)data {
     if (self = [super init]) {
         self.data = data;
         self.right = self;
@@ -20,8 +19,7 @@
     return self;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"%f", self.key];
 }
 

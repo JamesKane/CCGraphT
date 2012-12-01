@@ -16,56 +16,50 @@
 
 @implementation CCDepthFirstIterator
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)graph
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)graph {
     return [self initWithGraph:graph startFrom:nil];
 }
 
-- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex
-{
+- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex {
     self = [super initWithGraph:graph startFrom:startVertex];
     if (self) {
         stack = [NSMutableArray array];
     }
-    
+
     return self;
 }
 
-- (BOOL)isConnectedComponentExhausted
-{
+- (BOOL)isConnectedComponentExhausted {
     while (YES) {
         if ([stack count] == 0) {
             return YES;
         }
-        
+
         if ([stack lastObject] != [NSNull null]) {
             return NO;
         }
-        
+
         [stack removeLastObject];
         [self recordFinish];
     }
 }
 
-- (void)encounterVertex:(id)vertex with:(id)edge
-{
+- (void)encounterVertex:(id)vertex with:(id)edge {
     [self putSeenData:@(WHITE) withKey:vertex];
     [stack addObject:vertex];
 }
 
-- (void)encounterVertexAgain:(id)vertex with:(id)edge
-{
-    VisitColor color = [((NSNumber *)[self seenData:vertex]) intValue];
+- (void)encounterVertexAgain:(id)vertex with:(id)edge {
+    VisitColor color = (VisitColor) [((NSNumber *) [self seenData:vertex]) intValue];
     if (color != WHITE) {
         return;
     }
-    
+
     [stack removeObject:vertex];
     [stack addObject:vertex];
 }
 
-- (id)provideNextVertex
-{
+- (id)provideNextVertex {
     id v;
     while (YES) {
         v = [stack lastObject];
@@ -76,15 +70,14 @@
             break;
         }
     }
-    
+
     [stack addObject:v];
     [stack addObject:[NSNull null]];
     [self putSeenData:@(GRAY) withKey:v];
     return v;
 }
 
-- (void)recordFinish
-{
+- (void)recordFinish {
     id v = [stack lastObject];
     [stack removeLastObject];
     [self putSeenData:@(BLACK) withKey:v];

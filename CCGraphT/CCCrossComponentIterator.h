@@ -27,9 +27,10 @@ typedef enum CCI_VISIT_COLOR {
 } VisitColor;
 
 @interface CCGraphIteratorEdgeProvider : NSObject
-@property (strong, readonly, nonatomic) CCAbstractBaseGraph *graph;
+@property(strong, readonly, nonatomic) CCAbstractBaseGraph *graph;
 
-- (id)initWith:(id<CCGraph>)graph;
+- (id)initWith:(id <CCGraph>)graph;
+
 - (NSArray *)edgesOf:(id)vertex;
 @end
 
@@ -40,43 +41,53 @@ typedef enum CCI_VISIT_COLOR {
 @end
 
 @interface CCCrossComponentIterator : CCAbstractGraphIterator
-@property (strong, nonatomic) CCConnectedComponentTraversalEvent *ccFinishedEvent;
-@property (strong, nonatomic) CCConnectedComponentTraversalEvent *ccStartedEvent;
-@property (strong, nonatomic) CCFlyweightEdgeEvent *reusableEdgeEvent;
-@property (strong, nonatomic) CCFlyweightVertexEvent *reusableVertexEvent;
-@property (strong, nonatomic) NSEnumerator *vertexIterator;
+@property(strong, nonatomic) CCConnectedComponentTraversalEvent *ccFinishedEvent;
+@property(strong, nonatomic) CCConnectedComponentTraversalEvent *ccStartedEvent;
+@property(strong, nonatomic) CCFlyweightEdgeEvent *reusableEdgeEvent;
+@property(strong, nonatomic) CCFlyweightVertexEvent *reusableVertexEvent;
+@property(strong, nonatomic) NSEnumerator *vertexIterator;
 
-@property (strong, nonatomic) NSMutableDictionary *seen;
-@property (strong, nonatomic) id startVertex;
-@property (strong, nonatomic) CCGraphIteratorEdgeProvider *specifics;
+@property(strong, nonatomic) NSMutableDictionary *seen;
+@property(strong, nonatomic) id startVertex;
+@property(strong, nonatomic) CCGraphIteratorEdgeProvider *specifics;
 
-@property (weak, nonatomic) CCAbstractBaseGraph *graph;
+@property(weak, nonatomic) CCAbstractBaseGraph *graph;
 
-@property (nonatomic) CCSComponentState state;
+@property(nonatomic) CCSComponentState state;
 
-- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex;
+- (id)initWithGraph:(CCAbstractBaseGraph *)graph startFrom:(id)startVertex;
+
 - (CCSpecifics *)createGraphSpecifics:(CCAbstractGraph *)graph;
 
 - (BOOL)isConnectedComponentExhausted;
+
 - (id)provideNextVertex;
+
 - (void)encounterStartVertex;
 
 - (void)addUnseenChildrenOf:(id)vertex;
+
 - (BOOL)isSeenVertex:(id)vertex;
+
 - (void)encounterVertex:(id)vertex with:(id)edge;
+
 - (void)encounterVertexAgain:(id)vertex with:(id)edge;
+
 - (id)seenData:(id)vertex;
+
 - (id)putSeenData:(id)data withKey:(id)vertex;
+
 - (void)finishVertex:(id)vertex;
 
 - (CCVertexTraversalEvent *)createVertexTraversalEvent:(id)vertex;
+
 - (CCEdgeTraversalEvent *)createEdgeTraversalEvent:(id)edge;
 @end
 
 @interface CCFlyweightEdgeEvent : CCEdgeTraversalEvent
-@property (strong, nonatomic) id edge;
+@property(strong, nonatomic) id edge;
 @end
 
 @interface CCFlyweightVertexEvent : CCVertexTraversalEvent
-@property (strong, nonatomic) id vertex;
+@property(strong, nonatomic) id vertex;
 @end

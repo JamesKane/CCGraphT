@@ -9,16 +9,15 @@
 #import "CCMaskEdgeSet.h"
 
 @interface CCMaskEdgeSet ()
-@property (strong, nonatomic) NSSet *edgeSet;
-@property (strong, nonatomic) id<CCGraph> graph;
-@property (strong, nonatomic) id<CCMaskFunctor> mask;
-@property (nonatomic) NSUInteger size;
+@property(strong, nonatomic) NSSet *edgeSet;
+@property(strong, nonatomic) id <CCGraph> graph;
+@property(strong, nonatomic) id <CCMaskFunctor> mask;
+@property(nonatomic) NSUInteger size;
 @end
 
 @implementation CCMaskEdgeSet
 
-- (id)initWithGraph:(id<CCGraph>)graph usingEdges:(NSSet *)edgeSet applyingMask:(id<CCMaskFunctor>)mask
-{
+- (id)initWithGraph:(id <CCGraph>)graph usingEdges:(NSSet *)edgeSet applyingMask:(id <CCMaskFunctor>)mask {
     self = [super init];
     if (self) {
         self.graph = graph;
@@ -29,18 +28,15 @@
     return self;
 }
 
-- (BOOL)containsObject:(id)anObject
-{
+- (BOOL)containsObject:(id)anObject {
     return [self.edgeSet containsObject:anObject] && ![self.mask isEdgeMasked:anObject];
 }
 
-- (NSEnumerator *)objectEnumerator
-{
+- (NSEnumerator *)objectEnumerator {
     return nil;
 }
 
-- (NSUInteger)count
-{
+- (NSUInteger)count {
     if (_size == NSUIntegerMax) {
         _size = 0;
         NSEnumerator *iter = [self objectEnumerator];
@@ -48,7 +44,7 @@
             _size++;
         }
     }
-    
+
     return _size;
 }
 @end

@@ -11,6 +11,7 @@
 @protocol CCGraphMapping <NSObject>
 
 - (id)getVertex:(id)vertex correspondence:(BOOL)forward;
+
 - (id)getEdge:(id)edge correspondence:(BOOL)forward;
 
 @end

@@ -11,8 +11,7 @@
 
 @implementation CCAsUnweightedGraph
 
-- (double)edgeWeight:(id)edge
-{
+- (double)edgeWeight:(id)edge {
     return WG_DEFAULT_EDGE_WEIGHT;
 }
 

@@ -11,12 +11,17 @@
 #import "CCGraphPath.h"
 
 @interface CCDijkstraShortestPath : NSObject
-+ (NSArray *)findPathBetween:(id<CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex;
++ (NSArray *)findPathBetween:(id <CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex;
 
-- (id)initWith:(id<CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex;
-- (id)initWith:(id<CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex withRadius:(double)radius;
+- (id)initWith:(id <CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex;
+
+- (id)initWith:(id <CCGraph>)graph withOrigin:(id)startVertex andDesitination:(id)endVertex withRadius:(double)radius;
+
 - (void)execute;
+
 - (NSArray *)pathEdgeList;
-- (id<CCGraphPath>)path;
+
+- (id <CCGraphPath>)path;
+
 - (double)pathLength;
 @end

@@ -8,23 +8,21 @@
 
 #import "CCCrossComponentIterator.h"
 #import "CCGraphs.h"
-#import "CCDirectedGraph.h"
 
 @implementation CCCrossComponentIterator
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)graph startFrom:(id)startVertex
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)graph startFrom:(id)startVertex {
     if (self = [super init]) {
         self.graph = graph;
         self.specifics = [self createEdgeProvider];
         self.vertexIterator = [[graph vertexSet] objectEnumerator];
         self.crossComponentTraversal = (startVertex == nil);
-        
+
         self.reusableEdgeEvent = [[CCFlyweightEdgeEvent alloc] initWithSource:self onEdge:nil];
         self.reusableVertexEvent = [[CCFlyweightVertexEvent alloc] initWithSource:self onVertex:nil];
-        
+
         self.seen = [NSMutableDictionary dictionary];
-        
+
         if (startVertex == nil) {
             self.startVertex = [self.vertexIterator nextObject];
         } else if ([graph containsVertex:startVertex]) {
@@ -36,8 +34,7 @@
     return self;
 }
 
-- (CCGraphIteratorEdgeProvider *)createEdgeProvider
-{
+- (CCGraphIteratorEdgeProvider *)createEdgeProvider {
     if ([self.graph conformsToProtocol:@protocol(CCDirectedGraph)]) {
         return [[CCDirectedGraphEdgeProvider alloc] initWith:self.graph];
     } else {
@@ -47,12 +44,11 @@
 
 // Using Java's iterator pattern here since the algorithm has some events applied where I'm not sure how to refactor as yet
 
-- (BOOL)hasNext
-{
+- (BOOL)hasNext {
     if (self.startVertex != nil) {
         [self encounterStartVertex];
     }
-    
+
     if ([self isConnectedComponentExhausted]) {
         if (self.state == CCS_WITHIN_COMPONENT) {
             self.State = CCS_AFTER_COMPONENT;
@@ -60,14 +56,14 @@
                 [self fireConnectedComponentFinished:self.ccFinishedEvent];
             }
         }
-        
+
         if ([self isCrossComponentTraversal]) {
             id v;
-            while (v = [self.vertexIterator nextObject]) {
+            while ((v = [self.vertexIterator nextObject])) {
                 if (![self isSeenVertex:v]) {
                     [self encounterVertex:v with:nil];
                     self.state = CCS_BEFORE_COMPONENT;
-                    
+
                     return YES;
                 }
             }
@@ -80,12 +76,11 @@
     }
 }
 
-- (id)next
-{
+- (id)next {
     if (self.startVertex != nil) {
         [self encounterStartVertex];
     }
-    
+
     if ([self hasNext]) {
         if (self.state == CCS_BEFORE_COMPONENT) {
             self.State = CCS_WITHIN_COMPONENT;
@@ -93,64 +88,67 @@
                 [self fireConnectedComponentFinished:self.ccStartedEvent];
             }
         }
-        
+
         id nextVertex = [self provideNextVertex];
         if (self.nListeners != 0) {
             [self fireVertexTraversed:[self createVertexTraversalEvent:nextVertex]];
         }
-        
+
         [self addUnseenChildrenOf:nextVertex];
-        
+
         return nextVertex;
     }
-    
+
     return nil;
 }
 
-- (BOOL)isConnectedComponentExhausted { return YES; }   // "Abstract" method
+- (BOOL)isConnectedComponentExhausted {
+    return YES;
+}   // "Abstract" method
 
-- (void)encounterVertex:(id)vertex with:(id)edge {}     // "Abstract" method
+- (void)encounterVertex:(id)vertex with:(id)edge {
+}     // "Abstract" method
 
-- (void)encounterVertexAgain:(id)vertex with:(id)edge {} // "Abstract" method
+- (void)encounterVertexAgain:(id)vertex with:(id)edge {
+} // "Abstract" method
 
-- (id)provideNextVertex { return nil; }                 // "Abstract" method
+- (id)provideNextVertex {
+    return nil;
+}                 // "Abstract" method
 
-- (CCSpecifics *)createGraphSpecifics:(CCAbstractGraph *)graph { return nil; } // "Abstract" method
+- (CCSpecifics *)createGraphSpecifics:(CCAbstractGraph *)graph {
+    return nil;
+} // "Abstract" method
 
-- (id)seenData:(id)vertex
-{
+- (id)seenData:(id)vertex {
     return (self.seen)[vertex];
 }
 
-- (BOOL)isSeenVertex:(id)vertex
-{
+- (BOOL)isSeenVertex:(id)vertex {
     return [[self.seen allKeys] containsObject:vertex];
 }
 
-- (id)putSeenData:(id)data withKey:(id)vertex
-{
+- (id)putSeenData:(id)data withKey:(id)vertex {
     id prev = (self.seen)[vertex];
     (self.seen)[vertex] = data;
     return prev;
 }
 
-- (void)finishVertex:(id)vertex
-{
+- (void)finishVertex:(id)vertex {
     if (self.nListeners != 0) {
         [self fireVertexFinished:[self createVertexTraversalEvent:vertex]];
     }
 }
 
-- (void)addUnseenChildrenOf:(id)vertex
-{
+- (void)addUnseenChildrenOf:(id)vertex {
     NSArray *nodeEdges = [self.specifics edgesOf:vertex];
     for (id edge in nodeEdges) {
         if (self.nListeners) {
             [self fireEdgeTraversed:[self createEdgeTraversalEvent:edge]];
         }
-        
+
         id oppositeV = [CCGraphs oppositeVertexInGraph:self.graph forEdge:edge fromVertex:vertex];
-        
+
         if ([self isSeenVertex:oppositeV]) {
             [self encounterVertexAgain:oppositeV with:edge];
         } else {
@@ -159,8 +157,7 @@
     }
 }
 
-- (CCEdgeTraversalEvent *)createEdgeTraversalEvent:(id)edge
-{
+- (CCEdgeTraversalEvent *)createEdgeTraversalEvent:(id)edge {
     if ([self isReuseEvents]) {
         self.reusableEdgeEvent.edge = edge;
         return self.reusableEdgeEvent;
@@ -169,8 +166,7 @@
     }
 }
 
-- (CCVertexTraversalEvent *)createVertexTraversalEvent:(id)vertex
-{
+- (CCVertexTraversalEvent *)createVertexTraversalEvent:(id)vertex {
     if ([self isReuseEvents]) {
         self.reusableVertexEvent.vertex = vertex;
         return self.reusableVertexEvent;
@@ -179,8 +175,7 @@
     }
 }
 
-- (void)encounterStartVertex
-{
+- (void)encounterStartVertex {
     [self encounterVertex:self.startVertex with:nil];
     self.startVertex = nil;
 }
@@ -195,22 +190,22 @@
 @implementation CCGraphIteratorEdgeProvider
 @synthesize graph = _graph;
 
-- (id)initWith:(id<CCGraph>)graph
-{
+- (id)initWith:(id <CCGraph>)graph {
     if (self = [super init]) {
-        _graph = (CCAbstractBaseGraph *)graph;
+        _graph = (CCAbstractBaseGraph *) graph;
     }
     return self;
 }
 
-- (NSArray *)edgesOf:(id)vertex { return nil; }  // "Abstract" method
+- (NSArray *)edgesOf:(id)vertex {
+    return nil;
+}  // "Abstract" method
 
 @end
 
 @implementation CCDirectedGraphEdgeProvider
 
-- (NSArray *)edgesOf:(id)vertex
-{
+- (NSArray *)edgesOf:(id)vertex {
     return [self.graph outgoingEdgesOf:vertex];
 }
 
@@ -218,8 +213,7 @@
 
 @implementation CCUndirectedGraphEdgeProvider
 
-- (NSArray *)edgesOf:(id)vertex
-{
+- (NSArray *)edgesOf:(id)vertex {
     return [self.graph edgesOf:vertex];
 }
 

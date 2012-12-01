@@ -13,6 +13,7 @@
 @interface CCSubgraph : CCAbstractGraph
 
 - (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset andEdgeSubset:(NSArray *)edgeSubset;
+
 - (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset;
 
 @end

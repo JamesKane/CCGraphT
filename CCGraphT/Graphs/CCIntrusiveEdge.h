@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface CCIntrusiveEdge : NSObject <NSCopying>
-@property (weak, nonatomic) id source;
-@property (weak, nonatomic) id target;
+@property(weak, nonatomic) id source;
+@property(weak, nonatomic) id target;
 @end

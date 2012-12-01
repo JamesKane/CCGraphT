@@ -11,6 +11,6 @@
 
 @interface CCDefaultGraphMapping : NSObject <CCGraphMapping>
 
-- (id)initWithMap:(NSMutableDictionary *)g1ToG2 toMap:(NSMutableDictionary *)g2ToG1 fromGraph:(id<CCGraph>)g1 toGraph:(id<CCGraph>)g2;
+- (id)initWithMap:(NSMutableDictionary *)g1ToG2 toMap:(NSMutableDictionary *)g2ToG1 fromGraph:(id <CCGraph>)g1 toGraph:(id <CCGraph>)g2;
 
 @end

@@ -9,13 +9,12 @@
 #import "CCClassBasedVertexFactory.h"
 
 @interface CCClassBasedVertexFactory ()
-@property (nonatomic) Class vertexClass;
+@property(nonatomic) Class vertexClass;
 @end
 
 @implementation CCClassBasedVertexFactory
 
-- (id)initWithVertexClass:(Class)vertexClass
-{
+- (id)initWithVertexClass:(Class)vertexClass {
     self = [super init];
     if (self) {
         self.vertexClass = vertexClass;
@@ -23,8 +22,7 @@
     return self;
 }
 
-- (id)createVertex
-{
+- (id)createVertex {
     return [[[self.vertexClass class] alloc] init];
 }
 

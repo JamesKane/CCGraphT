@@ -12,8 +12,7 @@
 @synthesize source = _source;
 @synthesize type = _type;
 
-- (id)initWith:(id)source forEvent:(ConnectedComponentEventType)type
-{
+- (id)initWith:(id)source forEvent:(ConnectedComponentEventType)type {
     if (self = [super init]) {
         _source = source;
         _type = type;

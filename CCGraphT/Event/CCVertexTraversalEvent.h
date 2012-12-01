@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface CCVertexTraversalEvent : NSObject
-@property (strong, readonly, nonatomic) id source;
-@property (strong, readonly, nonatomic) id vertex;
+@property(strong, readonly, nonatomic) id source;
+@property(strong, readonly, nonatomic) id vertex;
 
 - (id)initWithSource:(id)source onVertex:(id)vertex;
 @end

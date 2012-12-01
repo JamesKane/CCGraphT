@@ -10,63 +10,51 @@
 
 @implementation CCEdgeReversedGraph
 
-- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex {
     return [super edgeConnecting:targetVertex to:sourceVertex];
 }
 
-- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex {
     return [super allEdgesConnecting:targetVertex to:sourceVertex];
 }
 
-- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     return [super createEdgeFromVertex:targetVertex toVertex:sourceVertex];
 }
 
-- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     return [super addEdge:edge fromVertex:sourceVertex toVertex:targetVertex];
 }
 
-- (NSInteger)inDegreeOf:(id)vertex
-{
+- (NSInteger)inDegreeOf:(id)vertex {
     return [super outgoingDegreeOf:vertex];
 }
 
-- (NSInteger)outgoingDegreeOf:(id)vertex
-{
+- (NSInteger)outgoingDegreeOf:(id)vertex {
     return [super inDegreeOf:vertex];
 }
 
-- (NSArray *)incomingEdgesOf:(id)vertex
-{
+- (NSArray *)incomingEdgesOf:(id)vertex {
     return [super outgoingEdgesOf:vertex];
 }
 
-- (NSArray *)outgoingEdgesOf:(id)vertex
-{
+- (NSArray *)outgoingEdgesOf:(id)vertex {
     return [super incomingEdgesOf:vertex];
 }
 
-- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex {
     return [super removeEdgeConnecting:targetVertex to:sourceVertex];
 }
 
-- (id)edgeSource:(id)edge
-{
+- (id)edgeSource:(id)edge {
     return [super edgeTarget:edge];
 }
 
-- (id)edgeTarget:(id)edge
-{
+- (id)edgeTarget:(id)edge {
     return [super edgeSource:edge];
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"Graph = [%@, %@]", [self vertexSet], [self edgeSet]];
 }
 

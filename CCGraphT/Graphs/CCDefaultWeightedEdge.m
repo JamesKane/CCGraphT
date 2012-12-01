@@ -11,8 +11,7 @@
 
 @implementation CCDefaultWeightedEdge
 
-- (id)init
-{
+- (id)init {
     if (self = [super init]) {
         self.weight = WG_DEFAULT_EDGE_WEIGHT;
     }

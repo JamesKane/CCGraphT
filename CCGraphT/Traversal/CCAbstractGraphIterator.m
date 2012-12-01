@@ -12,82 +12,70 @@
 @synthesize crossComponentTraversal = _crossComponentTraversal;
 @synthesize reuseEvents = _reuseEvents;
 
-- (id)init
-{
+- (id)init {
     if (self = [super init]) {
         self.traversalListeners = [NSMutableArray array];
         self.crossComponentTraversal = YES;
         self.reuseEvents = NO;
         self.nListeners = 0;
     }
-    
+
     return self;
 }
 
-- (void)setCrossComponentTraversal:(BOOL)crossComponentTraversal
-{
+- (void)setCrossComponentTraversal:(BOOL)crossComponentTraversal {
     _crossComponentTraversal = crossComponentTraversal;
 }
 
-- (BOOL)isCrossComponentTraversal
-{
+- (BOOL)isCrossComponentTraversal {
     return self.crossComponentTraversal;
 }
 
-- (void)setReuseEvents:(BOOL)reuseEvents
-{
+- (void)setReuseEvents:(BOOL)reuseEvents {
     _reuseEvents = reuseEvents;
 }
 
-- (void)addTraversalListener:(id<CCTraversalListener>)l
-{
+- (void)addTraversalListener:(id <CCTraversalListener>)l {
     if (![self.traversalListeners containsObject:l]) {
         [self.traversalListeners addObject:l];
         self.nListeners = [self.traversalListeners count];
     }
 }
 
-- (void)remove
-{
+- (void)remove {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:@"graph iterator does not support removal" userInfo:nil];
 }
 
-- (void)removeTraversalListener:(id<CCTraversalListener>)l
-{
+- (void)removeTraversalListener:(id <CCTraversalListener>)l {
     [self.traversalListeners removeObject:l];
     self.nListeners = [self.traversalListeners count];
 }
 
-- (void)fireConnectedComponentFinished:(CCConnectedComponentTraversalEvent *)e
-{
+- (void)fireConnectedComponentFinished:(CCConnectedComponentTraversalEvent *)e {
     for (id <CCTraversalListener> l in self.traversalListeners) {
         [l connectedComponentFinished:e];
     }
 }
 
-- (void)fireConnectedComponentStarted:(CCConnectedComponentTraversalEvent *)e
-{
+- (void)fireConnectedComponentStarted:(CCConnectedComponentTraversalEvent *)e {
     for (id <CCTraversalListener> l in self.traversalListeners) {
         [l connectedComponentStarted:e];
     }
 }
 
-- (void)fireEdgeTraversed:(CCEdgeTraversalEvent *)e
-{
+- (void)fireEdgeTraversed:(CCEdgeTraversalEvent *)e {
     for (id <CCTraversalListener> l in self.traversalListeners) {
         [l edgeTraversed:e];
     }
 }
 
-- (void)fireVertexTraversed:(CCVertexTraversalEvent *)e
-{
+- (void)fireVertexTraversed:(CCVertexTraversalEvent *)e {
     for (id <CCTraversalListener> l in self.traversalListeners) {
         [l vertexTraversed:e];
     }
 }
 
-- (void)fireVertexFinished:(CCVertexTraversalEvent *)e
-{
+- (void)fireVertexFinished:(CCVertexTraversalEvent *)e {
     for (id <CCTraversalListener> l in self.traversalListeners) {
         [l vertexFinished:e];
     }
@@ -95,7 +83,13 @@
 
 #pragma mark --
 #pragma mark Stub protocol methods
-- (BOOL)hasNext { return NO; };
-- (id)next { return nil; };
-- (BOOL)isReuseEvents { return NO; }
+- (BOOL)hasNext {
+    return NO;
+};
+- (id)next {
+    return nil;
+};
+- (BOOL)isReuseEvents {
+    return NO;
+}
 @end

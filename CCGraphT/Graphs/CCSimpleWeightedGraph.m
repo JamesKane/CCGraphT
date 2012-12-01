@@ -10,13 +10,11 @@
 #import "CCClassBasedEdgeFactory.h"
 
 @implementation CCSimpleWeightedGraph
-- (id)initWithEdgeClass:(Class)edgeClass
-{
+- (id)initWithEdgeClass:(Class)edgeClass {
     return [self initWithEdgeFactory:[[CCClassBasedEdgeFactory alloc] initWithEdgeClass:edgeClass]];
 }
 
-- (id)initWithEdgeFactory:(id<CCEdgeFactory>)ef
-{
+- (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef {
     self = [super initWithEdgeFactory:ef];
     return self;
 }

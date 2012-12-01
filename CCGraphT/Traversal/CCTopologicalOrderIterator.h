@@ -7,9 +7,10 @@
 //
 
 #import "CCCrossComponentIterator.h"
+#import "CCDirectedGraph.h"
 
 @interface CCTopologicalOrderIterator : CCCrossComponentIterator
 
-- (id)initWithGraph:(CCAbstractGraph *)graph;
+- (id)initWithGraph:(id <CCDirectedGraph>)graph;
 
 @end

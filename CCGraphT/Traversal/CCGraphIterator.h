@@ -10,11 +10,18 @@
 
 @protocol CCGraphIterator <NSObject>
 - (BOOL)isCrossComponentTraversal;
+
 - (void)setReuseEvents:(BOOL)reuseEvents;
+
 - (BOOL)isReuseEvents;
+
 - (void)addTraversalListener:(id <CCTraversalListener>)l;
+
 - (void)remove;
+
 - (void)removeTraversalListener:(id <CCTraversalListener>)l;
+
 - (BOOL)hasNext;
+
 - (id)next;
 @end

@@ -9,22 +9,20 @@
 #import "CCClassBasedEdgeFactory.h"
 
 @interface CCClassBasedEdgeFactory ()
-@property (nonatomic) Class edgeClass;
+@property(nonatomic) Class edgeClass;
 @end
 
 @implementation CCClassBasedEdgeFactory
 
-- (id)initWithEdgeClass:(Class)edgeClass
-{
+- (id)initWithEdgeClass:(Class)edgeClass {
     if (self = [super init]) {
         self.edgeClass = edgeClass;
     }
-    
+
     return self;
 }
 
-- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     return [[self.edgeClass alloc] init];
 }
 

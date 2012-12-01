@@ -12,6 +12,6 @@
 
 @interface CCMaskEdgeSet : NSMutableSet
 
-- (id)initWithGraph:(id<CCGraph>)graph usingEdges:(NSSet *)edgeSet applyingMask:(id<CCMaskFunctor>)mask;
+- (id)initWithGraph:(id <CCGraph>)graph usingEdges:(NSSet *)edgeSet applyingMask:(id <CCMaskFunctor>)mask;
 
 @end

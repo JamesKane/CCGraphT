@@ -11,7 +11,10 @@
 
 @protocol CCDirectedGraph <CCGraph>
 - (NSInteger)inDegreeOf:(id)vertex;
+
 - (NSArray *)incomingEdgesOf:(id)vertex;
+
 - (NSInteger)outgoingDegreeOf:(id)vertex;
+
 - (NSArray *)outgoingEdgesOf:(id)vertex;
 @end

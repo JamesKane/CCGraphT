@@ -10,14 +10,18 @@
 #import "CCTraversalListener.h"
 
 @interface CCAbstractGraphIterator : NSObject <CCGraphIterator>
-@property (strong, nonatomic) NSMutableArray *traversalListeners;
-@property (nonatomic) BOOL crossComponentTraversal;
-@property (nonatomic) BOOL reuseEvents;
-@property (nonatomic) NSUInteger nListeners;
+@property(strong, nonatomic) NSMutableArray *traversalListeners;
+@property(nonatomic) BOOL crossComponentTraversal;
+@property(nonatomic) BOOL reuseEvents;
+@property(nonatomic) NSUInteger nListeners;
 
 - (void)fireConnectedComponentFinished:(CCConnectedComponentTraversalEvent *)e;
+
 - (void)fireConnectedComponentStarted:(CCConnectedComponentTraversalEvent *)e;
+
 - (void)fireEdgeTraversed:(CCEdgeTraversalEvent *)e;
+
 - (void)fireVertexTraversed:(CCVertexTraversalEvent *)e;
+
 - (void)fireVertexFinished:(CCVertexTraversalEvent *)e;
 @end

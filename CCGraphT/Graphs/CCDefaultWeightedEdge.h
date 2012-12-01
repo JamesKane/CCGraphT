@@ -9,5 +9,5 @@
 #import "CCDefaultEdge.h"
 
 @interface CCDefaultWeightedEdge : CCDefaultEdge
-@property (nonatomic) double weight;
+@property(nonatomic) double weight;
 @end

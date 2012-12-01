@@ -9,39 +9,34 @@
 #import "CCBreadthFirstIterator.h"
 
 @interface CCBreadthFirstIterator ()
-@property (strong, nonatomic) NSMutableArray *queue;
+@property(strong, nonatomic) NSMutableArray *queue;
 @end
 
 @implementation CCBreadthFirstIterator
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)graph
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)graph {
     return [self initWithGraph:graph startFrom:nil];
 }
 
-- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex
-{
+- (id)initWithGraph:(CCAbstractGraph *)graph startFrom:(id)startVertex {
     self = [super initWithGraph:graph startFrom:startVertex];
     if (self) {
         self.queue = [NSMutableArray array];
     }
-    
+
     return self;
 }
 
-- (BOOL)isConnectedComponentExhausted
-{
+- (BOOL)isConnectedComponentExhausted {
     return [self.queue count] == 0;
 }
 
-- (void)encounterVertex:(id)vertex with:(id)edge
-{
+- (void)encounterVertex:(id)vertex with:(id)edge {
     [self putSeenData:[NSNull null] withKey:vertex];
     [self.queue addObject:vertex];
 }
 
-- (id)provideNextVertex
-{
+- (id)provideNextVertex {
     id result = (self.queue)[0];
     [self.queue removeObject:result];
     return result;

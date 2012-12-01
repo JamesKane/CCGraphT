@@ -15,7 +15,7 @@
 
 - (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex;
 
-- (id<CCEdgeFactory>)edgeFactory;
+- (id <CCEdgeFactory>)edgeFactory;
 
 - (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex;
 

@@ -9,21 +9,31 @@
 #import "CCWeightCombiner.h"
 
 @implementation SumWeightCombiner
-- (double)combine:(double)a with:(double)b { return a + b; }
+- (double)combine:(double)a with:(double)b {
+    return a + b;
+}
 @end
 
 @implementation MaxWeightCombiner
-- (double)combine:(double)a with:(double)b { return MAX(a, b); }
+- (double)combine:(double)a with:(double)b {
+    return MAX(a, b);
+}
 @end
 
 @implementation MinWeightCombiner
-- (double)combine:(double)a with:(double)b { return MIN(a, b); }
+- (double)combine:(double)a with:(double)b {
+    return MIN(a, b);
+}
 @end
 
 @implementation FirstWeightCombiner
-- (double)combine:(double)a with:(double)b { return a; }
+- (double)combine:(double)a with:(double)b {
+    return a;
+}
 @end
 
 @implementation SecondWeightCombiner
-- (double)combine:(double)a with:(double)b { return b; }
+- (double)combine:(double)a with:(double)b {
+    return b;
+}
 @end

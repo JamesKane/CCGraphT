@@ -11,5 +11,6 @@
 
 @interface CCSimpleGraph : CCAbstractBaseGraph <CCUndirectedGraph>
 - (id)initWithEdgeClass:(Class)edgeClass;
+
 - (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef;
 @end

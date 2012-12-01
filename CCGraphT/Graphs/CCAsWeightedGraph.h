@@ -10,6 +10,6 @@
 
 @interface CCAsWeightedGraph : CCGraphDelegator
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)g andWeightMap:(NSDictionary *)weightMap;
+- (id)initWithGraph:(CCAbstractBaseGraph *)g andWeightMap:(NSMutableDictionary *)weightMap;
 
 @end

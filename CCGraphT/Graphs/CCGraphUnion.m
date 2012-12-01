@@ -7,13 +7,14 @@
 //
 
 #import "CCGraphUnion.h"
+#import "CCDirectedGraph.h"
 
 static NSString *GU_READ_ONLY = @"union of graphs is read-only";
 
 @interface CCGraphUnion ()
-@property (strong, nonatomic) id<CCGraph> g1;
-@property (strong, nonatomic) id<CCGraph> g2;
-@property (strong, nonatomic) id<CCWeightCombiner> operator;
+@property(strong, nonatomic) id <CCGraph> g1;
+@property(strong, nonatomic) id <CCGraph> g2;
+@property(strong, nonatomic) id <CCWeightCombiner> operator;
 @end
 
 @implementation CCGraphUnion
@@ -21,8 +22,7 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
 @synthesize g2 = _g2;
 @synthesize operator = _operator;
 
-- (id)initWith:(id<CCGraph>)g1 and:(id<CCGraph>)g2 using:(id<CCWeightCombiner>)operator
-{
+- (id)initWith:(id <CCGraph>)g1 and:(id <CCGraph>)g2 using:(id <CCWeightCombiner>)operator {
     self = [super init];
     if (self) {
         self.g1 = g1;
@@ -32,13 +32,11 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return self;
 }
 
-- (id)initWith:(id<CCGraph>)g1 and:(id<CCGraph>)g2
-{
+- (id)initWith:(id <CCGraph>)g1 and:(id <CCGraph>)g2 {
     return [self initWith:g1 and:g2 using:[[SumWeightCombiner alloc] init]];
 }
 
-- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex {
     NSMutableSet *result = [NSMutableSet set];
     if ([self.g1 containsVertex:sourceVertex] && [self.g1 containsVertex:targetVertex]) {
         [result addObjectsFromArray:[self.g1 allEdgesConnecting:sourceVertex to:targetVertex]];
@@ -49,8 +47,7 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return [NSArray arrayWithArray:[result allObjects]];
 }
 
-- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex {
     id result = nil;
     if ([self.g1 containsVertex:sourceVertex] && [self.g1 containsVertex:targetVertex]) {
         result = [self.g1 edgeConnecting:sourceVertex to:targetVertex];
@@ -61,45 +58,37 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return result;
 }
 
-- (id<CCEdgeFactory>)edgeFactory
-{
+- (id <CCEdgeFactory>)edgeFactory {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)addVertex:(id)vertex
-{
+- (BOOL)addVertex:(id)vertex {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)containsEdge:(id)edge
-{
+- (BOOL)containsEdge:(id)edge {
     return [self.g1 containsEdge:edge] || [self.g2 containsEdge:edge];
 }
 
-- (BOOL)containsVertex:(id)vertex
-{
+- (BOOL)containsVertex:(id)vertex {
     return [self.g1 containsVertex:vertex] || [self.g2 containsVertex:vertex];
 }
 
-- (NSArray *)edgeSet
-{
+- (NSArray *)edgeSet {
     NSMutableSet *result = [NSMutableSet setWithArray:[self.g1 edgeSet]];
     [result addObjectsFromArray:[self.g2 edgeSet]];
     return [NSArray arrayWithArray:[result allObjects]];
 }
 
-- (NSArray *)edgesOf:(id)vertex
-{
+- (NSArray *)edgesOf:(id)vertex {
     NSMutableSet *result = [NSMutableSet set];
     if ([self.g1 containsVertex:vertex]) {
         [result addObjectsFromArray:[self.g1 edgesOf:vertex]];
@@ -110,30 +99,25 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return [NSArray arrayWithArray:[result allObjects]];
 }
 
-- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)removeEdge:(id)edge
-{
+- (BOOL)removeEdge:(id)edge {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (BOOL)removeVertex:(id)vertex
-{
+- (BOOL)removeVertex:(id)vertex {
     @throw [NSException exceptionWithName:@"UnsupportedOperationException" reason:GU_READ_ONLY userInfo:nil];
 }
 
-- (NSArray *)vertexSet
-{
+- (NSArray *)vertexSet {
     NSMutableSet *result = [NSMutableSet setWithArray:[self.g1 vertexSet]];
     [result addObjectsFromArray:[self.g2 vertexSet]];
     return [NSArray arrayWithArray:[result allObjects]];
 }
 
-- (id)edgeSource:(id)edge
-{
+- (id)edgeSource:(id)edge {
     if ([self.g1 containsEdge:edge]) {
         return [self.g1 edgeSource:edge];
     }
@@ -143,8 +127,7 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return nil;
 }
 
-- (id)edgeTarget:(id)edge
-{
+- (id)edgeTarget:(id)edge {
     if ([self.g1 containsEdge:edge]) {
         return [self.g1 edgeTarget:edge];
     }
@@ -154,8 +137,7 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     return nil;
 }
 
-- (double)edgeWeight:(id)edge
-{
+- (double)edgeWeight:(id)edge {
     if ([self.g1 containsEdge:edge] && [self.g2 containsEdge:edge]) {
         return [self.operator combine:[self.g1 edgeWeight:edge] with:[self.g2 edgeWeight:edge]];
     }
@@ -168,13 +150,11 @@ static NSString *GU_READ_ONLY = @"union of graphs is read-only";
     @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:@"no such edge in the union" userInfo:nil];
 }
 
-- (id<CCGraph>)g1
-{
+- (id <CCDirectedGraph>)g1 {
     return _g1;
 }
 
-- (id<CCGraph>)g2
-{
+- (id <CCDirectedGraph>)g2 {
     return _g2;
 }
 @end

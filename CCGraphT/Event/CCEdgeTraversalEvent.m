@@ -12,8 +12,7 @@
 @synthesize source = _source;
 @synthesize edge = _edge;
 
-- (id)initWithSource:(id)eventSource onEdge:(id)edge
-{
+- (id)initWithSource:(id)eventSource onEdge:(id)edge {
     if (self = [super init]) {
         _source = eventSource;
         _edge = edge;

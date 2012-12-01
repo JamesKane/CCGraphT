@@ -14,8 +14,12 @@
 
 @protocol CCTraversalListener <NSObject>
 - (void)connectedComponentFinished:(CCConnectedComponentTraversalEvent *)e;
+
 - (void)connectedComponentStarted:(CCConnectedComponentTraversalEvent *)e;
+
 - (void)edgeTraversed:(CCEdgeTraversalEvent *)e;
+
 - (void)vertexTraversed:(CCVertexTraversalEvent *)e;
+
 - (void)vertexFinished:(CCVertexTraversalEvent *)e;
 @end

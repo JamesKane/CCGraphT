@@ -10,5 +10,6 @@
 
 @interface CCMultigraph : CCAbstractBaseGraph
 - (id)initWithEdgeClass:(Class)edgeClass;
+
 - (id)initWithEdgeFactory:(id <CCEdgeFactory>)ef;
 @end

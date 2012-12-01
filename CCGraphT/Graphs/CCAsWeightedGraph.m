@@ -10,36 +10,33 @@
 #import "CCWeightedGraph.h"
 
 @interface CCAsWeightedGraph ()
-@property (strong, nonatomic) NSMutableDictionary *weightMap;
-@property (nonatomic) BOOL isWeightedGraph;
+@property(strong, nonatomic) NSMutableDictionary *weightMap;
+@property(nonatomic) BOOL isWeightedGraph;
 @end
 
 @implementation CCAsWeightedGraph
 @synthesize weightMap = _weightMap;
 @synthesize isWeightedGraph = _isWeightedGraph;
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)g andWeightMap:(NSMutableDictionary *)weightMap
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)g andWeightMap:(NSMutableDictionary *)weightMap {
     self = [super initWithGraph:g];
     if (self) {
         self.weightMap = weightMap;
         self.isWeightedGraph = [g conformsToProtocol:@protocol(CCWeightedGraph)];
     }
-    
+
     return self;
 }
 
-- (void)setEdge:(id)edge withWeight:(double)weight
-{
+- (void)setEdge:(id)edge withWeight:(double)weight {
     if (self.isWeightedGraph) {
         [super setEdge:edge withWeight:weight];
     }
-    
+
     (self.weightMap)[edge] = @(weight);
 }
 
-- (double)edgeWeight:(id)edge
-{
+- (double)edgeWeight:(id)edge {
     NSNumber *w = (self.weightMap)[edge];
     return w != nil ? [w doubleValue] : [super edgeWeight:edge];
 }

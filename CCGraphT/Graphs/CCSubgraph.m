@@ -9,18 +9,17 @@
 #import "CCSubgraph.h"
 #import "CCAbstractBaseGraph.h"
 #import "CCOrderedSet.h"
-#import "CCListenableGraph.h"
 
 static NSString *CCSG_NO_SUCH_EDGE_IN_BASE = @"no such edge in base graph";
 static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
 
 @interface CCSubgraph ()
-@property (strong, nonatomic) CCOrderedSet *edgeSet;
-@property (strong, nonatomic) CCOrderedSet *vertexSet;
-@property (strong, nonatomic) NSArray *unmodifiableEdgeArray;
-@property (strong, nonatomic) NSArray *unmodifiableVertexArray;
-@property (weak, nonatomic) CCAbstractBaseGraph *base;
-@property (nonatomic) BOOL induced;
+@property(strong, nonatomic) CCOrderedSet *edgeSet;
+@property(strong, nonatomic) CCOrderedSet *vertexSet;
+@property(strong, nonatomic) NSArray *unmodifiableEdgeArray;
+@property(strong, nonatomic) NSArray *unmodifiableVertexArray;
+@property(weak, nonatomic) CCAbstractBaseGraph *base;
+@property(nonatomic) BOOL induced;
 @end
 
 @implementation CCSubgraph
@@ -31,42 +30,39 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
 @synthesize base = _base;
 @synthesize induced = _induced;
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset andEdgeSubset:(NSArray *)edgeSubset
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset andEdgeSubset:(NSArray *)edgeSubset {
     self = [super init];
     if (self) {
         self.base = base;
-        
+
         self.edgeSet = [[CCOrderedSet alloc] init];
         self.vertexSet = [[CCOrderedSet alloc] init];
-        
+
         if (edgeSubset == nil) {
             self.induced = true;
         }
-        
+
 //        if ([base conformsToProtocol:@protocol(CCListenableGraph)]) {
 //            [((id<CCListenableGraph>)base) addGraphListener:[[CCBaseGraphListener alloc] init]];
 //        }
-        
+
         [self addVertices:[base vertexSet] usingFilter:vertexSubset];
         [self addEdges:[base edgeSet] usingFilter:edgeSubset];
     }
-    
+
     return self;
 }
 
-- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset
-{
+- (id)initWithGraph:(CCAbstractBaseGraph *)base usingVertexSubset:(NSArray *)vertexSubset {
     return [self initWithGraph:base usingVertexSubset:vertexSubset andEdgeSubset:nil];
 }
 
 #pragma mark --
 #pragma mark Graph override methods
 
-- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (NSArray *)allEdgesConnecting:(id)sourceVertex to:(id)targetVertex {
     NSMutableSet *edges = [NSMutableSet set];
-    
+
     if ([self containsVertex:sourceVertex] && [self containsVertex:targetVertex]) {
         NSArray *baseEdges = [self.base allEdgesConnecting:sourceVertex to:targetVertex];
         for (id e in baseEdges) {
@@ -75,12 +71,11 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
             }
         }
     }
-    
+
     return [NSArray arrayWithArray:[edges allObjects]];
 }
 
-- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)edgeConnecting:(id)sourceVertex to:(id)targetVertex {
     NSArray *edges = [self allEdgesConnecting:sourceVertex to:targetVertex];
     if (!edges || [edges count] == 0) {
         return nil;
@@ -89,20 +84,18 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     }
 }
 
-- (id<CCEdgeFactory>)edgeFactory
-{
+- (id <CCEdgeFactory>)edgeFactory {
     return [self.base edgeFactory];
 }
 
-- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (id)createEdgeFromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     [self assertVertexExists:sourceVertex];
     [self assertVertexExists:targetVertex];
-    
+
     if (![self.base containsEdgeConnecting:sourceVertex to:targetVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:CCSG_NO_SUCH_EDGE_IN_BASE userInfo:nil];
     }
-    
+
     NSArray *edges = [self.base allEdgesConnecting:sourceVertex to:targetVertex];
     for (id e in edges) {
         if (![self containsEdge:e]) {
@@ -111,23 +104,22 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
             return e;
         }
     }
-    
+
     return nil;
 }
 
-- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex
-{
+- (BOOL)addEdge:(id)edge fromVertex:(id)sourceVertex toVertex:(id)targetVertex {
     if (targetVertex == nil) {
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"a nil edge is not allowed" userInfo:nil];
     }
-    
+
     if (![self.base containsEdge:targetVertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:CCSG_NO_SUCH_EDGE_IN_BASE userInfo:nil];
     }
 
     [self assertVertexExists:edge];
     [self assertVertexExists:sourceVertex];
-    
+
     if ([self containsEdge:targetVertex]) {
         return NO;
     } else {
@@ -137,16 +129,15 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     }
 }
 
-- (BOOL)addVertex:(id)vertex
-{
+- (BOOL)addVertex:(id)vertex {
     if (vertex == nil) {
         @throw [NSException exceptionWithName:@"NilPointerException" reason:@"a nil vertex is not allowed" userInfo:nil];
     }
-    
+
     if (![self.base containsVertex:vertex]) {
         @throw [NSException exceptionWithName:@"IllegalArgumentException" reason:CCSG_NO_SUCH_VERTEX_IN_BASE userInfo:nil];
     }
-    
+
     if ([self containsVertex:vertex]) {
         return NO;
     } else {
@@ -156,43 +147,38 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     }
 }
 
-- (BOOL)containsEdge:(id)edge
-{
+- (BOOL)containsEdge:(id)edge {
     return [self.edgeSet containsObject:edge];
 }
 
-- (BOOL)containsVertex:(id)vertex
-{
+- (BOOL)containsVertex:(id)vertex {
     return [self.vertexSet containsObject:vertex];
 }
 
-- (NSArray *)edgeSet
-{
+- (CCOrderedSet *)edgeSet {
     if (!self.unmodifiableEdgeArray) {
         self.unmodifiableEdgeArray = [NSArray arrayWithArray:[self.edgeSet allObjects]];
     }
-    
+
     return self.unmodifiableEdgeArray;
 }
 
-- (NSArray *)edgesOf:(id)vertex
-{
+- (NSArray *)edgesOf:(id)vertex {
     [self assertVertexExists:vertex];
-    
+
     NSMutableArray *edges = [NSMutableArray array];
     NSArray *baseEdges = [self.base edgesOf:vertex];
-    
+
     for (id e in baseEdges) {
         if ([self containsEdge:e]) {
             [edges addObject:e];
         }
     }
-    
+
     return edges;
 }
 
-- (BOOL)removeEdge:(id)edge
-{
+- (BOOL)removeEdge:(id)edge {
     BOOL exists = [self.edgeSet containsObject:edge];
     if (exists) {
         [self.edgeSet removeObject:edge];
@@ -201,14 +187,12 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     return exists;
 }
 
-- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex
-{
+- (id)removeEdgeConnecting:(id)sourceVertex to:(id)targetVertex {
     id e = [self edgeConnecting:sourceVertex to:targetVertex];
     return [self removeEdge:e] ? e : nil;
 }
 
-- (BOOL)removeVertex:(id)vertex
-{
+- (BOOL)removeVertex:(id)vertex {
     BOOL exists = [self containsVertex:vertex];
     if (exists) {
         if ([self.base containsVertex:vertex]) {
@@ -220,40 +204,34 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     return exists;
 }
 
-- (NSArray *)vertexSet
-{
+- (CCOrderedSet *)vertexSet {
     if (!self.unmodifiableVertexArray) {
         self.unmodifiableVertexArray = [NSArray arrayWithArray:[self.vertexSet allObjects]];
     }
-    
+
     return self.unmodifiableVertexArray;
 }
 
-- (id)edgeSource:(id)edge
-{
+- (id)edgeSource:(id)edge {
     return [self.base edgeSource:edge];
 }
 
-- (id)edgeTarget:(id)edge
-{
+- (id)edgeTarget:(id)edge {
     return [self.base edgeTarget:edge];
 }
 
-- (double)edgeWeight:(id)edge
-{
+- (double)edgeWeight:(id)edge {
     return [self.base edgeWeight:edge];
 }
 
-- (void)setEdge:(id)edge withWeight:(double)weight
-{
+- (void)setEdge:(id)edge withWeight:(double)weight {
     [self.base setEdge:edge withWeight:weight];
 }
 
 #pragma mark --
 #pragma mark Private Subgraph methods
 
-- (void)addVertices:(NSArray *)vertexArray usingFilter:(NSArray *)filter
-{
+- (void)addVertices:(NSArray *)vertexArray usingFilter:(NSArray *)filter {
     for (id v in vertexArray) {
         if (!filter || [filter containsObject:v]) {
             [self addVertex:v];
@@ -261,8 +239,7 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     }
 }
 
-- (void)addEdges:(NSArray *)edgeArray usingFilter:(NSArray *)filter
-{
+- (void)addEdges:(NSArray *)edgeArray usingFilter:(NSArray *)filter {
     BOOL containsVertices;
     BOOL edgeIncluded;
     for (id e in edgeArray) {
@@ -270,7 +247,7 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
         id targetVertex = [self.base edgeTarget:e];
         containsVertices = [self containsVertex:sourceVertex] && [self containsVertex:targetVertex];
         edgeIncluded = (filter == nil) || [filter containsObject:e];
-        
+
         if (containsVertices && edgeIncluded) {
             [self addEdge:sourceVertex fromVertex:targetVertex toVertex:e];
         }
