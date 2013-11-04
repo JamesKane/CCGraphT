@@ -155,7 +155,7 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     return [self.vertexSet containsObject:vertex];
 }
 
-- (CCOrderedSet *)edgeSet {
+- (NSArray *)edgeSet {
     if (!self.unmodifiableEdgeArray) {
         self.unmodifiableEdgeArray = [NSArray arrayWithArray:[self.edgeSet allObjects]];
     }
@@ -204,7 +204,7 @@ static NSString *CCSG_NO_SUCH_VERTEX_IN_BASE = @"no such vertex in base graph";
     return exists;
 }
 
-- (CCOrderedSet *)vertexSet {
+- (NSArray *)vertexSet {
     if (!self.unmodifiableVertexArray) {
         self.unmodifiableVertexArray = [NSArray arrayWithArray:[self.vertexSet allObjects]];
     }
